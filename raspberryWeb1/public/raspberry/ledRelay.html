@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>LED-Relay控制中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/ledRelay.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
+    <script src="../js/ledRelayRaspberry.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <nav class="clearfix">
+            <h1><a href="../index.html">IOT CONTROL CENTER</a></h1>
+            <ul>
+
+            </ul>
+            <img src="../images/menu.png" alt="menu" id="menu">
+        </nav>
+
+        <main>
+            <section class="itemImage">
+
+                <img src="../images/device17_1000.jpg"  alt="two channel relay" class="photo">
+                <div class="card-body">
+                    <h3 class="item-title">2 channel 繼電器</h3>
+                    <p class="item-text">Relay 繼電器的目的是以小電流控制大電流的ON/OFF，這樣就可以利用微電腦CPU的IO(Input/Output)來控制家電甚至動力馬達。常見到的應用如汽車的方向燈；建築物蓄水池的抽水馬達，也是利用浮球的低電壓訊號來驅動繼電器ON/OFF，進而驅動抽水馬達。</p>
+
+
+                </div>
+            </section>
+            <div class="card" id="ledControl">
+                <div class="card-body">
+                    <h5 class="card-title">LED 控制器</h5>
+                    <p class="card-text">控制Firebase 及時資料庫的LED欄位，可遠端控制家庭燈具</p>
+                    <a href="#" class="btn ">LED 狀態:<span class="status">關閉</span></a>
+                </div>
+            </div>
+
+            <section class="demoMovie">
+                <iframe width="100%" src="https://www.youtube.com/embed/Qw7R5mWHRTE"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </section>
+
+
+            <section class="code">
+                <iframe height="600px" width="100%" src="https://repl.it/@roberthsu2003/c0905for2?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+            </section>
+        </main>
+        <footer>
+            copyright
+        </footer>
+    </div>
+
+    <div class="alertMessage">
+        <div class="bg"></div>
+
+        <form action="#">
+            請輸入帳號:<br>
+            <input type="email" name="email">
+            <br>
+            請輸入密碼:<br>
+            <input type="password" name="pwd">
+            <br><br>
+            <input type="submit" value="Submit">
+            <input type="button" value="取消" class="cancel">
+        </form>
+
+
+
+    </div>
+
+
+</body>
+</html>

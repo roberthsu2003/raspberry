@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>RFID門禁監視器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../css/rfid.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-firestore.js"></script>
+    <script src="../js/rfid.js"></script>
+</head>
+<body>
+<div id="wrap">
+    <nav class="clearfix">
+        <h1><a href="../index.html">IOT CONTROL CENTER</a></h1>
+        <ul>
+
+        </ul>
+        <img src="../images/menu.png" alt="menu" id="menu">
+    </nav>
+
+    <main>
+        <section class="itemImage">
+
+            <img src="../images/rfid.jpg" alt="two channel relay" class="photo">
+            <div class="card-body">
+                <h3 class="item-title">RFID</h3>
+                <p class="item-text">「無線射頻身份識別系統」，我們常稱為感應卡、感應式IC卡或近接卡、非接觸卡等等。是針對接觸式系統的缺點而發展出來，利用射頻訊號以無線方式傳送及接收數據資料，且同時使用此射頻訊號來做無線傳能，因此識別卡不需與讀卡機接觸即可做資料的交換，而且卡片本身不需使用電池，所以卡片就可以永久工作。</p>
+
+
+            </div>
+        </section>
+        <div class="card" id="control">
+            <div class="card-body">
+                    <h5 class="card-title">類比訊號監視器</h5>
+                    <p class="card-text">控制Firebase 及時資料庫內的類比訊號。可以透過遠端監控水庫蓄水量</p>
+                <div id="accessDisplay">
+
+                </div>
+            </div>
+
+        </div>
+
+        <section class="demoMovie">
+            <iframe width="100%" src="https://www.youtube.com/embed/Qw7R5mWHRTE" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </section>
+
+
+        <section class="code">
+            <iframe height="600px" width="100%" src="https://repl.it/@roberthsu2003/c0905for2?lite=true" scrolling="no"
+                    frameborder="no" allowtransparency="true" allowfullscreen="true"
+                    sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+        </section>
+    </main>
+    <footer>
+        copyright
+    </footer>
+</div>
+
+<div class="alertMessage">
+    <div class="bg"></div>
+
+    <form action="#">
+        請輸入帳號:<br>
+        <input type="email" name="email">
+        <br>
+        請輸入密碼:<br>
+        <input type="password" name="pwd">
+        <br><br>
+        <input type="submit" value="Submit">
+        <input type="button" value="取消" class="cancel">
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

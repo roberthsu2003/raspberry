@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>RGB_LED</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-static-top.css" rel="stylesheet">
+    
+    <!--jquery UI-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+      
+    <!-- Custom styles for this page -->
+      <style type="text/css">
+                    
+          .jumbotron h1 {
+              margin-bottom: 30px;
+              color: darkgray;
+          }
+          
+          .jumbotron h3 {              
+              color: darkgray;
+              margin-bottom: 20px;
+          }
+          .jumbotron .badge,.jumbotron a{
+              font-size:30px;
+          }
+          .jumbotron #slider{
+              margin-top:30px;
+          }
+          
+      </style>
+      
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Raspberry GPIO Control</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>RGB_LED</h1>
+        <h3>RGB顏色狀態</h3>
+        <a href="#">Red：<span class="redBadge">42</span></a>
+        <div id="redSlider"></div>
+        <br/>
+        <br/>
+        <a href="#">Green：<span class="greenBadge">42</span></a>
+        <div id="greenSlider"></div>
+        <br/>
+        <br/>          
+        <a href="#">Blue：<span class="blueBadge">42</span></a>
+        <div id="blueSlider"></div>
+        <br/>
+        <br/>
+      </div>
+
+    </div> <!-- /container -->
+      
+    <!--Firebase script -->
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    // Initialize Firebase
+    var config = {
+    apiKey: "AIzaSyAHgSjntOofP5uFmmkHLTmuyCsS3f9OeSc",
+    authDomain: "raspberryfirebase.firebaseapp.com",
+    databaseURL: "https://raspberryfirebase.firebaseio.com",
+    projectId: "raspberryfirebase",
+    storageBucket: "raspberryfirebase.appspot.com",
+    messagingSenderId: "929629322713"
+    };
+    firebase.initializeApp(config); 
+    var database = firebase.database();    
+    </script>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--自訂menu-->
+    <script src="js/menu.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#redSlider").slider({
+                min:0,
+                max:255,
+                value:1,
+                change: function(event,ui){
+                    console.log(ui.value.toString());
+                    $(".jumbotron .redBadge").html(ui.value.toString());
+                    database.ref("raspberrypi/RGB_LED").update({
+                        "red":ui.value
+                    });
+                }
+            });
+            
+            $("#greenSlider").slider({
+                min:0,
+                max:255,
+                value:1,
+                change: function(event,ui){                    
+                    console.log(ui.value.toString());
+                    $(".jumbotron .greenBadge").html(ui.value.toString());
+                    database.ref("raspberrypi/RGB_LED").update({
+                        "green":ui.value
+                    });
+                }
+            });
+            
+            $("#blueSlider").slider({
+                min:0,
+                max:255,
+                value:1,
+                change: function(event,ui){
+                    console.log(ui.value.toString());
+                    $(".jumbotron .blueBadge").html(ui.value.toString());
+                    database.ref("raspberrypi/RGB_LED").update({
+                        "blue":ui.value
+                    });
+                }
+            });
+            
+            var rgbLed = database.ref("raspberrypi/RGB_LED");
+            rgbLed.on('value',function(snapshop){
+                var blueValue = snapshop.val()["blue"];
+                var greenValue = snapshop.val()["green"];
+                var redValue = snapshop.val()["red"];
+                $(".jumbotron .redBadge").html(redValue.toString());
+                $(".jumbotron .greenBadge").html(greenValue.toString());
+                $(".jumbotron .blueBadge").html(blueValue.toString());
+                $("#redSlider").slider({
+                    "value":redValue
+                });
+                $("#greenSlider").slider({
+                    "value":greenValue
+                });
+                $("#blueSlider").slider({
+                    "value":blueValue
+                });
+                
+            });
+        });
+        
+    </script>
+   
+  </body>
+</html>

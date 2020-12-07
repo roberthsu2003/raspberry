@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>四位數七段顯示器溫度顯示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/ledRelay.css">
+    <link rel="stylesheet" href="../css/sevenSegWithFourDigits.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="/__/firebase/6.5.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.5.0/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="../js/sevenSegWithFourDigits.js"></script>
+</head>
+<body>
+<div id="wrap">
+    <nav class="clearfix">
+        <h1><a href="../index.html">IOT CONTROL CENTER</a></h1>
+        <ul>
+
+        </ul>
+        <img src="../images/menu.png" alt="menu" id="menu">
+    </nav>
+
+    <main>
+        <section class="itemImage">
+
+            <img src="../images/lm35-pinout.jpg" alt="LM35溫度感測" class="photo">
+            <div class="card-body">
+                <h3 class="item-title">LM35溫度感測器</h3>
+                <p class="item-text">LM35 是很常用且易用的溫度感測器元件，在應用上也只需要一個LM35元件，只利用一個類比端口就可以，困難點在於將讀取的類比值轉換為實際的溫度。</p>
+
+
+            </div>
+        </section>
+
+        <section class="itemImage">
+
+            <img src="../images/fourDigitsSevenSeg.jpg" alt="四段式七位顯示器" class="photo">
+            <div class="card-body">
+                <h3 class="item-title">四位數七段顯示器</h3>
+                <p class="item-text">段顯示器的原理與運用，如果你需要多個位數，基本上可以自行連接多個七段顯示器，只是七段顯示器需要的腳位很多啊？Arduino 腳位不夠用怎麼辦？</p>
+
+
+            </div>
+        </section>
+        <div class="card sevenSeg" id="ledControl">
+            <div class="card-body">
+                <h5 class="card-title">中央溫度監控中心</h5>
+                <p class="card-text">使用網頁介面顯示遠端的溫度</p>
+                <div class="displayArea">
+                    <div class="tab" >
+                        <button class="tablinks">攝氐</button>
+                        <button class="tablinks">華氐</button>
+                        <button class="tablinks">絕對溫度</button>
+                    </div>
+
+                    <!-- Tab content -->
+                    <div class="tabcontent">
+                        <h3>攝氐</h3>
+                        <p id="ces">24.74</p>
+                    </div>
+
+                    <div class="tabcontent">
+                        <h3>華氐</h3>
+                        <p id="fahrenheit">24.74</p>
+                    </div>
+
+                    <div class="tabcontent">
+                        <h3>絕對溫度</h3>
+                        <p id="kelvin">174.74</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <section class="demoMovie">
+            <iframe width="100%" src="https://www.youtube.com/embed/Qw7R5mWHRTE" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </section>
+
+
+        <section class="code">
+            <iframe height="600px" width="100%" src="https://repl.it/@roberthsu2003/c0905for2?lite=true" scrolling="no"
+                    frameborder="no" allowtransparency="true" allowfullscreen="true"
+                    sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+        </section>
+    </main>
+    <footer>
+        copyright
+    </footer>
+</div>
+
+<div class="alertMessage">
+    <div class="bg"></div>
+
+    <form action="#">
+        請輸入帳號:<br>
+        <input type="email" name="email">
+        <br>
+        請輸入密碼:<br>
+        <input type="password" name="pwd">
+        <br><br>
+        <input type="submit" value="Submit">
+        <input type="button" value="取消" class="cancel">
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

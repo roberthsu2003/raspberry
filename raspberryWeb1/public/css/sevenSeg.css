@@ -1,0 +1,25 @@
+.sevenSeg .digits{
+    text-align: center;
+    padding: 2em;
+    margin: 2em 0;
+    background-color: #FFFFFF;
+    border: solid 1px #666666;
+}
+
+.sevenSeg .digits button{
+    text-align: center;
+    font-size: 2em;
+    padding: 1em;
+    color:#FFFFFF;
+    background-color: #666666;
+    border: solid 1px #FFFFFF;
+}
+
+.sevenSeg .digits .selected{
+     background-color: #a9201b;
+}
+
+
+
+
+}

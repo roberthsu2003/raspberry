@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>七段顯示器控制中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/ledRelay.css">
+    <link rel="stylesheet" href="../css/sevenSeg.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="/__/firebase/6.5.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.5.0/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="../js/sevenSeg.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <nav class="clearfix">
+            <h1><a href="../index.html">IOT CONTROL CENTER</a></h1>
+            <ul>
+
+            </ul>
+            <img src="../images/menu.png" alt="menu" id="menu">
+        </nav>
+
+        <main>
+            <section class="itemImage">
+
+                <img src="../images/sevenSeg.jpg"  alt="two channel relay" class="photo">
+                <div class="card-body">
+                    <h3 class="item-title">七段顯示器</h3>
+                    <p class="item-text">七段顯示器是一種具有 8 顆 LED 的顯示元件，其中 7 顆 LED 用來顯示阿拉伯數字中不同部位的筆畫 ，而另外一顆 LED 則用來當作小數點顯示使用</p>
+
+
+                </div>
+            </section>
+            <div class="card sevenSeg" id="ledControl" >
+                <div class="card-body">
+                    <h5 class="card-title">七段顯示控制中心</h5>
+                    <p class="card-text">使用網頁介面操控遠端的七段顯示器</p>
+                    <div class="digits">
+                        <button type="button">0</button>
+                        <button type="button">1</button>
+                        <button type="button">2</button>
+                        <button type="button">3</button>
+                        <button type="button">4</button>
+                        <button type="button">5</button>
+                        <button type="button">6</button>
+                        <button type="button" class="selected">7</button>
+                        <button type="button">8</button>
+                        <button type="button">9</button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="demoMovie">
+                <iframe width="100%" src="https://www.youtube.com/embed/Qw7R5mWHRTE"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </section>
+
+
+            <section class="code">
+                <iframe height="600px" width="100%" src="https://repl.it/@roberthsu2003/c0905for2?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+            </section>
+        </main>
+        <footer>
+            copyright
+        </footer>
+    </div>
+
+    <div class="alertMessage">
+        <div class="bg"></div>
+
+        <form action="#">
+            請輸入帳號:<br>
+            <input type="email" name="email">
+            <br>
+            請輸入密碼:<br>
+            <input type="password" name="pwd">
+            <br><br>
+            <input type="submit" value="Submit">
+            <input type="button" value="取消" class="cancel">
+        </form>
+
+
+
+    </div>
+
+
+</body>
+</html>

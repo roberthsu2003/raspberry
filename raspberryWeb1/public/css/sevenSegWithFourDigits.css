@@ -1,0 +1,91 @@
+#ledControl .card-body {
+    width: 80%;
+}
+
+section.itemImage {
+    width: 80%;
+}
+
+#ledControl .card-text {
+    line-height: 1.2em;
+    letter-spacing: 0.02em;
+    font-size: 1.3em;
+}
+
+
+.displayArea {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.displayArea .tabcontent {
+    background-color: #555555;
+    width: 30%;
+    height: 200px;
+
+}
+
+.tabcontent h3 {
+    font-size: 2em;
+    padding: 0.3em;
+    text-align: center;
+    color: white;
+}
+
+.tabcontent p {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3em;
+    text-align: center;
+    letter-spacing: 0.05em;
+    line-height: 2.3em;
+    color: white;
+}
+
+.tablinks{
+    padding: 0.5em 1.5em;
+    background-color: #aaaaaa;
+    border: 1px solid #999999;
+    font-size: 1em;
+}
+
+.tablinks:hover{
+    cursor: pointer;
+    background-color: #bbbbbb;
+}
+
+.tablinks:active{
+    background-color: #0abab5;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .displayArea {
+        display: block;
+        justify-content: flex-start;
+    }
+
+    .displayArea .tabcontent {
+
+        width: 100%;
+
+    }
+
+
+}
+
+
+@media (max-width: 767px) {
+
+    .displayArea {
+        display: block;
+        justify-content: flex-start;
+    }
+
+    .displayArea .tabcontent {
+
+        width: 100%;
+
+    }
+
+}
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>物聯網控制中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <nav class="clearfix">
+            <h1><a href="index.html">IOT CONTROL CENTER</a></h1>
+            <ul>
+
+            </ul>
+            <img src="images/menu.png" alt="menu" id="menu">
+        </nav>
+
+        <main>
+            <div id="innerMain">
+                <h1>物聯網(Iot)</h1>
+                <p>物聯網是由實際物體，如車輛、機器、家用電器等等，經由嵌入式感測器和 API 等裝置，透過網際網路所形成的訊息連結與交換網路。</p>
+                <div id="sectionContainer">
+                    <section>
+                       <h2>Arduion專案</h2>
+                        <ul>
+                            <li><a href="arduino/ledRelay.html" alt="relay">雲端控制繼電器</a></li>
+                            <li><a href="arduino/sevenSeg.html" alt="7段顯示器">雲端控制七段顯示器</a></li>
+                            <li><a href="arduino/sevenSegWithFourDigits.html" alt="relay">四位數七段顯示器</a></li>
+                            <li><a href="arduino/ledRelay.html" alt="relay">雲端控制繼電器</a></li>
+                            <li><a href="arduino/ledRelay.html" alt="relay">雲端控制繼電器</a></li>
+                            <li><a href="arduino/ledRelay.html" alt="relay">雲端控制繼電器</a></li>
+                        </ul>
+
+                    </section>
+                     <section>
+                       <h2>Raspberry專案</h2>
+                        <ul>
+                            <li><a href="raspberry/ledRelay.html" alt="relay">雲端控制繼電器</a></li>
+                            <li><a href="raspberry/register.html" alt="relay">監視類比訊號</a></li>
+                            <li><a href="raspberry/RFID.html" alt="relay">RFID門禁監視器</a></li>
+                            <li><a href="arduino/ledRelay.html" alt="relay">雲端控制繼電器</a></li>
+                            <li><a href="arduino/ledRelay.html" alt="relay">雲端控制繼電器</a></li>
+                            <li><a href="arduino/ledRelay.html" alt="relay">雲端控制繼電器</a></li>
+                        </ul>
+
+                    </section>
+
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>Copyright © 2012 Apple Inc. All rights reserved</p>
+            <address>台北市忠孝東路四段169號4樓</address>
+        </footer>
+    </div>
+
+    <div class="alertMessage">
+        <div class="bg"></div>
+
+        <form action="#">
+            請輸入帳號:<br>
+            <input type="email" name="email">
+            <br>
+            請輸入密碼:<br>
+            <input type="password" name="pwd">
+            <br><br>
+            <input type="submit" value="Submit">
+            <input type="button" value="取消" class="cancel">
+        </form>
+
+
+
+    </div>
+
+
+</body>
+</html>
