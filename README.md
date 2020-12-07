@@ -474,7 +474,14 @@ Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複�
 
 <a name=autoRunProgram></a>	
 ## 自動執行程式
+
+### 啟動時自動執行應用程式
+
 ```
+sudo nano /etc/rc.local
+
+在最後一行加入
+$ /usr/bin/python /home/pi/my_program.py &
 ```
 
 	
