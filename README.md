@@ -13,7 +13,7 @@
 - [PC 透過SSH連線至Raspberry](#sshToRaspberryOnPC)  
 - [Mac 透過SSH連線至Raspberry](#sshToRaspberryOnMac)  
 - [使用遠端桌面(Microsoft Remote Desktop)](#Microsoft_Remote_Desktop)  
-- [建立git SSH keys](#create_SSH_KEYS)
+- [建立github SSH keys](#create_SSH_KEYS)
 - [使用SSH學習命令列](#command_line_interface)  
 - [安裝vim文字編輯器](#install_vim)  
 - [安裝condamini和jupyter](#安裝condamini和jupyter)
