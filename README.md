@@ -24,8 +24,9 @@
 
 <a name="noRaspberry"></a>
 ## 沒有RaspberryPi硬體的解決方案
-- Pc下載[VirtualBox](https://www.virtualbox.org/)
+- PC電腦下載[VMWare workstation player](https://www.vmware.com/tw/products/workstation-player.html)
 - Mac電腦下載[VMWare Fution個人免費版](https://www.vmware.com/tw/products/fusion/fusion-evaluation.html)
+- 下載[VirtualBox](https://www.virtualbox.org/)
 - 下載[下載Raspberry Pi Desktop for PC and Mac](https://www.raspberrypi.org/software/raspberry-pi-desktop/)
 - 安裝Raspberry Pi Desktop on VirtualBox步驟:
 	- virtualBox管理員的新增
@@ -144,7 +145,7 @@
 ### 使用遠端桌面(Microsoft Remote Desktop)
 1. 關閉 vnc Server
 2. 透過ssh安裝xrdp
-
+3. 
 	`sudo apt-get update`
 	`sudo apt-get install xrdp -y`
 
