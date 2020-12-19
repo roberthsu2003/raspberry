@@ -246,7 +246,7 @@ $ cp -r mydirectory mydirectory2
 ### 重新命名檔案名稱或資料夾名稱
 
 ```
-$ mv_file.txt my_file.rtf
+$ mv my_file.txt my_file.rtf
 ```
 
 ### 檢視檔案內容
