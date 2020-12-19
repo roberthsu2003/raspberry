@@ -148,7 +148,7 @@
 ### 使用遠端桌面(Microsoft Remote Desktop)
 1. 關閉 vnc Server
 2. 透過ssh安裝xrdp
-3. 
+
 	`sudo apt-get update`
 	`sudo apt-get install xrdp -y`
 
