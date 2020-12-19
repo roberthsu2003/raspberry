@@ -435,7 +435,7 @@ export PATH=“/usr/bin:$PATH”
 步驟 5:安裝python，會問是否同意安裝，按y
 
 	#修改conda的預設檔,告知要使用的硬體是rpi
-	conda config — add channels rpi
+	conda config —add channels rpi
 	
 	#查詢conda提供的python版本 conda search "^python$"
 	conda install python=3.6
