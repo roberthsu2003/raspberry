@@ -474,7 +474,7 @@ export PATH=“/usr/bin:$PATH”
 	
 ### 4.啟動conda虛擬環境
 
-	$ source activate env01
+	$ source activate  env01
 
 	#查看目前所有conda的虛擬環境
 	conda info -e
