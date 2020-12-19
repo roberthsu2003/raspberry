@@ -257,9 +257,10 @@ $ more myfile.txt
 $ less myfile.txt
 ```
 
-### 編輯檔案
+### 建立編輯檔案
 
 ```
+$ touch my_file.txt
 $ nano my_file.txt
 ```
 ![](images/pic2.png)
