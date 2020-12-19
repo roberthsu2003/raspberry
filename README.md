@@ -451,7 +451,7 @@ export PATH=“/usr/bin:$PATH”
 	
 步驟 8:開啟jupyter
 
-	$jupyter
+	$jupyter notebook
 	
 <a name="使用Conda建立python的虛擬環境"></a>
 ## 使用Conda建立python的虛擬環境
