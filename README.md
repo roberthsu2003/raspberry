@@ -16,7 +16,9 @@
 - [建立github SSH keys](#create_SSH_KEYS)
 - [使用SSH學習命令列](#command_line_interface)  
 - [安裝vim文字編輯器](#install_vim)
-- [安裝python3.x](#install_python) 
+- [安裝python3.x](#install_python)
+- [安裝python3](#install_python)
+>>>>>>> refs/remotes/origin/master
 - [安裝condamini和jupyter](#安裝condamini和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
 - [自動執行程式](#autoRunProgram)  
@@ -247,7 +249,7 @@ $ cp -r mydirectory mydirectory2
 ### 重新命名檔案名稱或資料夾名稱
 
 ```
-$ mv_file.txt my_file.rtf
+$ mv my_file.txt my_file.rtf
 ```
 
 ### 檢視檔案內容
@@ -258,9 +260,10 @@ $ more myfile.txt
 $ less myfile.txt
 ```
 
-### 編輯檔案
+### 建立編輯檔案
 
 ```
+$ touch my_file.txt
 $ nano my_file.txt
 ```
 ![](images/pic2.png)
@@ -380,6 +383,7 @@ Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複�
 4. 在 Normal 模式下，按下 :w 會進行存檔，按下 :q 會關閉這個檔案(但若未存檔會提
 示先存檔再離開)，而 :wq 則是存檔完成後直接關閉這個檔案。
 
+
 <a name="install_python"></a>
 ## 安裝python 3.x
 
@@ -400,9 +404,25 @@ $ sudo apt update
 $ sudo apt install python3
 ```
 
-### 
 
+<a name=“install_python”></a>
+## 安裝python
 
+```
+#檢查python版本
+$ python —version
+
+#目前python的路徑
+$ which python
+
+#安裝python3
+$ sudo apt-get inatll python3
+
+#更改環境設定
+$ sudo vim ~/.bashrc
+# 在最後一行加上
+export PATH=“/usr/bin:$PATH”
+```
 
 
 <a name="安裝condamini和jupyter"></a>
@@ -440,7 +460,7 @@ $ sudo apt install python3
 步驟 5:安裝python，會問是否同意安裝，按y
 
 	#修改conda的預設檔,告知要使用的硬體是rpi
-	conda config — add channels rpi
+	conda config —add channels rpi
 	
 	#查詢conda提供的python版本 conda search "^python$"
 	conda install python=3.6
@@ -456,7 +476,7 @@ $ sudo apt install python3
 	
 步驟 8:開啟jupyter
 
-	$jupyter
+	$jupyter notebook
 	
 <a name="使用Conda建立python的虛擬環境"></a>
 ## 使用Conda建立python的虛擬環境
@@ -479,7 +499,7 @@ $ sudo apt install python3
 	
 ### 4.啟動conda虛擬環境
 
-	$ source activate env01
+	$ source activate env01
 
 	#查看目前所有conda的虛擬環境
 	conda info -e
