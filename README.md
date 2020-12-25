@@ -18,7 +18,6 @@
 - [安裝vim文字編輯器](#install_vim)
 - [安裝python3.x](#install_python)
 - [安裝python3](#install_python)
->>>>>>> refs/remotes/origin/master
 - [安裝condamini和jupyter](#安裝condamini和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
 - [自動執行程式](#autoRunProgram)  
