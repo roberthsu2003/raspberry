@@ -20,6 +20,9 @@
 - [安裝python3](#install_python)
 - [安裝condamini和jupyter](#安裝condamini和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
+- [Raspberry的40pin](#Raspberry的40pin)
+- [tkinger](./tkinter)
+- [ledControl](./Firebase_GPIO_tkinter/ledControl)
 - [自動執行程式](#autoRunProgram)  
 - [Blynk](./Blynk/LEDControl)
 - [ifttt](./ifttt/)
@@ -518,6 +521,10 @@ export PATH=“/usr/bin:$PATH”
 	
 ### 8. 刪除虛擬環境
 	$ conda remove -n env01 -all
+
+<a name="Raspberry的40pin"></a>
+## Raspberry的40pin
+![](./images/pic_40pin.png)
 
 <a name=autoRunProgram></a>	
 ## 自動執行程式
