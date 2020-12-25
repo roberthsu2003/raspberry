@@ -21,7 +21,7 @@
 - [安裝condamini和jupyter](#安裝condamini和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
 - [Raspberry的40pin](#Raspberry的40pin)
-- [tkinger](./tkinter)
+- [tkinter](./tkinter)
 - [ledControl](./Firebase_GPIO_tkinter/ledControl)
 - [自動執行程式](#autoRunProgram)  
 - [Blynk](./Blynk/LEDControl)
