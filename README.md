@@ -17,7 +17,6 @@
 - [使用SSH學習命令列](#command_line_interface)  
 - [安裝vim文字編輯器](#install_vim)
 - [安裝python3.x](#install_python)
-- [安裝python3](#install_python)
 - [安裝condamini和jupyter](#安裝condamini和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
 - [Raspberry的40pin](#Raspberry的40pin)
