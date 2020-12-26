@@ -16,9 +16,12 @@
 - [建立github SSH keys](#create_SSH_KEYS)
 - [使用SSH學習命令列](#command_line_interface)  
 - [安裝vim文字編輯器](#install_vim)
-- [安裝python3](#install_python)
+- [安裝python3.x](#install_python)
 - [安裝condamini和jupyter](#安裝condamini和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
+- [Raspberry的40pin](#Raspberry的40pin)
+- [tkinter](./tkinter)
+- [ledControl](./Firebase_GPIO_tkinter/ledControl)
 - [自動執行程式](#autoRunProgram)  
 - [Blynk](./Blynk/LEDControl)
 - [ifttt](./ifttt/)
@@ -146,7 +149,7 @@
 ### 使用遠端桌面(Microsoft Remote Desktop)
 1. 關閉 vnc Server
 2. 透過ssh安裝xrdp
-3. 
+
 	`sudo apt-get update`
 	`sudo apt-get install xrdp -y`
 
@@ -381,6 +384,28 @@ Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複�
 4. 在 Normal 模式下，按下 :w 會進行存檔，按下 :q 會關閉這個檔案(但若未存檔會提
 示先存檔再離開)，而 :wq 則是存檔完成後直接關閉這個檔案。
 
+
+<a name="install_python"></a>
+## 安裝python 3.x
+
+### 檢查目前預設python,python3版本
+`$ python --version`
+
+`$ python3 --version`
+
+### 檢查執行那一個python
+`$ which python`
+
+`$ which python3`
+
+### 安裝python3
+
+```
+$ sudo apt update
+$ sudo apt install python3
+```
+
+
 <a name=“install_python”></a>
 ## 安裝python
 
@@ -399,6 +424,7 @@ $ sudo vim ~/.bashrc
 # 在最後一行加上
 export PATH=“/usr/bin:$PATH”
 ```
+
 
 <a name="安裝condamini和jupyter"></a>
 ## 安裝miniconda和jupyter
@@ -494,6 +520,10 @@ export PATH=“/usr/bin:$PATH”
 	
 ### 8. 刪除虛擬環境
 	$ conda remove -n env01 -all
+
+<a name="Raspberry的40pin"></a>
+## Raspberry的40pin
+![](./images/pic_40pin.png)
 
 <a name=autoRunProgram></a>	
 ## 自動執行程式
