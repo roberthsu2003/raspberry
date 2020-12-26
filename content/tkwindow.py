@@ -1,12 +1,14 @@
-import tkinter as tk
+from tkinter import *
 
-class Window(tk.Tk):
+
+
+class Window(Tk):
     def __init__(self):
         super().__init__()
-        self.title("Hello Tkinter")
+        self.title("Hello Kitty")
         
-        label = tk.Label(self, text="Hello World!")
-        label.pack(fill=tk.BOTH, expand=True, padx=100, pady=50)
+        label = Label(self, text="Hello World!")
+        label.pack(fill=BOTH, expand=True, padx=100, pady=50)
     
 if __name__ == "__main__":
     window = Window()
