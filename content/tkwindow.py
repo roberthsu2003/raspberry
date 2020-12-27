@@ -5,7 +5,7 @@ from tkinter import *
 class Window(Tk):
     def __init__(self):
         super().__init__()
-        self.title("Hello Kitty")
+        self.title("Hello Robert")
         
         label = Label(self, text="Hello World!")
         label.pack(fill=BOTH, expand=True, padx=100, pady=50)
