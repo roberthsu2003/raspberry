@@ -3,7 +3,7 @@ from tkinter import *
 class Window(Tk):
     def __init__(self):
         super().__init__()
-        self.title("Hello Allan")
+        self.title("Hello Robert")
         
         label = Label(self, text="LCD Controller")
         label.pack(fill=BOTH, expand=True, padx=100, pady=50)
