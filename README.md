@@ -19,6 +19,7 @@
 - [安裝python3.x](#install_python)
 - [安裝condamini和jupyter](#安裝condamini和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
+- [安裝pycharm comunity editor for respberry4 2GB 以上](#install_pycharm)
 - [Raspberry的40pin](#Raspberry的40pin)
 - [tkinter](./tkinter)
 - [ledControl](./Firebase_GPIO_tkinter/ledControl)
@@ -520,6 +521,31 @@ export PATH=“/usr/bin:$PATH”
 	
 ### 8. 刪除虛擬環境
 	$ conda remove -n env01 -all
+	
+<a name="install_pycharm"></a>
+## 安裝pycharm comunity editor for respberry4 2GB 以上
+
+## 更新jdp
+```
+$ sudo apt update
+$ sudo apt install default-jdk
+```
+### 下載pycharm
+```
+https://www.jetbrains.com/pycharm/download/
+```
+
+### 解壓縮,並copy 至 /opt 目錄
+```
+sudo mv pycharm-community-2020.x.x /opt/pycharm-community-2020.x.x
+```
+
+### 執行pycharm.sh
+
+```
+./bin/pycharm.sh
+```
+
 
 <a name="Raspberry的40pin"></a>
 ## Raspberry的40pin
