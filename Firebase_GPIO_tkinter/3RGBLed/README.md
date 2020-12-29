@@ -1,3 +1,11 @@
+# 3.RGB LED
+
+## 線路圖
+![](a3_RGBLed_bb.png)
+
+## realtime database
+
+```python
 from gpiozero import RGBLED;
 from tkinter import *;
 import firebase_admin
@@ -122,4 +130,6 @@ if __name__ == "__main__":
     display = App(root);
     print(type(display));
     root.mainloop();
+
+```
 
