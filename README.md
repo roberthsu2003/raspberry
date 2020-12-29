@@ -20,6 +20,7 @@
 - [安裝condamini和jupyter](#安裝condamini和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
 - [安裝pycharm comunity editor for respberry4 2GB 以上](#install_pycharm)
+- [安裝vscode](#install_vscode)
 - [Raspberry的40pin](#Raspberry的40pin)
 - [硬體一覽表](#sensor)
 - [tkinter](./tkinter)
@@ -538,6 +539,13 @@ $ sudo apt install default-jdk
 ### 下載pycharm
 ```
 https://www.jetbrains.com/pycharm/download/
+```
+
+## 安裝vscode
+```
+$ sudo su
+$ . <( wget -O - https://code.headmelted.com/installers/apt.sh )
+$ exit
 ```
 
 ### 解壓縮,並copy 至 /opt 目錄
