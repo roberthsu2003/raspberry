@@ -29,6 +29,7 @@
 - [3.RGB LED](./Firebase_GPIO_tkinter/3RGBLed)
 - [4.Button RGBLED](./Firebase_GPIO_tkinter/4Button_RGBLED)
 - [5.MCP3008 光敏電阻 LM35](./Firebase_GPIO_tkinter/5MCP3008)
+- [6.Server](./Firebase_GPIO_tkinter/6servo)
 - [自動執行程式](#autoRunProgram)  
 - [Blynk](./Blynk/LEDControl)
 - [ifttt](./ifttt/)
