@@ -31,6 +31,7 @@
 - [5.MCP3008 光敏電阻 LM35](./Firebase_GPIO_tkinter/5MCP3008)
 - [6.Servo](./Firebase_GPIO_tkinter/6servo)
 - [7.7段顯示器](./Firebase_GPIO_tkinter/7seven_segment_display)
+- [8.LCD_RFID](./Firebase_GPIO_tkinter/8LCD_RFID)
 - [自動執行程式](#autoRunProgram)  
 - [Blynk](./Blynk/LEDControl)
 - [ifttt](./ifttt/)
