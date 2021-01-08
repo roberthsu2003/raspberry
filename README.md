@@ -32,6 +32,8 @@
 - [6.Servo](./Firebase_GPIO_tkinter/6servo)
 - [7.7段顯示器](./Firebase_GPIO_tkinter/7seven_segment_display)
 - [8.LCD_RFID](./Firebase_GPIO_tkinter/8LCD_RFID)
+- [9.Camera](./Firebase_GPIO_tkinter/9Camera)
+- [10.臉部辦識](./Firebase_GPIO_tkinter/10facial_recognition)
 - [自動執行程式](#autoRunProgram)  
 - [Blynk](./Blynk/LEDControl)
 - [ifttt](./ifttt/)
