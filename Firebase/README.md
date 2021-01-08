@@ -9,6 +9,6 @@
 
 ## 樹莓派上安裝firebase package
 
-目地:提供python 程式用的package
+目地:提供python程式用的package
 
 raspberry安裝[Firebase Admin](https://firebase.google.com/docs/admin/setup)
