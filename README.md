@@ -22,7 +22,7 @@
 - [安裝pycharm comunity editor for respberry4 2GB 以上](#install_pycharm)
 - [安裝vscode](#install_vscode)
 - [Raspberry的40pin](#Raspberry的40pin)
-- [硬體一覽表](#sensor)
+- [硬體一覽表](./硬體一覽表)
 - [tkinter](./tkinter)
 - [1.led Control](./Firebase_GPIO_tkinter/1LEDControl)
 - [2.PWM LED](./Firebase_GPIO_tkinter/2PWMLed)
@@ -567,8 +567,6 @@ sudo mv pycharm-community-2020.x.x /opt/pycharm-community-2020.x.x
 ## Raspberry的40pin
 ![](./images/pic_40pin.png)
 
-<a name="sensor"></a>
-## [硬體一覽表](./硬體一覽表)
 
 <a name=autoRunProgram></a>	
 ## 自動執行程式
