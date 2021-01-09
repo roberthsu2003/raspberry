@@ -10,9 +10,12 @@ class App():
         main.option_add("*Label.Font",("verdana",18))
         main.option_add("*Button.Background", "dark gray")
         mainFrame = Frame(main)
-        Button(mainFrame,text="LED").pack()
+        Button(mainFrame,text="LED",padx=40,pady=40,command=self.userClick).pack(expand=YES)
         
         mainFrame.pack(expand=YES, fill=BOTH)
+
+    def userClick(self):
+        print("userClick")
 
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
