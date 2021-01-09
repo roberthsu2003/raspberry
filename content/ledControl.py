@@ -18,17 +18,18 @@ class App():
     def userClick(self):
         if self.ledState:
             self.ledState = False
-            self.button.config(text = "LED OPEN")
+            self.button.config(text = "LED 開")
             GPIO.output(25, GPIO.LOW)
         else:
             self.ledState = True 
-            self.button.config(text = "LED CLOSE")
+            self.button.config(text = "LED 關")
             GPIO.output(25, GPIO.HIGH)
 
 def on_closing():
     print("closing")
-    window.destroy()
     GPIO.cleanup()
+    window.destroy()   
+    
 
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
