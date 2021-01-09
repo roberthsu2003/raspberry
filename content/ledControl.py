@@ -11,17 +11,18 @@ class App():
         main.option_add("*Label.Font",("verdana",18))
         main.option_add("*Button.Background", "dark gray")
         mainFrame = Frame(main)
-        Button(mainFrame,text="LED",padx=40,pady=40,command=self.userClick).pack(expand=YES)
-        
+        self.button = Button(mainFrame,text="LED OPEN",padx=40,pady=40,command=self.userClick)
+        self.button.pack(expand=YES)
         mainFrame.pack(expand=YES, fill=BOTH)
 
     def userClick(self):
-        print("userClick")
         if self.ledState:
             self.ledState = False
+            self.button.config(text = "LED OPEN")
             GPIO.output(25, GPIO.LOW)
         else:
             self.ledState = True 
+            self.button.config(text = "LED CLOSE")
             GPIO.output(25, GPIO.HIGH)
 
 if __name__ == '__main__':
