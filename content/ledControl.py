@@ -25,12 +25,17 @@ class App():
             self.button.config(text = "LED CLOSE")
             GPIO.output(25, GPIO.HIGH)
 
+def on_closing():
+    print("closing")
+    window.destroy()
+    GPIO.cleanup()
+
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
-    #GPIO.cleanup()
     GPIO.setwarnings(False)
     GPIO.setup(25, GPIO.OUT)
 
     window = Tk()
     app = App(window)
+    window.protocol("WM_DELETE_WINDOW", on_closing)
     window.mainloop()
