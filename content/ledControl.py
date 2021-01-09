@@ -4,11 +4,11 @@ from tkinter import *
 
 class App():
     def __init__(self, main):
-        print(main)
+        print("main is comming")
 
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
-    GPIO.cleanup()
+    #GPIO.cleanup()
     GPIO.setwarnings(False)
     GPIO.setup(25, GPIO.OUT)
 
