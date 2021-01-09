@@ -4,6 +4,7 @@ from tkinter import *
 
 class App():
     def __init__(self, main):
+        self.ledState = False
         main.title("Led Control")
         main.geometry("300x200")
         main.option_add("*Font",("verdana",18,"bold"))
@@ -16,6 +17,12 @@ class App():
 
     def userClick(self):
         print("userClick")
+        if self.ledState:
+            self.ledState = False
+            GPIO.output(25, GPIO.LOW)
+        else:
+            self.ledState = True 
+            GPIO.output(25, GPIO.HIGH)
 
 if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
