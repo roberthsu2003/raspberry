@@ -3,7 +3,7 @@
 ## 線路圖
 ![](a1_LEDControl_bb.png)
 
-## function base with realtime database
+## 使用Rpi.GPIO,tkinter
 
 ```python
 #! usr/bin/python3
