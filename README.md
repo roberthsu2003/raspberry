@@ -12,10 +12,11 @@
 
 ## [遠端連線raspberry](./目錄/遠端連線raspberry)
 - 從序列埠連線至Raspberry(必需要有TTL線)
-- [查詢Raspberry的 ip Address]  
-- [PC 透過SSH連線至Raspberry]  
-- [Mac 透過SSH連線至Raspberry]  
-- [使用遠端桌面(Microsoft Remote Desktop)] 
+- 查詢Raspberry的 ip Address 
+- PC 透過SSH連線至Raspberry  
+- Mac 透過SSH連線至Raspberry
+- 設定raspberry環境 
+- 使用遠端桌面(Microsoft Remote Desktop) 
 
 ## 命令列
 - [建立github SSH keys](#create_SSH_KEYS)
