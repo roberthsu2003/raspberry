@@ -17,6 +17,7 @@
 - Mac 透過SSH連線至Raspberry
 - 設定raspberry環境 
 - 使用遠端桌面(Microsoft Remote Desktop) 
+- 使用VSCode連線至Raspberry
 
 ## [命令列](./目錄/命令列)
 - 建立github SSH keys
