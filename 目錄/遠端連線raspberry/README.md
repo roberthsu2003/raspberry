@@ -5,7 +5,8 @@
 - [PC 透過SSH連線至Raspberry](#sshToRaspberryOnPC)  
 - [Mac 透過SSH連線至Raspberry](#sshToRaspberryOnMac) 
 - [設定raspberry環境](#set_up_raspberry)
-- [使用遠端桌面(Microsoft Remote Desktop)](#Microsoft_Remote_Desktop) 
+- [使用遠端桌面(Microsoft Remote Desktop)](#Microsoft_Remote_Desktop)
+- [使用VSCode連線至Raspberry](#vscode)
 
 <a name="find_ip_address"></a>
 ## 查詢Raspberry的 ip Address
@@ -77,3 +78,47 @@
 3.使用遠端桌面連線raspberry
 
 ![](./images/pic9.png)
+
+<a name="vscode"></a>
+### 使用VSCode連線至Raspberry
+
+1. 安裝mac或window版的[vscode](https://code.visualstudio.com)
+
+2. extensions安裝以下套件:
+
+	- [Python(ms-python.python)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+![](./images/pic13.png)
+
+	- [Jupyter(ms-toolsai.jupyter)](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
+![](./images/pic14.png)
+
+	- ftp-simple(humy2833.ftp-simplae)
+![](./images/pic15.png)
+
+3. 按下 `F1` 出現命令列，輸入 `ftp-` 選擇 `ftp-simple:Config - FTP connection setting`
+
+![](./images/pic16.png)
+
+4. 修改連線至raspberry的設定
+
+![](./images/pic17.png)
+
+5. 連線raspberry,按下 `F1' 出現命令列，輸入 `ftp-` 選擇 `ftp-simple:Remote directory open to workspace`
+
+![](./images/pic18.png)
+
+6. 選擇裝置名稱
+
+![](./images/pic19.png)
+
+7. 選擇要編輯的raspberry目錄
+
+![](./images/pic20.png)
+
+8. 確認要編輯的目錄(點選 current directory .......)
+ 
+ ![](./images/pic21.png)
+
+
+
+
