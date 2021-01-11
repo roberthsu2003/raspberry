@@ -6,9 +6,9 @@
 預設密碼:raspberry
 
 # 目錄
-## 系統安裝
-- [沒有RaspberryPi硬體的解決方案](./目錄/系統安裝/README.md#noRaspberry)
-- [下載Raspberry Pi OS](./目錄/系統安裝/README.md#downloadRaspberryPiOS)
+## [系統安裝](./目錄/系統安裝)
+- 沒有RaspberryPi硬體的解決方案
+- 下載Raspberry Pi OS
 
 ## 遠端連線raspberry
 - [從序列埠連線至Raspberry(必需要有TTL線)](https://www.raspberrypi.com.tw/tag/usb-to-ttl/)  
