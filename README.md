@@ -18,7 +18,7 @@
 - 設定raspberry環境 
 - 使用遠端桌面(Microsoft Remote Desktop) 
 
-## [命令列](./目錄/命令列)
+## [命令列](./目錄/命令列)
 - 建立github SSH keys
 - 使用SSH學習命令列 
 - 使用apt-get安裝和移除軟體
