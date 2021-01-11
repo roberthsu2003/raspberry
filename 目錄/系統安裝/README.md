@@ -39,7 +39,7 @@
 
 		
 
-<a name="download_Raspberry_Pi_OS"></a>
+<a name="downloadRaspberryPiOS"></a>
 ## 下載Raspberry Pi OS
 
 - 準備16G class10 的SD卡，並將插入至SD讀卡機內
