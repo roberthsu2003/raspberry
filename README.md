@@ -6,25 +6,43 @@
 預設密碼:raspberry
 
 # 目錄
+## 系統安裝
 - [沒有RaspberryPi硬體的解決方案](#noRaspberry)
 - [下載Raspberry Pi OS](#download_Raspberry_Pi_OS)
+
+## 遠端連線raspberry
 - [從序列埠連線至Raspberry(必需要有TTL線)](https://www.raspberrypi.com.tw/tag/usb-to-ttl/)  
 - [查詢Raspberry的 ip Address](#find_ip_address)  
 - [PC 透過SSH連線至Raspberry](#sshToRaspberryOnPC)  
 - [Mac 透過SSH連線至Raspberry](#sshToRaspberryOnMac)  
-- [使用遠端桌面(Microsoft Remote Desktop)](#Microsoft_Remote_Desktop)  
+- [使用遠端桌面(Microsoft Remote Desktop)](#Microsoft_Remote_Desktop) 
+
+## 命令列
 - [建立github SSH keys](#create_SSH_KEYS)
 - [使用SSH學習命令列](#command_line_interface)  
 - [安裝vim文字編輯器](#install_vim)
+
+## 安裝軟體工具
 - [安裝python3.x](#install_python)
-- [安裝condamini和jupyter](#安裝condamini和jupyter)
+- [安裝condamini和jupyter(要用jupyter一定必需使用condamini)](#安裝condamini和jupyter)
+
+### 建立虛擬環境
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
+
+### 可以安裝至樹莓派內的程式編輯器
 - [安裝pycharm comunity editor for respberry4 2GB 以上](#install_pycharm)
 - [安裝vscode](#install_vscode)
+
+## 雲端服務
+- [Firebase](./Firebase)
+- [Blynk](./Blynk/LEDControl)
+- [ifttt](./ifttt/)
+- [thingSpeak](./thingSpeak)
+
+## GPIO 操控
 - [Raspberry的40pin](#Raspberry的40pin)
 - [硬體一覽表](./硬體一覽表)
 - [tkinter](https://github.com/roberthsu2003/pythonWindow)
-- [Firebase](./Firebase)
 - [1.led Control](./Firebase_GPIO_tkinter/1LEDControl)
 - [2.PWM LED](./Firebase_GPIO_tkinter/2PWMLed)
 - [3.RGB LED](./Firebase_GPIO_tkinter/3RGBLed)
@@ -36,8 +54,7 @@
 - [9.Camera](./Firebase_GPIO_tkinter/9Camera)
 - [10.臉部辦識](./Firebase_GPIO_tkinter/10facial_recognition)
 - [自動執行程式](#autoRunProgram)  
-- [Blynk](./Blynk/LEDControl)
-- [ifttt](./ifttt/)
+
 
 <a name="noRaspberry"></a>
 ## 沒有RaspberryPi硬體的解決方案
