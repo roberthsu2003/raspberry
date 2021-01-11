@@ -29,7 +29,7 @@
 - 安裝python3.x
 - 安裝condamini和jupyter(要用jupyter一定必需使用condamini)
 - 使用Conda建立python的虛擬環境
-- 使用virtualEnv建立python虛擬環境](#使用virtualEnv建立python虛擬環境)
+- 使用virtualEnv建立python虛擬環境]
 
 ## [樹莓派內安裝程式編輯器](./目錄/樹莓派內安裝程式編輯器)
 - 安裝pycharm comunity editor for respberry4 2GB 以上
