@@ -33,11 +33,11 @@
 - 安裝pycharm comunity editor for respberry4 2GB 以上
 - 安裝vscode
 
-## 雲端服務
-- [Firebase](./Firebase)
-- [Blynk](./Blynk/LEDControl)
-- [ifttt](./ifttt/)
-- [thingSpeak](./thingSpeak)
+## [雲端服務](./目錄/雲端服務)
+- Firebase
+- Blynk
+- ifttt
+- thingSpeak
 
 ## GPIO 操控
 - [Raspberry的40pin](#Raspberry的40pin)
