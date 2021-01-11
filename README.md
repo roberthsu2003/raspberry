@@ -29,9 +29,9 @@
 - 安裝condamini和jupyter(要用jupyter一定必需使用condamini)
 - 使用Conda建立python的虛擬環境
 
-### 可以安裝至樹莓派內的程式編輯器
-- [安裝pycharm comunity editor for respberry4 2GB 以上](#install_pycharm)
-- [安裝vscode](#install_vscode)
+## [樹莓派內安裝程式編輯器](./目錄/樹莓派內安裝程式編輯器)
+- 安裝pycharm comunity editor for respberry4 2GB 以上
+- 安裝vscode
 
 ## 雲端服務
 - [Firebase](./Firebase)
@@ -55,36 +55,6 @@
 - [10.臉部辦識](./Firebase_GPIO_tkinter/10facial_recognition)
 - [自動執行程式](#autoRunProgram)  
 
-<a name="install_pycharm"></a>
-## 安裝pycharm comunity editor for respberry4 2GB 以上
-
-## 更新jdp
-```
-$ sudo apt update
-$ sudo apt install default-jdk
-```
-### 下載pycharm
-```
-https://www.jetbrains.com/pycharm/download/
-```
-
-## 安裝vscode
-```
-$ sudo su
-$ . <( wget -O - https://code.headmelted.com/installers/apt.sh )
-$ exit
-```
-
-### 解壓縮,並copy 至 /opt 目錄
-```
-sudo mv pycharm-community-2020.x.x /opt/pycharm-community-2020.x.x
-```
-
-### 執行pycharm.sh
-
-```
-./bin/pycharm.sh
-```
 
 
 <a name="Raspberry的40pin"></a>
