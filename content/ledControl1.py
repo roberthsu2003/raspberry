@@ -29,7 +29,7 @@ class App():
 def on_closing():
     print("closing")
     GPIO.cleanup()
-    window.destroy()   
+    window.destroy()
     
 
 if __name__ == '__main__':
