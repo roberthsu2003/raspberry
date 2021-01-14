@@ -14,11 +14,14 @@
 - 從序列埠連線至Raspberry(必需要有TTL線)
 - 查詢Raspberry的 ip Address 
 - 使用手機app查詢 Raspberry IP Address
+- 查詢Raspberry的 IP Address 
+- 透過手機AppNet Analyzer`查詢Raspberry IP Address
 - PC 透過SSH連線至Raspberry  
 - Mac 透過SSH連線至Raspberry
 - 設定raspberry環境 
 - 使用遠端桌面(Microsoft Remote Desktop) 
 - 使用VSCode連線至Raspberry
+
 
 ## [命令列](./目錄/命令列)
 - 建立github SSH keys
