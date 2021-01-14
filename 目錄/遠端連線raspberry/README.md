@@ -2,6 +2,7 @@
 
 - [從序列埠連線至Raspberry(必需要有TTL線)](https://www.raspberrypi.com.tw/tag/usb-to-ttl/)  
 - [查詢Raspberry的 ip Address](#find_ip_address)  
+- [使用手機app查詢 Raspberry IP Address](#mobileApp)
 - [PC 透過SSH連線至Raspberry](#sshToRaspberryOnPC)  
 - [Mac 透過SSH連線至Raspberry](#sshToRaspberryOnMac) 
 - [設定raspberry環境](#set_up_raspberry)
@@ -27,6 +28,13 @@
 
 ![](./images/putty-linux.png)
 
+<a name="mobileApp"></a>
+## 使用手機app查詢 Raspberry IP Address
+### Network Analyzer
+
+![andorid](https://play.google.com/store/apps/details?id=net.techet.netanalyzerlite.an&hl=zh_TW&gl=US)
+
+![ios](https://apps.apple.com/la/app/network-analyzer/id562315041)
 
 <a name="sshToRaspberryOnMac"></a>
 ## Mac 透過SSH連線至Raspberry

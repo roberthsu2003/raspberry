@@ -13,6 +13,7 @@
 ## [遠端連線raspberry](./目錄/遠端連線raspberry)
 - 從序列埠連線至Raspberry(必需要有TTL線)
 - 查詢Raspberry的 ip Address 
+- 使用手機app查詢 Raspberry IP Address
 - PC 透過SSH連線至Raspberry  
 - Mac 透過SSH連線至Raspberry
 - 設定raspberry環境 
