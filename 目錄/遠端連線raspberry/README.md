@@ -25,11 +25,11 @@
 	![](./images/pic12.png)
 	
 <a name="mobileApp"></a>
-## 透過手機AppNet Analyzer查詢Raspberry IP Address
+## 透過手機App Net Analyzer查詢Raspberry IP Address
 
-![iOS](https://apps.apple.com/na/app/network-analyzer/id562315041)
+[iOS](https://apps.apple.com/na/app/network-analyzer/id562315041)
 
-![android](https://play.google.com/store/apps/details?id=net.techet.netanalyzerlite.an&hl=zh_TW&gl=US)
+[android](https://play.google.com/store/apps/details?id=net.techet.netanalyzerlite.an&hl=zh_TW&gl=US)
 
 <a name="sshToRaspberryOnPC"></a>
 ## PC 透過SSH連線到Raspberry
