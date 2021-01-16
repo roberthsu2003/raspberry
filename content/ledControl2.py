@@ -2,9 +2,16 @@
 import RPi.GPIO as GPIO
 from gpiozero import LED
 from tkinter import *
+import firebase_admin
+from firebase_admin import credentials
 
 class App():
     def __init__(self, main):
+        #firebase
+        cred = credentials.Certificate("/home/pi/raspberryfirebase-firebase-adminsdk-y4f0x-ce1ddd9e4b.json")
+        firebase_admin.initialize_app(cred)
+
+        #tkinter
         self.ledState = False
         main.title("Led Control")
         main.geometry("300x200")
