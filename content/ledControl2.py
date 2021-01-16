@@ -4,12 +4,17 @@ from gpiozero import LED
 from tkinter import *
 import firebase_admin
 from firebase_admin import credentials
+from firebase_admin import db
 
 class App():
     def __init__(self, main):
         #firebase
         cred = credentials.Certificate("/home/pi/raspberryfirebase-firebase-adminsdk-y4f0x-ce1ddd9e4b.json")
-        firebase_admin.initialize_app(cred)
+        firebase_admin.initialize_app(cred,{
+            'databaseURL': 'https://raspberryfirebase.firebaseio.com/'
+            })
+        self.ledControlRef = db.reference('raspberrypi/LED_Control')
+        
 
         #tkinter
         self.ledState = False
@@ -26,11 +31,13 @@ class App():
     def userClick(self):
         if self.ledState:
             self.ledState = False
+            self.ledControlRef.update({"LED25":"CLOSE"})
             self.button.config(text = "LED 開")
             bigLed.off()
         else:
             self.ledState = True 
             self.button.config(text = "LED 關")
+            self.ledControlRef.update({"LED25":"OPEN"})
             bigLed.on()
 
 def on_closing():
