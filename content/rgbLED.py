@@ -1,9 +1,13 @@
 from gpiozero import RGBLED, Button
 from signal import pause
+from random import random
 
 def user_press():
     print("user Press")
-    led.color = (1,0,0)
+    r = random()
+    g = random()
+    b = random()
+    led.color = (r,g,b)
 
 def user_release():
     print("user Release")
