@@ -1,4 +1,6 @@
 from tkinter import *
+from gpiozero import MCP3008
+from threading import Timer
 
 class Linebox():
     def __init__(self,w):
@@ -7,6 +9,11 @@ class Linebox():
         w.option_add("*font",("verdana",18,"bold"))
         w.option_add("*background", "#068587")
         w.option_add("*foreground", "#ffffff")
+
+        #建立sensor
+        self.lightness = MCP3008(channel=7)
+        self.temperature = MCP3008(channel=6)
+        self.m = MCP3008(channel=0)
 
         #設定介面變數
         self.temperatureText = StringVar()
@@ -22,9 +29,17 @@ class Linebox():
         Label(mainFrame, textvariable=self.lightnessText).grid(row=1, column=1, sticky=E, padx=5, pady=20)
         Label(mainFrame, textvariable=self.mvariable).grid(row=2, column=1, sticky=E, padx=5, pady=20)
         mainFrame.pack(padx=10, pady=10)
+        self.autoUpdate()
+       
 
+        
+
+    def autoUpdate(self):
         #改變介面變數值
-
-        self.temperatureText.set("100")
-        self.lightnessText.set("90")
-        self.mvariable.set("80")
+        tempValue = self.temperature.value * 3.3 * 100
+        self.temperatureText.set('%.0f' % tempValue)
+        lightValue = self.lightness.value * 100
+        self.lightnessText.set('%.0f' % lightValue)
+        mValue = self.m.value * 100
+        self.mvariable.set('%.0f' % mValue)
+        Timer(0.1, self.autoUpdate).start()
