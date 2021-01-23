@@ -1,9 +1,19 @@
 from tkinter import *
 from gpiozero import MCP3008
 from threading import Timer
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
 
 class Linebox():
     def __init__(self,w):
+        #firebase
+        cred = credentials.Certificate("/home/pi/raspberryfirebase-firebase-adminsdk-y4f0x-ce1ddd9e4b.json")
+        firebase_admin.initialize_app(cred,{
+            'databaseURL': 'https://raspberryfirebase.firebaseio.com/'
+            })
+        self.mcp3008Ref = db.reference('raspberrypi/MCP3008')
+
         #設定視窗基本功能
         w.title('溫度和光線的感應')
         w.option_add("*font",("verdana",18,"bold"))
@@ -42,4 +52,10 @@ class Linebox():
         self.lightnessText.set('%.0f' % lightValue)
         mValue = self.m.value * 100
         self.mvariable.set('%.0f' % mValue)
-        Timer(0.1, self.autoUpdate).start()
+
+        self.mcp3008Ref.update({
+            'brightness':lightValue,
+            'temperature':tempValue,
+            'm1':mValue
+        })
+        Timer(1, self.autoUpdate).start()
