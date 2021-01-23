@@ -1,4 +1,4 @@
-from gpiozero import RGBLED, Button
+from gpiozero import RGBLED, Button, MCP3008
 from signal import pause
 from random import random
 
@@ -16,6 +16,8 @@ def user_release():
 if __name__ == '__main__':
     button = Button(pin=18)
     led = RGBLED(red=17, green=27, blue=22)
+    m1 = MCP3008(0)
+    print(m1.value)
     button.when_pressed = user_press
     button.when_released = user_release
 
