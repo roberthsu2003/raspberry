@@ -1,11 +1,15 @@
 from tkinter import *
+import RPi.GPIO as GPIO
+from YourBox import Linebox
 
-class RGBLED():
-    def __init__(self,w):
-        w.title('溫度和光線的感應')
-        
+
+def on_closing():
+    print("close")    
+    window.destroy()
+    GPIO.cleanup()
 
 if __name__ == "__main__":
     window = Tk()
-    rgbLed = RGBLED(window)
+    rgbLed = Linebox(window)
+    window.protocol("WM_DELETE_WINDOW",on_closing)
     window.mainloop()
