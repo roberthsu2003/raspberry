@@ -46,19 +46,19 @@ class Linebox():
 
     def autoUpdate(self):
         #改變介面變數值
-        tempValue = self.temperature.value * 3.3 * 100
-        self.temperatureText.set('%.0f' % tempValue)
-        lightValue = self.lightness.value * 100
-        self.lightnessText.set('%.0f' % lightValue)
-        mValue = self.m.value * 100
-        self.mvariable.set('%.0f' % mValue)
+        self.tempValue = self.temperature.value * 3.3 * 100
+        self.temperatureText.set('%.0f' % self.tempValue)
+        self.lightValue = self.lightness.value * 100
+        self.lightnessText.set('%.0f' % self.lightValue)
+        self.mValue = self.m.value * 100
+        self.mvariable.set('%.0f' % self.mValue)
 
         self.mcp3008Ref.update({
-            'brightness':lightValue,
-            'temperature':tempValue,
-            'm1':mValue
+            'brightness':self.lightValue,
+            'temperature':self.tempValue,
+            'm1':self.mValue
         })
         Timer(1, self.autoUpdate).start()
 
     def getInfo(self):
-        return (self.m,self.temperature,self.lightness)
+        return (self.mValue,self.tempValue,self.lightValue)
