@@ -11,5 +11,7 @@ def on_closing():
 if __name__ == "__main__":
     window = Tk()
     rgbLed = Linebox(window)
+    m,tem,lightness= rgbLed.getInfo()
+    print(m, tem, lightness)    
     window.protocol("WM_DELETE_WINDOW",on_closing)
     window.mainloop()

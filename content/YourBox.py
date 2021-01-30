@@ -59,3 +59,6 @@ class Linebox():
             'm1':mValue
         })
         Timer(1, self.autoUpdate).start()
+
+    def getInfo(self):
+        return (self.m,self.temperature,self.lightness)
