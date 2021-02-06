@@ -29,12 +29,25 @@ class App():
             self.my_buzzer.on()
             sleep(0.2)
             self.my_buzzer.off()
+            self.cardRuning()  
 
         else:
             print("Put Car on It")
             self.my_lcd.display_string("Put Car on It",1)
             self.my_lcd.display_string("",2)
         threading.Timer(1, self.rfidStatusHandler).start()
+    
+    def cardRuning(self):
+        (status, currentUid) = self.MIFAREReader.MFRC522_Anticoll()
+        if status == self.MIFAREReader.MI_OK:
+            print(currentUid)
+            cardCode=""
+            for singleId in currentUid:
+                cardCode += "{:x},".format(singleId)
+            self.my_lcd.display_string("Card ID",1)
+            self.my_lcd.display_string(cardCode.upper(),2)
+            print(cardCode)
+
 
 def on_closing():
     GPIO.cleanup()
