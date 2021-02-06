@@ -12,7 +12,7 @@
 - 安裝 Python 3 的 requests 模組
 
 ```
-pip3 install requests2
+$ python -m pip install requests
 ```
 	
 ### 4 建立python程式碼
