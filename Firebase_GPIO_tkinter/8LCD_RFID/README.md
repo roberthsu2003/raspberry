@@ -386,90 +386,99 @@ if __name__ == "__main__":
 #### RFID LCD Buzzer Firebase
 
 ```python
-from LCD.lcd_display import lcd
 import RPi.GPIO as GPIO
-import mfrc522 as MFRC522
+from raspigpio.lcd_display import lcd
 from tkinter import *
-import sys
+import mfrc522 as MFRC522
 import threading
+import sys
+from time import sleep, time
+import datetime
+from gpiozero import Buzzer
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-import time
-import datetime
-
-def on_closing():
-    print("ctrl+c captured, ending read.")
-    GPIO.cleanup()
-    sys.exit(0)
 
 class App():
     def __init__(self,window):
-        #init fireStore
-        cred = credentials.Certificate('/home/pi/Documents/certificate/raspberryfirebase-firebase-adminsdk-y4f0x-cf4be2ca1a.json')
-        firebase_admin.initialize_app(cred)
-        self.firestore = firestore.client()
-
-        #init lcd
+        
+        #初始化lcd
         self.my_lcd = lcd()
 
+        #初始化buzzer
+        self.my_buzzer = Buzzer(16)
 
-        #init Rfid
+        #初始化RFID
         self.previousUid = []
-        self.MIFAREReader = MFRC522.MFRC522()
+        self.MIFAREReader= MFRC522.MFRC522()
         self.rfidStatusHandler()
 
+        #初始化firestore
+        cred = credentials.Certificate("/home/pi/raspberryfirebase-firebase-adminsdk-y4f0x-ce1ddd9e4b.json")
+        firebase_admin.initialize_app(cred,{
+            'databaseURL': 'https://raspberryfirebase.firebaseio.com/'
+            })
+        self.firestore = firestore.client()
 
+        
+
+        
+    
     def rfidStatusHandler(self):
-        (status, TagType) = self.MIFAREReader.MFRC522_Request(self.MIFAREReader.PICC_REQIDL)
+        (status, tagType)= self.MIFAREReader.MFRC522_Request(self.MIFAREReader.PICC_REQIDL)
         if status == self.MIFAREReader.MI_OK:
-            print("status success")
-            self.my_lcd.display_string("status success", 1)
-            self.my_lcd.display_string("..........", 2)
-            self.cardRuning()
+            print("Find Card")
+            self.my_lcd.display_string("Find Card",1)
+            self.my_lcd.display_string("......",2)
+           
+            self.cardRuning()  
+
         else:
-            self.my_lcd.display_string("Put On Card", 1)
-            self.my_lcd.display_string("..........", 2)
-
-        threading.Timer(3, self.rfidStatusHandler).start()
-
+            print("Put Car on It")
+            self.my_lcd.display_string("Put Car on It",1)
+            self.my_lcd.display_string("",2)
+         
+        threading.Timer(0.5, self.rfidStatusHandler).start()
+    
     def cardRuning(self):
         (status, currentUid) = self.MIFAREReader.MFRC522_Anticoll()
-        if status == self.MIFAREReader.MI_OK and set(currentUid) != set(self.previousUid):
+        if status == self.MIFAREReader.MI_OK and currentUid != self.previousUid:
+             #buzzer sound()
+            self.my_buzzer.on()
+            sleep(0.2)
+            self.my_buzzer.off()
+
             self.previousUid = currentUid
-            cardCode = ""
+            print(currentUid)
+            cardCode=""
             for singleId in currentUid:
                 cardCode += "{:x}.".format(singleId)
-
-            self.my_lcd.display_string("Card ID:", 1)
-            self.my_lcd.display_string(cardCode.upper(), 2)
+            self.my_lcd.display_string("Card ID",1)
+            self.my_lcd.display_string(cardCode.upper(),2)
             print(cardCode)
             self.saveToFireStore(cardCode)
-
+    
     def saveToFireStore(self,cardCode):
         doc_ref = self.firestore.collection('Doors').document()
-        currentTime = time.time()
+        currentTime = time()
         timestamp = datetime.datetime.fromtimestamp(currentTime)
         date = timestamp.strftime("%Y-%m-%d-%H-%M-%S")
-        print(date)
         doc_ref.set({
-            'timestamp':timestamp,
-            'cardID': cardCode,
+            'timesamp':timestamp,
+            'cardID':cardCode,
             'date':date
         })
 
 
-
-
-
-    
-    
+def on_closing():
+    GPIO.cleanup()
+    root.destroy()
+    sys.exit()
 
 if __name__ == "__main__":
-    GPIO.setwarnings(False);
+    GPIO.setwarnings(False)
     root = Tk()
-    root.title("RFID_LCD")
-    root.protocol("WM_DELETE_WINDOW",on_closing)
+    root.protocol("WM_DELETE_WINDOW", on_closing)
     app = App(root)
     root.mainloop()
 
