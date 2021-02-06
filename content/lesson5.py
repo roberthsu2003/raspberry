@@ -4,6 +4,8 @@ from tkinter import *
 import mfrc522 as MFRC522
 import threading
 import sys
+from time import sleep
+from gpiozero import Buzzer
 
 class App():
     def __init__(self,window):
@@ -13,6 +15,9 @@ class App():
         #初始化RFID
         self.MIFAREReader= MFRC522.MFRC522()
         self.rfidStatusHandler()
+
+        #初始化buzzer
+        self.my_buzzer = Buzzer(16)
     
     def rfidStatusHandler(self):
         (status, tagType)= self.MIFAREReader.MFRC522_Request(self.MIFAREReader.PICC_REQIDL)
@@ -20,6 +25,11 @@ class App():
             print("Find Card")
             self.my_lcd.display_string("Find Card",1)
             self.my_lcd.display_string("......",2)
+            #buzzer sound()
+            self.my_buzzer.on()
+            sleep(0.2)
+            self.my_buzzer.off()
+
         else:
             print("Put Car on It")
             self.my_lcd.display_string("Put Car on It",1)
