@@ -9,15 +9,21 @@ from gpiozero import Buzzer
 
 class App():
     def __init__(self,window):
+        
         #初始化lcd
         self.my_lcd = lcd()
 
+        #初始化buzzer
+        self.my_buzzer = Buzzer(16)
+
         #初始化RFID
+        self.previousUid = []
         self.MIFAREReader= MFRC522.MFRC522()
         self.rfidStatusHandler()
 
-        #初始化buzzer
-        self.my_buzzer = Buzzer(16)
+        
+
+        
     
     def rfidStatusHandler(self):
         (status, tagType)= self.MIFAREReader.MFRC522_Request(self.MIFAREReader.PICC_REQIDL)
@@ -25,21 +31,25 @@ class App():
             print("Find Card")
             self.my_lcd.display_string("Find Card",1)
             self.my_lcd.display_string("......",2)
-            #buzzer sound()
-            self.my_buzzer.on()
-            sleep(0.2)
-            self.my_buzzer.off()
+           
             self.cardRuning()  
 
         else:
             print("Put Car on It")
             self.my_lcd.display_string("Put Car on It",1)
             self.my_lcd.display_string("",2)
-        threading.Timer(1, self.rfidStatusHandler).start()
+         
+        threading.Timer(0.5, self.rfidStatusHandler).start()
     
     def cardRuning(self):
         (status, currentUid) = self.MIFAREReader.MFRC522_Anticoll()
-        if status == self.MIFAREReader.MI_OK:
+        if status == self.MIFAREReader.MI_OK and currentUid != self.previousUid:
+             #buzzer sound()
+            self.my_buzzer.on()
+            sleep(0.2)
+            self.my_buzzer.off()
+
+            self.previousUid = currentUid
             print(currentUid)
             cardCode=""
             for singleId in currentUid:
