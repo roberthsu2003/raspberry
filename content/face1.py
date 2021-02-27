@@ -19,8 +19,8 @@ class App:
         obama_image = face_recognition.load_image_file('obama_small.jpg')
         
         #encoding image
-        self.obama_face_encoding = face_recognition.face_encodings(obama_image)
-        self.robert_face_encoding = face_recognition.face_encodings(robert_image)
+        self.obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
+        self.robert_face_encoding = face_recognition.face_encodings(robert_image)[0]
         #初始化tkinter
         myFont = font.Font(family='Helvetica',size=20)
         btn = Button(window,text='臉部辨識',font=myFont,command=self.buttonClick).pack(expand=YES,fill=BOTH,padx=10,pady=10)
