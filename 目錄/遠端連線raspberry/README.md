@@ -2,8 +2,6 @@
 
 - [從序列埠連線至Raspberry(必需要有TTL線)](https://www.raspberrypi.com.tw/tag/usb-to-ttl/)  
 - [查詢Raspberry的 ip Address](#find_ip_address)  
-- [使用手機app查詢 Raspberry IP Address](#mobileApp)
-- [查詢Raspberry的 IP Address](#find_ip_address) 
 - [透過手機 Net Analyzer 查詢Raspberry IP Address](#mobileApp)
 - [PC 透過SSH連線至Raspberry](#sshToRaspberryOnPC)  
 - [Mac 透過SSH連線至Raspberry](#sshToRaspberryOnMac) 
@@ -39,14 +37,7 @@
 ![](./images/putty-linux.png)
 
 <a name="mobileApp"></a>
-## 使用手機app查詢 Raspberry IP Address
-### Network Analyzer
 
-![andorid](https://play.google.com/store/apps/details?id=net.techet.netanalyzerlite.an&hl=zh_TW&gl=US)
-
-![ios](https://apps.apple.com/la/app/network-analyzer/id562315041)
-
-<a name="sshToRaspberryOnMac"></a>
 ## Mac 透過SSH連線至Raspberry
 
 ```
@@ -91,6 +82,7 @@
 2. 透過ssh安裝xrdp
 
 	`sudo apt-get update`
+	
 	`sudo apt-get install xrdp -y`
 
 3.使用遠端桌面連線raspberry
@@ -98,6 +90,7 @@
 ![](./images/pic9.png)
 
 <a name="vscode"></a>
+
 ### 使用VSCode連線至Raspberry
 
 1. 安裝mac或window版的[vscode](https://code.visualstudio.com)
