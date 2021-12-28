@@ -15,12 +15,13 @@
 - display設定
 ![](images/image4.jpeg)
 
-3.raspberry建立專案
-[參考網址](https://github.com/vshymanskyy/blynk-library-python)
+3.raspberry建立專案 for Blynk2.0
+
+[參考網址](https://github.com/blynkkk/lib-python)
 
 4.安裝package 
  
-	pip install blynk-library-python
+	sudo pip install blynklib
 
 5.建立python檔
 
