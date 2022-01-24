@@ -91,7 +91,7 @@
 
 <a name="vscode"></a>
 
-### 使用VSCode連線至Raspberry
+### 使用VSCode extention ftp-simple 連線至Raspberry
 
 1. 安裝mac或window版的[vscode](https://code.visualstudio.com)
 
@@ -129,6 +129,9 @@
 8. 確認要編輯的目錄(點選 current directory .......)
  
  ![](./images/pic21.png)
+ 
+ ## 使用VSCode extention remote-ssh 連線至Raspberry(建議使用)
+
 
 
 
