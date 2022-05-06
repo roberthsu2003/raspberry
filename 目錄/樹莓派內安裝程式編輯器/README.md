@@ -30,8 +30,7 @@ sudo mv pycharm-community-2020.x.x /opt/pycharm-community-2020.x.x
 
 ## 安裝vscode
 ```
-$ sudo su
-$ . <( wget -O - https://code.headmelted.com/installers/apt.sh )
-$ exit
+sudo apt update
+sudo apt install code
 ```
 
