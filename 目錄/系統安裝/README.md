@@ -6,6 +6,8 @@
 ## 沒有RaspberryPi硬體的解決方案
 - PC電腦下載[VMWare workstation player](https://www.vmware.com/tw/products/workstation-player.html)
 - Mac電腦下載[VMWare Fution個人免費版](https://www.vmware.com/tw/products/fusion/fusion-evaluation.html)
+- [VMWare workstation player 安裝方式](https://thesecmaster.com/install-raspberry-pi-os-on-vmware-workstation/)
+
 - 下載[VirtualBox](https://www.virtualbox.org/)
 - 下載[下載Raspberry Pi Desktop for PC and Mac](https://www.raspberrypi.org/software/raspberry-pi-desktop/)
 - 安裝Raspberry Pi Desktop on VirtualBox步驟:
