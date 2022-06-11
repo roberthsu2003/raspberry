@@ -3,6 +3,11 @@ import tkinter as tk
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()
+        btn = tk.Button(self,text="請按我",command=self.buttonClick)
+        btn.pack()
+    
+    def buttonClick(self):
+        print("button click")
         
 
 
