@@ -1,9 +1,11 @@
 import tkinter as tk
+import tkinter.font as font
 
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()
-        btn = tk.Button(self,text="請按我",command=self.buttonClick)
+        cfont = font.Font(family='arial',size=35)
+        btn = tk.Button(self,text="Press Me",command=self.buttonClick,font=cfont)
         btn.pack()
     
     def buttonClick(self):
