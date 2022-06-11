@@ -1,15 +1,20 @@
 import tkinter as tk
 import tkinter.font as font
+import requests
 
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()
-        cfont = font.Font(family='arial',size=35)
+        cfont = font.Font(family='Helvetica',size=35)
         btn = tk.Button(self,text="Press Me",command=self.buttonClick,font=cfont)
-        btn.pack()
+        btn.pack(expand=tk.YES,fill=tk.BOTH,padx=20,pady=20)
     
     def buttonClick(self):
-        print("button click")
+        lineUrl = "https://maker.ifttt.com/trigger/tkinter_press/with/key/xxxxxx"
+        sendInfo = { "value1" : "10", "value2" : "20", "value3" : "30" }
+        headers =  {'content-type': 'application/json'}
+        response = requests.get(lineUrl, params=sendInfo,headers=headers)
+
         
 
 
