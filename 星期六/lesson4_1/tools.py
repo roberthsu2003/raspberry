@@ -4,5 +4,12 @@
 #放class
 #放function
 
-print(f"tools.py的namespace:{__name__}")
+
 PI = 3.14159
+
+class Student():
+    def __init__(self):
+        self.name = "robert"
+
+def getStudent():
+    return Student()
