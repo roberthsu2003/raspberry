@@ -35,13 +35,7 @@ def getEvent(_):
     })
     
 
-
-fruit=[('紅燈', 1), ('綠燈', 2), ('藍燈', 3)]
 red=tk.Radiobutton(root, text='紅燈', value=1, variable=var,command=lambda:getEvent(red)).pack(anchor=tk.W)
 green=tk.Radiobutton(root, text='綠燈', value=2, variable=var,command=lambda:getEvent(green)).pack(anchor=tk.W)
 blue=tk.Radiobutton(root, text='藍燈', value=3, variable=var,command=lambda:getEvent(blue)).pack(anchor=tk.W)
-
-
-
-
 root.mainloop()
