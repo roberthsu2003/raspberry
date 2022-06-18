@@ -3,6 +3,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 import tkinter as tk
 import tk_tools
+import RPi.GPIO as GPIO
 
 
 
@@ -26,8 +27,10 @@ class Window(tk.Tk):
         led_state =  self.ref.get()['led']
         if led_state == False:
             self.led.to_grey()
+            GPIO.output(25, GPIO.LOW)
         else:
             self.led.to_green()
+            GPIO.output(25, GPIO.HIGH)
 
     def buttonClick(self):
         value  =  not self.ref.get()['led']
@@ -35,6 +38,9 @@ class Window(tk.Tk):
 
 
 if __name__ == "__main__":
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    GPIO.setup(25,GPIO.OUT)
     window = Window()
     window.title("LED控制")
     window.geometry("300x300")
