@@ -11,20 +11,19 @@ firebase_admin.initialize_app(cred,{
 })
 
 ref = db.reference('raspberry2022/led')
-print(ref.get())
+
 
 class Window(tk.Tk):
     def __init__(self):
-        super().__init__()
-        self.led_state = True
+        super().__init__()        
         self.led = tk_tools.Led(self, size=50)       
         self.led.pack()
         tk.Button(self, text="SWITCH",command=self.switch_light).pack(padx=5, pady=8)
         self.switch_light()
 
     def switch_light(self):
-        self.led_state = not self.led_state
-        if self.led_state == False:
+        led_state =  ref.get()
+        if led_state == False:
             self.led.to_grey()
         else:
             self.led.to_green()
