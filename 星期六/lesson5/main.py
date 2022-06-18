@@ -16,12 +16,14 @@ print(ref.get())
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.led_state = False
+        self.led_state = True
         self.led = tk_tools.Led(self, size=50)       
         self.led.pack()
+        tk.Button(self, text="SWITCH",command=self.switch_light).pack(padx=5, pady=8)
         self.switch_light()
 
     def switch_light(self):
+        self.led_state = not self.led_state
         if self.led_state == False:
             self.led.to_grey()
         else:
