@@ -16,9 +16,16 @@ print(ref.get())
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()
-        led = tk_tools.Led(self, size=50)
-        led.to_green()
-        led.pack()
+        self.led_state = False
+        self.led = tk_tools.Led(self, size=50)       
+        self.led.pack()
+        self.switch_light()
+
+    def switch_light(self):
+        if self.led_state == False:
+            self.led.to_grey()
+        else:
+            self.led.to_green()
 
 
 if __name__ == "__main__":
