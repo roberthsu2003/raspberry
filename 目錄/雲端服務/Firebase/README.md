@@ -96,6 +96,13 @@ if __name__ == "__main__":
 
 
 ## FireStore
+
+```
+pip install --upgrade firebase-admin
+
+pip install google-cloud-firestore
+```
+
 ### raspberry執行Firestore會有錯誤-GLIBC_2.33' not found
 - 解決方法
 
