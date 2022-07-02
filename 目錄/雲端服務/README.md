@@ -1,5 +1,5 @@
 ## 雲端服務
 - [Firebase](./Firebase)
-- [Blynk](./Blynk/LEDControl)
+- [Blynk](./Blynk)
 - [ifttt](./ifttt/)
 - [thingSpeak](./thingSpeak)
