@@ -2,7 +2,9 @@ import tkinter as tk
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
-from firebase_admin.exceptions import FirebaseError
+from gpiozero import RGBLED
+
+led = RGBLED(red=22, green=27, blue=17)
 
 
 class Window(tk.Tk):
@@ -37,8 +39,14 @@ class Window(tk.Tk):
         self.ref.child('color').set(self.radion_item_value.get())
 
     def colorChanged(self,event):
-        print(event.data)
-        self.radion_item_value.set(event.data)
+        value = event.data
+        self.radion_item_value.set(value)
+        if value == 1:
+            led.color = (1,0,0)
+        elif value == 2:
+            led.color = (0,1,0)
+        elif value == 3:
+            led.color = (0,0,1)
 
 def closeWindow():
     print("close window")
