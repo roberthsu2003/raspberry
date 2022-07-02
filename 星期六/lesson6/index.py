@@ -2,6 +2,7 @@ import tkinter as tk
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+from firebase_admin.exceptions import FirebaseError
 
 
 class Window(tk.Tk):
@@ -27,12 +28,17 @@ class Window(tk.Tk):
         tk.Radiobutton(inputFrame,text="綠燈",value=2,variable=self.radion_item_value,font=("Arial",15),command=self.getEvent).pack(side=tk.LEFT)
         tk.Radiobutton(inputFrame,text="藍燈",value=3,variable=self.radion_item_value,font=("Arial",15),command=self.getEvent).pack(side=tk.LEFT)
         inputFrame.pack()
+        
+        self.ref.listen(self.colorChanged)
+        
 
     def getEvent(self):
-        print(self.radion_item_value.get())
-        self.ref.set({
-            'color':self.radion_item_value.get()
-        })
+        #print(self.radion_item_value.get())
+        self.ref.child('color').set(self.radion_item_value.get())
+
+    def colorChanged(self,event):
+        print(event.data)
+        self.radion_item_value.set(event.data)
 
 def closeWindow():
     print("close window")
