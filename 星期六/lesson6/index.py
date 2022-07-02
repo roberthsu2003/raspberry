@@ -1,8 +1,20 @@
 import tkinter as tk
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+
 
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()
+        #----------- Firebase RealTime DataBase 初始化--------------
+        cred = credentials.Certificate('firebase_key/raspberryfirebase-firebase-adminsdk-y4f0x-e21c25a365.json')
+
+        firebase_admin.initialize_app(cred, {
+                    'databaseURL': 'https://raspberryfirebase.firebaseio.com/'
+        })
+        self.ref = db.reference('raspberrypi/Radiobutton')
+        print(self.ref.get())
         mainFrame = tk.Frame(self, relief="groove", borderwidth=2)
         titleFrame = tk.Frame(mainFrame)
         tk.Label(titleFrame,text="python視窗和Firebase及時資料庫_RGBLED",font=("Arial",20),fg="#555555").pack(padx=10)
