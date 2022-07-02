@@ -13,8 +13,7 @@ class Window(tk.Tk):
         firebase_admin.initialize_app(cred, {
                     'databaseURL': 'https://raspberryfirebase.firebaseio.com/'
         })
-        self.ref = db.reference('raspberrypi/Radiobutton')
-        print(self.ref.get())
+        self.ref = db.reference('raspberrypi/Radiobutton')        
         mainFrame = tk.Frame(self, relief="groove", borderwidth=2)
         titleFrame = tk.Frame(mainFrame)
         tk.Label(titleFrame,text="python視窗和Firebase及時資料庫_RGBLED",font=("Arial",20),fg="#555555").pack(padx=10)
@@ -31,6 +30,9 @@ class Window(tk.Tk):
 
     def getEvent(self):
         print(self.radion_item_value.get())
+        self.ref.set({
+            'color':self.radion_item_value.get()
+        })
 
 def closeWindow():
     print("close window")
