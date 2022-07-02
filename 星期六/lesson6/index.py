@@ -9,6 +9,17 @@ class Window(tk.Tk):
         titleFrame.pack(pady=30)
         mainFrame.pack(padx=30, pady=30, ipadx=30, ipady=30)
 
+        #-----------建立inputFrame-----------------------
+        inputFrame = tk.Frame(mainFrame)
+        self.radion_item_value = tk.IntVar()
+        tk.Radiobutton(inputFrame,text="紅燈",value=1,variable=self.radion_item_value,font=("Arial",15),command=self.getEvent).pack(side=tk.LEFT)
+        tk.Radiobutton(inputFrame,text="綠燈",value=2,variable=self.radion_item_value,font=("Arial",15),command=self.getEvent).pack(side=tk.LEFT)
+        tk.Radiobutton(inputFrame,text="藍燈",value=3,variable=self.radion_item_value,font=("Arial",15),command=self.getEvent).pack(side=tk.LEFT)
+        inputFrame.pack()
+
+    def getEvent(self):
+        print(self.radion_item_value.get())
+
 def closeWindow():
     print("close window")
     window.destroy()
