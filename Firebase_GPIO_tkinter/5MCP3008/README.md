@@ -21,6 +21,8 @@ if __name__ == "__main__":
         sleep(1);
 ```
 
+![](./images/pic1.png)
+
 ```python
 from tkinter import *
 from gpiozero import MCP3008
