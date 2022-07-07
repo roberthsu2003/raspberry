@@ -48,8 +48,16 @@ my_lcd.display_string("Hello", 2)
 ### Raspberry 設定 RFID
 
 #### 1. 在目錄的MFRC522.PY已經是Python3.0版
-#### 2. pip install MFRC522(在虛擬環境安裝)
-#### 3. 開啟raspberry的SPI介面
+#### 2. pip install MFRC522(在虛擬環境安裝,不需要打.py)
+
+- MFRC522 module 在虛擬環境是小寫mfrc522
+
+#### 3. 更改MFRC522.py內,MFRC522 class 的 NRSTPD = 25
+
+- 依據接線,目前的線路RST是25
+	
+	![](./images/pic1.png)
+#### 4. 開啟raspberry的SPI介面
 
 ```
 $ sudo raspi-config
@@ -67,12 +75,19 @@ $ sudo apt-get install python3-spidev
 $ cd ~
 $ git clone https://github.com/lthiery/SPI-Py.git
 $ cd SPI-Py
+#會安裝在global
 $ sudo python3 setup.py install
+
+#安裝在虛擬環境內
+$ python3 setup.py install
 
 ```
 
 
 #### 6.測試硬體，請先使用ready.py進行測試
+
+![](./images/pic2.png)
+
 ```
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
