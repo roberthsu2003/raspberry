@@ -3,7 +3,7 @@ import requests
 from tkinter import LEFT, ttk 
 from gpiozero import MCP3008
 
-blynk_token = "xxxxxxxxxxxxxxx"
+blynk_token = "dG_jaJZqwM5YZsh8x7zPFeyI3VwBDa7h"
 
 class Window(tk.Tk):
     def __init__(self):
