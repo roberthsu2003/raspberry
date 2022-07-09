@@ -2,7 +2,7 @@ import tkinter as tk
 import requests
 from tkinter import LEFT, ttk 
 
-blynk_token = "dG_jaJZqwM5YZsh8x7zPFeyI3VwBDa7h"
+blynk_token = "xxxxxxxxxxxx"
  
 
 
@@ -58,7 +58,7 @@ class Window(tk.Tk):
             if self._hum_job:
                 self.after_cancel(self._hum_job)
             self._hum_job = self.after(500,lambda:hum_something(scale_value))
-            
+
         self.lightnessText = tk.StringVar()
         humidityFrame = tk.LabelFrame(bottomFrame,text="光線")         
         tk.Entry(humidityFrame, width = 16, textvariable=self.lightnessText, state = tk.DISABLED).grid(row=0,column=0,sticky=tk.W,padx=5,pady=20);
