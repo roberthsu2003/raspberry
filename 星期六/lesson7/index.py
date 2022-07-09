@@ -2,7 +2,8 @@ import tkinter as tk
 import requests
 from tkinter import LEFT, ttk 
 
-blynk_token = "xxxxxxxxxxxxxxx"
+blynk_token = "xxxxxxxxxx"
+ 
 
 
 class Window(tk.Tk):
