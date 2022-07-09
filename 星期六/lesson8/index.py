@@ -34,10 +34,10 @@ class Window(tk.Tk):
                 self.after_cancel(self._tem_job)
             self._tem_job = self.after(500,lambda:tem_something(scale_value))
 
+        self.temperatureText = tk.StringVar()
         bottomFrame = tk.Frame(mainFrame)
         temperatureFrame = tk.LabelFrame(bottomFrame,text="溫度")
-        tk.Label(temperatureFrame, text="室內溫度:").grid(row=0,column=0,sticky=tk.E,padx=5,pady=20);        
-        tk.Entry(temperatureFrame, width = 16, textvariable=self.temperatureText,state = tk.DISABLED).grid(row=1,column=0,sticky=tk.W,padx=5,pady=20);
+        tk.Entry(temperatureFrame, width = 16, textvariable=self.temperatureText,state = tk.DISABLED).grid(row=0,column=0,sticky=tk.W,padx=5,pady=20);
         self.temperatureText.set("123.456");
          
 
@@ -58,10 +58,10 @@ class Window(tk.Tk):
             if self._hum_job:
                 self.after_cancel(self._hum_job)
             self._hum_job = self.after(500,lambda:hum_something(scale_value))
-
-        humidityFrame = tk.LabelFrame(bottomFrame,text="溼度")         
-        tk.Label(humidityFrame, text="室內光線:").grid(row=0,column=0,sticky=tk.E,padx=5,pady=20);
-        tk.Entry(humidityFrame, width = 16, textvariable=self.lightnessText, state = tk.DISABLED).grid(row=1,column=0,sticky=tk.W,padx=5,pady=20);
+            
+        self.lightnessText = tk.StringVar()
+        humidityFrame = tk.LabelFrame(bottomFrame,text="光線")         
+        tk.Entry(humidityFrame, width = 16, textvariable=self.lightnessText, state = tk.DISABLED).grid(row=0,column=0,sticky=tk.W,padx=5,pady=20);
         self.lightnessText.set("456.789");
         humidityFrame.pack(side=tk.RIGHT)
 
