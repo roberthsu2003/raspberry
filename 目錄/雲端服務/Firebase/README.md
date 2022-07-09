@@ -107,13 +107,24 @@ pip install google-cloud-firestore
 - 解決方法
 
 ```
+#增加虛擬記憶體大小
+$ sudo nano /etc/dphys-swapfile
+CONF_SWAPSIZE=100 -->改為1024
+#重新啟動
+$sudo service dphys-swapfile restart
+$htop 可以看到目前的swap
+
+
 #移除
-pip uninstall grpcio 
-pip uninstall grpcio-status 
+$pip uninstall grpcio 
+$pip uninstall grpcio-status 
 
 #重裝-要一些時間20~25mins
-pip install grpcio==1.44.0 --no-binary=grpcio 
-pip install grpcio-tools==1.44.0 --no-binary=grpcio-tools
+$pip install grpcio==1.44.0 --no-binary=grpcio 
+$pip install grpcio-tools==1.44.0 --no-binary=grpcio-tools
+
+#安裝完成後
+#將虛擬記憶體大小改回100
 ```
 
 
