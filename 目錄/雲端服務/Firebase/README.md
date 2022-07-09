@@ -13,6 +13,11 @@
 
 raspberry安裝[Firebase Admin](https://firebase.google.com/docs/admin/setup)
 
+```python 
+#安裝至虛擬環境
+$ pip install firebase-admin
+```
+
 ## 重新取得Firebase token
 
 ![](./images/pic5.png)
