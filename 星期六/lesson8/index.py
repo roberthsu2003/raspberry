@@ -1,14 +1,18 @@
 import tkinter as tk
 import requests
 from tkinter import LEFT, ttk 
+from gpiozero import MCP3008
 
-blynk_token = "xxxxxxxxxxxx"
- 
-
+blynk_token = "dG_jaJZqwM5YZsh8x7zPFeyI3VwBDa7h"
 
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()
+        #----------gpiozero mcp3008-----------------
+        #gpiozero
+        self.lightness = MCP3008(channel=7);
+        self.temperature = MCP3008(channel=6);
+
         #-----------建立tkinter----------------------        
         self.title("python視窗和Blynk整合")
         mainFrame  = tk.Frame(self, relief="groove", borderwidth=2)
@@ -17,23 +21,7 @@ class Window(tk.Tk):
         titleFrame.pack(pady=30)
         mainFrame.pack(pady=30,padx=30,ipadx=30,ipady=30) 
 
-        #------------建立bottomFrame和temperatureFrame------------------------
-        self._tem_job = None
-        def tem_something(value):
-            self._tem_job = None
-            print(f"temperature={value}")
-            update_url = f'https://blynk.cloud/external/api/update?token={blynk_token}&v0={value}'
-            response = requests.get(update_url)
-            if response.status_code == 200:
-                print("溫度更新成功")
-
-
-        def tem_update_value(scale_value):
-            #scale_value是它的值
-            if self._tem_job:
-                self.after_cancel(self._tem_job)
-            self._tem_job = self.after(500,lambda:tem_something(scale_value))
-
+        #------------建立bottomFrame和temperatureFrame------------------------   
         self.temperatureText = tk.StringVar()
         bottomFrame = tk.Frame(mainFrame)
         temperatureFrame = tk.LabelFrame(bottomFrame,text="溫度")
@@ -42,31 +30,33 @@ class Window(tk.Tk):
          
 
         temperatureFrame.pack(side=tk.LEFT)
-
-        #--------------建立HumidityFrame--------------------
-        self._hum_job = None
-        def hum_something(value):
-            self._hum_job = None
-            print(f"humidity={value}")
-            update_url = f'https://blynk.cloud/external/api/update?token={blynk_token}&v1={value}'
-            response = requests.get(update_url)
-            if response.status_code == 200:
-                print("溼度更新成功")
-
-        def hum_update_value(scale_value):
-            #scale_value是它的值
-            if self._hum_job:
-                self.after_cancel(self._hum_job)
-            self._hum_job = self.after(500,lambda:hum_something(scale_value))
-
+        #--------------建立HumidityFrame--------------------        
         self.lightnessText = tk.StringVar()
         humidityFrame = tk.LabelFrame(bottomFrame,text="光線")         
         tk.Entry(humidityFrame, width = 16, textvariable=self.lightnessText, state = tk.DISABLED).grid(row=0,column=0,sticky=tk.W,padx=5,pady=20);
         self.lightnessText.set("456.789");
         humidityFrame.pack(side=tk.RIGHT)
+        bottomFrame.pack()  
+        self.update_temperature_light()
 
+    def update_temperature_light(self):
+        lightnessValue = self.lightness.value * 1000;
+        temperatureValue = self.temperature.value * 3.3 * 100;
+        self.temperatureText.set("{:.2f}".format(temperatureValue));
+        self.lightnessText.set("{:.2f}".format(lightnessValue));
 
-        bottomFrame.pack()
+        update_tem_url = f'https://blynk.cloud/external/api/update?token={blynk_token}&v0={temperatureValue}'
+        response = requests.get(update_tem_url)
+        if response.status_code == 200:
+            print("溫度更新成功")
+        
+        update_light_url = f'https://blynk.cloud/external/api/update?token={blynk_token}&v1={lightnessValue}'
+        response = requests.get(update_light_url)
+        if response.status_code == 200:
+            print("光線更新成功")
+
+        self.after(500,self.update_temperature_light);
+        
         
 def closeWindow():
     print("close window")
