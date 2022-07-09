@@ -2,7 +2,7 @@ import tkinter as tk
 import requests
 from tkinter import LEFT, ttk 
 
-blynk_token = "xxxxxxxxxx"
+blynk_token = "dG_jaJZqwM5YZsh8x7zPFeyI3VwBDa7h"
  
 
 
@@ -35,11 +35,11 @@ class Window(tk.Tk):
             self._tem_job = self.after(500,lambda:tem_something(scale_value))
 
         bottomFrame = tk.Frame(mainFrame)
-        temperatureFrame = tk.LabelFrame(bottomFrame,text="溫度")         
-        self.scale = tk.Scale(temperatureFrame, orient=tk.HORIZONTAL, length=284, from_=-40, to=60,
-              tickinterval=20, command=tem_update_value)
-        self.scale.set(0)
-        self.scale.pack(padx=10,pady=10)        
+        temperatureFrame = tk.LabelFrame(bottomFrame,text="溫度")
+        tk.Label(temperatureFrame, text="室內溫度:").grid(row=0,column=0,sticky=tk.E,padx=5,pady=20);        
+        tk.Entry(temperatureFrame, width = 16, textvariable=self.temperatureText,state = tk.DISABLED).grid(row=1,column=0,sticky=tk.W,padx=5,pady=20);
+        self.temperatureText.set("123.456");
+         
 
         temperatureFrame.pack(side=tk.LEFT)
 
@@ -60,10 +60,9 @@ class Window(tk.Tk):
             self._hum_job = self.after(500,lambda:hum_something(scale_value))
 
         humidityFrame = tk.LabelFrame(bottomFrame,text="溼度")         
-        self.humidityscale = tk.Scale(humidityFrame, orient=tk.HORIZONTAL, length=284, from_=0, to=100,
-              tickinterval=20,command=hum_update_value)
-        self.humidityscale.set(20)
-        self.humidityscale.pack(padx=10,pady=10)
+        tk.Label(humidityFrame, text="室內光線:").grid(row=0,column=0,sticky=tk.E,padx=5,pady=20);
+        tk.Entry(humidityFrame, width = 16, textvariable=self.lightnessText, state = tk.DISABLED).grid(row=1,column=0,sticky=tk.W,padx=5,pady=20);
+        self.lightnessText.set("456.789");
         humidityFrame.pack(side=tk.RIGHT)
 
 
