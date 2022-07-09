@@ -13,6 +13,24 @@
 
 raspberry安裝[Firebase Admin](https://firebase.google.com/docs/admin/setup)
 
+```python 
+#安裝至虛擬環境
+$ pip install firebase-admin
+```
+
+## 重新取得Firebase token
+
+![](./images/pic5.png)
+
+![](./images/pic6.png)
+
+![](./images/pic7.png)
+
+![](./images/pic8.png)
+
+![](./images/pic9.png)
+
+
 
 ## RealTime_DataBase
 - 要在firebase內取得json資料
