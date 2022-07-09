@@ -154,6 +154,7 @@ $pip install grpcio-tools==1.44.0 --no-binary=grpcio-tools
 
 
 ```python
+import threading
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -163,6 +164,8 @@ from datetime import datetime
 from datetime import timezone
 from datetime import timedelta
 import tkinter as tk
+from tkinter import ttk 
+
 
 class Window(tk.Tk):
     def __init__(self):
@@ -216,6 +219,59 @@ class Window(tk.Tk):
         tk.Button(buttonFrame,text="送出",padx=20,pady=10,command=self.submit).pack(side=tk.LEFT)        
         buttonFrame.pack(pady=10)
 
+        #-----------------建立TreeView-----------------------
+        columns = ['#1','#2','#3','#4','#5','#6','#7','#8']
+        self.tree = ttk.Treeview(self, columns=columns, show='headings')
+        self.tree.heading('#1',text='時間')
+        self.tree.heading('#2',text='號碼1')
+        self.tree.heading('#3',text='號碼2')
+        self.tree.heading('#4',text='號碼3')
+        self.tree.heading('#5',text='號碼4')
+        self.tree.heading('#6',text='號碼5')
+        self.tree.heading('#7',text='號碼6')
+        self.tree.heading('#8',text='號碼7')
+        self.tree.column('#1',width=200)
+        self.tree.column('#2',width=50)
+        self.tree.column('#3',width=50)
+        self.tree.column('#4',width=50)
+        self.tree.column('#5',width=50)
+        self.tree.column('#6',width=50)
+        self.tree.column('#7',width=50)
+        self.tree.column('#8',width=50)
+        self.tree.pack()
+
+
+
+
+        #建立realtime update
+        self.callback_done = threading.Event()
+
+        ##每次只取得最新的10筆
+        query_ref = self.db.collection('loto').order_by('datetime',direction=firestore.Query.DESCENDING).limit(10)       
+        ##註冊callback
+        col_watch = query_ref.on_snapshot(self.on_snapshot)
+
+    def on_snapshot(self,doc_snapshot, changes, read_time):
+        # 清除tree內容
+        for i in self.tree.get_children():
+            self.tree.delete(i) 
+        #這是firestore的callback,doc_snapshot參數是list,只有10筆,順序必需相反   
+        doc_snapshot.reverse()   
+        for doc in doc_snapshot:
+            print(doc.__class__)
+            print(f'接收到的資料:{doc.id}')
+            #更新treeView資料
+            data_time = doc.get('datetime')
+            #加8小時
+            data_time = data_time + timedelta(hours=8)
+            #google datetime繼承datetime.datetime
+            datetime_str = data_time.strftime('%Y-%m-%d %H:%M:%S')
+            nums = doc.get('lotos')
+            self.tree.insert('',tk.END,values=[datetime_str] + nums)
+        self.callback_done.set()
+
+
+    
     def lot_update(self,labels):
         lot = set()
         while(len(lot) < 7):
@@ -249,5 +305,6 @@ if __name__ == "__main__":
     window.resizable(width=0,height=0)
     window.protocol("WM_DELETE_WINDOW",closeWindow)
     window.mainloop()
+
 
 ```
