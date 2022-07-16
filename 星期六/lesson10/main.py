@@ -16,7 +16,7 @@ class Window(tk.Tk):
     def __init__(self):
         super().__init__()
         #---------------Firebase realtime database 初始化---------------
-        cred = credentials.Certificate("firebase_key/raspberryfirebase-firebase-adminsdk-y4f0x-e21c25a365.json")
+        cred = credentials.Certificate("firebase_key/raspberryfirebase-firebase-adminsdk-y4f0x-0eebb63a53.json")
         firebase_admin.initialize_app(cred)
         self.firestore = firestore.client()
 
@@ -70,6 +70,7 @@ class Window(tk.Tk):
         self.tree.column('#5',width=50)
         self.tree.column('#6',width=50)        
         self.tree.pack()
+        
         #建立realtime update
         self.callback_done = threading.Event()
         ##每次只取得最新的10筆
@@ -134,8 +135,6 @@ class Window(tk.Tk):
         
         
 
-
-    
 def closeWindow():    
     GPIO.cleanup()
     sys.exit(0)
