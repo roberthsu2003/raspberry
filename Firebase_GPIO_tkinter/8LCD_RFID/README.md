@@ -48,15 +48,17 @@ my_lcd.display_string("Hello", 2)
 ### Raspberry 設定 RFID
 
 #### 1. 在目錄的MFRC522.PY已經是Python3.0版
-#### 2. pip install MFRC522(在虛擬環境安裝,不需要打.py)
 
-- MFRC522 module 在虛擬環境是小寫mfrc522
-
-#### 3. 更改MFRC522.py內,MFRC522 class 的 NRSTPD = 25
+#### 2. 更改MFRC522.py內,MFRC522 class 的 NRSTPD = 25
 
 - 依據接線,目前的線路RST是25
 	
 	![](./images/pic1.png)
+	
+#### 3. pip install MFRC522(在虛擬環境安裝,不需要打.py)
+
+- MFRC522 module 在虛擬環境是小寫mfrc522
+
 #### 4. 開啟raspberry的SPI介面
 
 ```
