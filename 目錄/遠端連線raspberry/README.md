@@ -80,8 +80,8 @@
 ### 建立新的使用者帳號
 
 ```
-sudo useradd pi1
-sudo useradd pi1 sudo
+sudo adduser pi1
+sudo adduser pi1 sudo
 ```
 
 ### 使用遠端桌面(Microsoft Remote Desktop)
