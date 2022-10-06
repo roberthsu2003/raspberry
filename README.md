@@ -19,6 +19,7 @@
 - PC 透過SSH連線至Raspberry  
 - Mac 透過SSH連線至Raspberry
 - 設定raspberry環境 
+- 建立新的使用者帳號
 - 使用遠端桌面(Microsoft Remote Desktop) 
 - 使用VSCode連線至Raspberry
 

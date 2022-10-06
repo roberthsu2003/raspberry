@@ -77,6 +77,13 @@
 	- Variant:English(UK) 
 
 <a name="Microsoft_Remote_Desktop"></a>
+### 建立新的使用者帳號
+
+```
+sudo useradd pi1
+sudo useradd pi1 sudo
+```
+
 ### 使用遠端桌面(Microsoft Remote Desktop)
 1. 關閉 vnc Server
 2. 透過ssh安裝xrdp
