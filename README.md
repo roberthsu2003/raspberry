@@ -12,7 +12,8 @@
 
 ## [遠端連線raspberry](./目錄/遠端連線raspberry)
 - 從序列埠連線至Raspberry(必需要有TTL線)
-- 查詢Raspberry的 ip Address 
+- 查詢Raspberry的 ip Address
+- 透過電腦查詢Raspberry的 ip Address
 - 使用手機app查詢 Raspberry IP Address
 - 查詢Raspberry的 IP Address 
 - 透過手機AppNet Analyzer`查詢Raspberry IP Address
