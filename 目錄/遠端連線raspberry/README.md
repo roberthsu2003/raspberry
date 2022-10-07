@@ -1,7 +1,8 @@
 ## 遠端連線raspberry
 
 - [從序列埠連線至Raspberry(必需要有TTL線)](https://www.raspberrypi.com.tw/tag/usb-to-ttl/)  
-- [查詢Raspberry的 ip Address](#find_ip_address)  
+- [查詢Raspberry的 ip Address](#find_ip_address) 
+- [透過電腦查詢Raspberry的 ip Address](#pc-ipAddress)
 - [透過手機 Net Analyzer 查詢Raspberry IP Address](#mobileApp)
 - [PC 透過SSH連線至Raspberry](#sshToRaspberryOnPC)  
 - [Mac 透過SSH連線至Raspberry](#sshToRaspberryOnMac) 
@@ -23,6 +24,18 @@
 	![](./images/pic12.png)
 	
 <a name="mobileApp"></a>
+## 透過電腦查詢Raspberry的 ip Address
+
+```
+#mac ping 電腦名稱
+$ ping raspberryRobert.local
+
+#window ping 電腦名稱 -4
+$ ping raspberryRobert.local -4
+```
+
+<a name="pc-ipAddress"></a>
+
 ## 透過手機App Net Analyzer查詢Raspberry IP Address
 
 [iOS](https://apps.apple.com/na/app/network-analyzer/id562315041)
