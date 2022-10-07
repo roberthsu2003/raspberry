@@ -1,8 +1,16 @@
 import tkinter as tk 
 import RPi.GPIO as GPIO
 
+
+
 def user_click():
-    print("使用者按下")
+    global ledState
+    if ledState == True:
+        GPIO.output(25, GPIO.LOW)
+        ledState = False
+    else:
+        GPIO.output(25, GPIO.HIGH)
+        ledState = True
 
 def main():
     #GPIO 初始化
@@ -21,4 +29,5 @@ def main():
     window.mainloop()
 
 if __name__ == "__main__":
+    ledState = False
     main()
