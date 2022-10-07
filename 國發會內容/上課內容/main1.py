@@ -1,9 +1,17 @@
 import tkinter as tk 
+import RPi.GPIO as GPIO
 
 def user_click():
     print("使用者按下")
 
 def main():
+    #GPIO 初始化
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    GPIO.setup(25, GPIO.OUT)
+
+
+    #視窗
     window = tk.Tk()
     window.title("first window")
     #window.geometry("800x300")
