@@ -1,5 +1,6 @@
 import tkinter as tk 
 import RPi.GPIO as GPIO
+import requests
 
 
 def on_close():
@@ -12,11 +13,18 @@ def user_click():
     if ledState == True:
         GPIO.output(25, GPIO.LOW)
         ledState = False
+        myjson = {"value1":"關"}
         btn.config(text="開燈")
     else:
         GPIO.output(25, GPIO.HIGH)
         ledState = True
+        myjson = {"value1":"開"}
         btn.config(text="關燈")
+    requests.request(method="POST",
+                 url=url,
+                 headers={"Content-Type":"application/json"},
+                 params=myjson
+                 )
 
 
 def main():
@@ -42,4 +50,5 @@ if __name__ == "__main__":
     ledState = False
     btn = None
     window = None
+    url = 'https://maker.ifttt.com/trigger/ledState/with/key/eDqcZfqY_i_BHCZVXCwb6aq7GLPKpdV4q1ePja35Mj'
     main()
