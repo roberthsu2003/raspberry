@@ -97,15 +97,10 @@ sudo adduser pi1
 sudo adduser pi1 sudo
 ```
 
-### 使用遠端桌面(Microsoft Remote Desktop)
-1. 關閉 vnc Server
-2. 透過ssh安裝xrdp
-
-	`sudo apt-get update`
-	
-	`sudo apt-get install xrdp -y`
-
-3.使用遠端桌面連線raspberry
+### 使用遠端桌面(VNC Viewer)
+1. 開啟 vnc Server
+2. 下載 vnc viewer
+3.使用vnc viewer連線raspberry
 
 ![](./images/pic9.png)
 
