@@ -6,8 +6,12 @@ class Window(tk.Tk):
         #建立title
         self.title("LED Controller")
         #建立按鈕
-        btn = tk.Button(self,text="開關",padx=50,pady=30,font=('arial',18))
+        btn = tk.Button(self,text="開關",padx=50,pady=30,font=('arial',18),command=self.userClick)
         btn.pack(padx=50,pady=30)
+    
+    def userClick(self):
+        print("user click")
+
 
 def main():
     window = Window()
