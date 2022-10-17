@@ -1,4 +1,9 @@
 import tkinter as tk
+import firebase_admin
+from firebase_admin import credentials
+
+cred = credentials.Certificate("private/raspberry1-58efc-firebase-adminsdk-tzk5o-2743aa1e4a.json")
+firebase_admin.initialize_app(cred)
 
 class Window(tk.Tk):
     def __init__(self):
