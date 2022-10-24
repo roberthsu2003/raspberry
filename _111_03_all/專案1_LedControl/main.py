@@ -8,7 +8,7 @@ firebase_admin.initialize_app(cred,{
     'databaseURL': 'https://raspberry1-58efc-default-rtdb.firebaseio.com/'
 })
 
-led = db.reference('ledControl/led')
+led = db.reference('ledControl')
 
 class Window(tk.Tk):
     def __init__(self):
@@ -20,7 +20,8 @@ class Window(tk.Tk):
         btn.pack(padx=50,pady=30)
     
     def userClick(self):
-        print(led.get())
+        currentState = led.get()['led']
+        led.update({'led':not currentState})
 
 
 def main():
