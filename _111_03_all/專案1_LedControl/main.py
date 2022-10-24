@@ -16,12 +16,21 @@ class Window(tk.Tk):
         #建立title
         self.title("LED Controller")
         #建立按鈕
-        btn = tk.Button(self,text="開關",padx=50,pady=30,font=('arial',18),command=self.userClick)
-        btn.pack(padx=50,pady=30)
+        self.btn = tk.Button(self,text="開關",padx=50,pady=30,font=('arial',18),command=self.userClick)
+        self.btn.pack(padx=50,pady=30)
+        currentState = led.get()['led']
+        if currentState:
+           self.btn.config(text="關")
+        else:
+           self.btn.config(text="開")
     
     def userClick(self):
         currentState = led.get()['led']
         led.update({'led':not currentState})
+        if currentState:
+           self.btn.config(text="開")
+        else:
+           self.btn.config(text="關")
 
 
 def main():
