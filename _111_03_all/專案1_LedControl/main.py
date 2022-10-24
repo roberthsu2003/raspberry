@@ -1,11 +1,14 @@
 import tkinter as tk
 import firebase_admin
 from firebase_admin import credentials
+from firebase_admin import db
 
 cred = credentials.Certificate("private/raspberry1-58efc-firebase-adminsdk-tzk5o-2743aa1e4a.json")
 firebase_admin.initialize_app(cred,{
     'databaseURL': 'https://raspberry1-58efc-default-rtdb.firebaseio.com/'
 })
+
+led = db.reference('ledControl/led')
 
 class Window(tk.Tk):
     def __init__(self):
@@ -17,7 +20,7 @@ class Window(tk.Tk):
         btn.pack(padx=50,pady=30)
     
     def userClick(self):
-        print("user click")
+        print(led.get())
 
 
 def main():
