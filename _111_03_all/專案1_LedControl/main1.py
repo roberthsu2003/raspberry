@@ -23,11 +23,11 @@ class LightButton(tk.Button):
 
     def open(self):
         self.config(image=self.open_photo)
-        self.config(text="關")
+        
 
     def close(self):
         self.config(image=self.close_photo);
-        self.config(text="開")  
+        
 
 class Window(tk.Tk):
     def __init__(self):
@@ -58,7 +58,19 @@ class Window(tk.Tk):
            GPIO.output(25,GPIO.LOW)
     
     def firebaseDataChange(self,event):
-        print("內容被更改")
+        print(f"資料內容:{event.data}")
+        print(f"資料路徑:{event.path}")
+        if event.path == "/":
+            state = event.data['led']
+        elif event.path ==  "/led":
+            state = event.data
+        
+        if state:
+            self.btn.open()
+            GPIO.output(25,GPIO.HIGH)
+        else:
+            self.btn.close()
+            GPIO.output(25,GPIO.LOW)
 
 
 def main():
