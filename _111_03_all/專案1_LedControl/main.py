@@ -21,12 +21,16 @@ class LightButton(tk.Button):
         ##建立open的圖片
         open_image = Image.open('light_open.png')
         self.open_photo = ImageTk.PhotoImage(open_image)
+        self.config(borderwidth=0)
+        self.config(font=('arial',18))
 
     def open(self):
         self.config(image=self.open_photo)
+        self.config(text="關")
 
     def close(self):
-        self.config(image=self.close_photo);   
+        self.config(image=self.close_photo);
+        self.config(text="開")  
 
 class Window(tk.Tk):
     def __init__(self):
@@ -36,7 +40,7 @@ class Window(tk.Tk):
 
         #建立按鈕
 
-        self.btn = LightButton(self,padx=50,pady=30,font=('arial',18),borderwidth=0,command=self.userClick)
+        self.btn = LightButton(self,padx=50,pady=30,command=self.userClick)
         self.btn.pack(padx=50,pady=30)
         currentState = led.get()['led']
         if currentState:
