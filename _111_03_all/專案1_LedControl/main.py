@@ -47,19 +47,26 @@ class Window(tk.Tk):
         currentState = led.get()['led']
         if currentState:
            self.btn.open()
+           GPIO.output(25,GPIO.HIGH)
         else:
            self.btn.close()
+           GPIO.output(25,GPIO.LOW)
     
     def userClick(self):
         currentState = led.get()['led']
         led.update({'led':not currentState})
         if currentState:
            self.btn.close()
+           GPIO.output(25,GPIO.LOW)
         else:
            self.btn.open()
+           GPIO.output(25,GPIO.HIGH)
 
 
 def main():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    GPIO.setup(25,GPIO.OUT)
     window = Window()
     window.mainloop()
 
