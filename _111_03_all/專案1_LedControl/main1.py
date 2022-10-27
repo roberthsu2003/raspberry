@@ -38,9 +38,7 @@ class Window(tk.Tk):
             'databaseURL': 'https://raspberry1-58efc-default-rtdb.firebaseio.com/'
         })
 
-        led = db.reference('ledControl')
-        #註冊監聽
-        led.listen(self.firebaseDataChange)
+        led = db.reference('ledControl')       
 
         #建立title
         self.title("LED Controller")
@@ -56,6 +54,10 @@ class Window(tk.Tk):
         else:
            self.btn.close()
            GPIO.output(25,GPIO.LOW)
+
+        #註冊監聽
+        #監聽必需在最後面
+        led.listen(self.firebaseDataChange)
     
     def firebaseDataChange(self,event):
         print(f"資料內容:{event.data}")
