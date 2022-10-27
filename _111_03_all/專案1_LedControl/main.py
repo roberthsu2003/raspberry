@@ -23,6 +23,7 @@ class LightButton(tk.Button):
         self.open_photo = ImageTk.PhotoImage(open_image)
         self.config(borderwidth=0)
         self.config(font=('arial',18))
+        self.config(compound=tk.LEFT)
 
     def open(self):
         self.config(image=self.open_photo)
