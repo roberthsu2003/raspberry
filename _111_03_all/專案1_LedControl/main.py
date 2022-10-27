@@ -36,21 +36,21 @@ class Window(tk.Tk):
 
         #建立按鈕
 
-        self.btn = LightButton(self,padx=50,pady=30,font=('arial',18),command=self.userClick)
+        self.btn = LightButton(self,padx=50,pady=30,font=('arial',18),borderwidth=0,command=self.userClick)
         self.btn.pack(padx=50,pady=30)
         currentState = led.get()['led']
         if currentState:
-           self.btn.close()
-        else:
            self.btn.open()
+        else:
+           self.btn.close()
     
     def userClick(self):
         currentState = led.get()['led']
         led.update({'led':not currentState})
         if currentState:
-           self.btn.open()
-        else:
            self.btn.close()
+        else:
+           self.btn.open()
 
 
 def main():
