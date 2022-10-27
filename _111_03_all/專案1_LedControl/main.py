@@ -11,6 +11,23 @@ firebase_admin.initialize_app(cred,{
 
 led = db.reference('ledControl')
 
+class LightButton(tk.Button):
+    def __init__(self,parent,**kwargs):
+        super().__init__(parent,**kwargs)
+        #建立圖片
+        ##建立close的圖片
+        close_image = Image.open('light_close.png')
+        self.close_photo = ImageTk.PhotoImage(close_image)
+        ##建立open的圖片
+        open_image = Image.open('light_open.png')
+        self.open_photo = ImageTk.PhotoImage(open_image)
+
+    def open(self):
+        self.config(image=self.open_photo)
+
+    def close(self):
+        self.config(image=self.close_photo);   
+
 class Window(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -19,28 +36,21 @@ class Window(tk.Tk):
 
         #建立按鈕
 
-        ##建立圖片
-        close_image = Image.open('light_close.png')
-        self.close_photo = ImageTk.PhotoImage(close_image)
-
-        open_image = Image.open('light_open.png')
-        self.open_photo = ImageTk.PhotoImage(open_image)
-
-        self.btn = tk.Button(self,image=self.close_photo,padx=50,pady=30,font=('arial',18),command=self.userClick)
+        self.btn = LightButton(self,padx=50,pady=30,font=('arial',18),command=self.userClick)
         self.btn.pack(padx=50,pady=30)
         currentState = led.get()['led']
         if currentState:
-           self.btn.config(image=self.close_photo)
+           self.btn.close()
         else:
-           self.btn.config(image=self.open_photo)
+           self.btn.open()
     
     def userClick(self):
         currentState = led.get()['led']
         led.update({'led':not currentState})
         if currentState:
-           self.btn.config(image=self.open_photo)
+           self.btn.open()
         else:
-           self.btn.config(image=self.close_photo)
+           self.btn.close()
 
 
 def main():
