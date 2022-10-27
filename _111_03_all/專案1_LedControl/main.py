@@ -1,6 +1,7 @@
 import tkinter as tk
 from PIL import Image,ImageTk
 import firebase_admin
+import RPi.GPIO as GPIO
 from firebase_admin import credentials
 from firebase_admin import db
 
