@@ -23,8 +23,8 @@ class LightButton(tk.Button):
         open_image = Image.open('light_open.png')
         self.open_photo = ImageTk.PhotoImage(open_image)
         self.config(borderwidth=0)
-        self.config(font=('arial',18))
-        self.config(compound=tk.LEFT)
+        self.config(state="disabled")
+        
 
     def open(self):
         self.config(image=self.open_photo)
@@ -42,7 +42,7 @@ class Window(tk.Tk):
 
         #建立按鈕
 
-        self.btn = LightButton(self,padx=50,pady=30,command=self.userClick)
+        self.btn = LightButton(self,padx=50,pady=30)
         self.btn.pack(padx=50,pady=30)
         currentState = led.get()['led']
         if currentState:
