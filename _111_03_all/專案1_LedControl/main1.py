@@ -7,8 +7,8 @@ from firebase_admin import db
 
 
 
-class LightButton(tk.Button):
-    def __init__(self,parent,**kwargs):
+class LightPhoto(tk.Canvas):
+    def __init__(self,parent,state=False,**kwargs):
         super().__init__(parent,**kwargs)
         #建立圖片
         ##建立close的圖片
@@ -17,16 +17,24 @@ class LightButton(tk.Button):
         ##建立open的圖片
         open_image = Image.open('light_open.png')
         self.open_photo = ImageTk.PhotoImage(open_image)
-        self.config(borderwidth=0)
-        self.config(state="disabled")
-        
+        self.__state = None
+        self.state = state
+        #設canvas的寬高
+        self.config(width=close_image.size[0]+20,height=close_image.size[1]+20)
 
-    def open(self):
-        self.config(image=self.open_photo)
-        
+    @property
+    def state(self):
+        return self.__state
 
-    def close(self):
-        self.config(image=self.close_photo);
+    @state.setter
+    def state(self,s):
+        self.__state = s
+        self.delete('all')
+        if s == True:
+            self.create_image(10,10,anchor=tk.NW,image=self.open_photo)
+        else:
+            self.create_image(10,10,anchor=tk.NW,image=self.close_photo)
+        
         
 
 class Window(tk.Tk):
@@ -45,14 +53,14 @@ class Window(tk.Tk):
 
         #建立按鈕
 
-        self.btn = LightButton(self,padx=50,pady=30)
-        self.btn.pack(padx=50,pady=30)
+        self.lightPhoto = LightPhoto(self)
+        self.lightPhoto.pack(padx=50,pady=30)
         currentState = led.get()['led']
         if currentState:
-           self.btn.open()
+           self.lightPhoto.state = True
            GPIO.output(25,GPIO.HIGH)
         else:
-           self.btn.close()
+           self.lightPhoto.state = False
            GPIO.output(25,GPIO.LOW)
 
         #註冊監聽
@@ -68,10 +76,10 @@ class Window(tk.Tk):
             state = event.data
         
         if state:
-            self.btn.open()
+            self.lightPhoto.state = True
             GPIO.output(25,GPIO.HIGH)
         else:
-            self.btn.close()
+            self.lightPhoto.state = False
             GPIO.output(25,GPIO.LOW)
 
 
