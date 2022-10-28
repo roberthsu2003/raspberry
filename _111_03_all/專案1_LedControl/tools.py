@@ -15,11 +15,21 @@ class LightButton(tk.Button):
         self.config(borderwidth=0)
         self.config(font=('arial',18))
         self.config(compound=tk.LEFT)
+        self.__light_state = None
+    
+    @property
+    def light_state(self):
+        return self.__state
 
-    def open(self):
-        self.config(image=self.open_photo)
-        self.config(text="關")
+    @light_state.setter
+    def light_state(self,s):
+        self.__light_state = s
+        if s == True:            
+            self.config(image=self.open_photo)
+            self.config(text="關")
+        else:
+            self.config(image=self.close_photo);
+            self.config(text="開")  
 
-    def close(self):
-        self.config(image=self.close_photo);
-        self.config(text="開")  
+
+        

@@ -24,20 +24,20 @@ class Window(tk.Tk):
         self.btn.pack(padx=50,pady=30)
         currentState = led.get()['led']
         if currentState:
-           self.btn.open()
+           self.btn.light_state = True
            GPIO.output(25,GPIO.HIGH)
         else:
-           self.btn.close()
+           self.btn.light_state = False
            GPIO.output(25,GPIO.LOW)
     
     def userClick(self):
         currentState = led.get()['led']
         led.update({'led':not currentState})
         if currentState:
-           self.btn.close()
+           self.btn.light_state = False
            GPIO.output(25,GPIO.LOW)
         else:
-           self.btn.open()
+           self.btn.light_state = True
            GPIO.output(25,GPIO.HIGH)
 
 
