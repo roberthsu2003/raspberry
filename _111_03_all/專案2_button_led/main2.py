@@ -18,7 +18,9 @@ class Window(tk.Tk):
 
     def mouse_click(self,event):
         print(event.__dict__)
-        event.widget.config(borderwidth=5,)
+        event.widget.delete()
+        event.widget.create_rectangle(10,10,60,60,fill='white')
+        event.widget.create_rectangle(20,20,50,50,fill='red')
         event.widget.update()
 
 def main():
