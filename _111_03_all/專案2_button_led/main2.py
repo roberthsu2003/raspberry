@@ -41,12 +41,15 @@ class ColorCanvas(tk.Canvas):
 
 
 class Window(tk.Tk):
+    selected_convas = None
     @classmethod
     def get_select_convas(cls):
         return cls.selected_convas
 
     @classmethod
-    def set_select_convas(cls,convas):        
+    def set_select_convas(cls,convas):
+        if cls.selected_convas is not None:
+            cls.selected_convas.state = ColorCanvas.OFF   
         cls.selected_convas = convas
         cls.selected_convas.state = ColorCanvas.ON
 
@@ -68,12 +71,7 @@ class Window(tk.Tk):
         
 
     def mouse_click(self,event):
-        print(event.__dict__)
-        print(event.widget.rec_color)
-        #event.widget.delete()
-        #event.widget.create_rectangle(10,10,60,60,fill='white')
-        #event.widget.create_rectangle(20,20,50,50,fill='red')
-        #event.widget.update()
+        Window.set_select_convas(event.widget)
 
 def main():
     window = Window()
