@@ -6,10 +6,20 @@ class ColorCanvas(tk.Canvas):
         height = kwargs['height']
         super().__init__(parent,**kwargs)
         self.rec_color = rec_color
+        self.__state = False
         space = width / 7
         rec_width = width  - 2 * space 
         rec_height = height - 2 * space   
         self.create_rectangle(space, space, width - space, height - space,fill=self.rec_color)
+
+    
+    @property
+    def state(self):
+        return self.__state
+    @state.setter
+    def state(self,s):
+        self.__state  = s
+
 
 class Window(tk.Tk):
     def __init__(self):
@@ -17,6 +27,8 @@ class Window(tk.Tk):
         red = ColorCanvas(self,"red",width=100,height=100)
         red.bind('<ButtonRelease-1>',self.mouse_click)
         red.grid(row=0, column=0)
+        red.state = True
+        print(f"red狀態:{red.state}")
         green = ColorCanvas(self,"green",width=100,height=100)        
         green.grid(row=0, column=1)
         blue = ColorCanvas(self,"blue",width=100,height=100)        
