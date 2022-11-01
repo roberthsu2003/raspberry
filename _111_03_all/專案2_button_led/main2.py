@@ -41,6 +41,16 @@ class ColorCanvas(tk.Canvas):
 
 
 class Window(tk.Tk):
+    @classmethod
+    def get_select_convas(cls):
+        return cls.selected_convas
+
+    @classmethod
+    def set_select_convas(cls,convas):        
+        cls.selected_convas = convas
+        cls.selected_convas.state = ColorCanvas.ON
+
+
     def __init__(self):
         super().__init__()           
         red = ColorCanvas(self,"red",width=100,height=100)
@@ -52,6 +62,9 @@ class Window(tk.Tk):
         blue = ColorCanvas(self,"blue",width=100,height=100)
         blue.bind('<ButtonRelease-1>',self.mouse_click)        
         blue.grid(row=0, column=2)
+        Window.set_select_convas(red)
+        select_canvas = Window.get_select_convas()
+        print(select_canvas.rec_color)
         
 
     def mouse_click(self,event):
