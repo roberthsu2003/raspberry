@@ -2,12 +2,14 @@ import tkinter as tk
 
 class ColorCanvas(tk.Canvas):
     def __init__(self,parent,rec_color,**kwargs):
+        width = kwargs['width']
+        height = kwargs['height']
         super().__init__(parent,**kwargs)
         self.rec_color = rec_color
         space = 10
-        rec_width = int(self['width'])  - 2 * space 
-        rec_height = int(self['height']) - 2 * space   
-        self.create_rectangle(space, space, int(self['width']) - space, int(self['height']) - space,fill=self.rec_color)
+        rec_width = width  - 2 * space 
+        rec_height = height - 2 * space   
+        self.create_rectangle(space, space, width - space, height - space,fill=self.rec_color)
 
 class Window(tk.Tk):
     def __init__(self):
