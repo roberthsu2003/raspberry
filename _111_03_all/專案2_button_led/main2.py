@@ -56,13 +56,7 @@ class Window(tk.Tk):
         cls.selected_convas.state = ColorCanvas.ON
 
     light_state = False
-    @classmethod
-    def get_current_state(cls):
-        return cls.light_state
-
-    @classmethod
-    def set_current_state(cls,state):
-        cls.light_state = state
+    
 
 
     def __init__(self):
@@ -106,7 +100,11 @@ class Window(tk.Tk):
         Window.set_select_convas(event.widget)
 
     def button_released(self):
-        print("button release")
+        Window.light_state = not Window.light_state
+        if Window.light_state == True:
+            print("開燈")
+        else:
+            print("關燈")
 
 def main():
     window = Window()
