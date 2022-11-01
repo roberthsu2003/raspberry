@@ -97,9 +97,9 @@ class Window(tk.Tk):
         light_state_frame.pack(fill=tk.X,padx=50,pady=(0,30))
         
 
-        #gpiozero
-        button = Button(18)
-        button.when_released = self.button_released
+        #gpiozero->一定要self
+        self.button = Button(18)
+        self.button.when_released = self.button_released
         
 
     def mouse_click(self,event):
