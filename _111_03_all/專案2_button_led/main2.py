@@ -28,8 +28,7 @@ class ColorCanvas(tk.Canvas):
             #多加小圓點
             print("多加小圓點")
             rec_width = self.width  - 2 * self.space 
-            rec_height = self.height - 2 * self.space
-            
+            rec_height = self.height - 2 * self.space            
             cir_width = rec_width / 5
             cir_height = rec_height / 5
             cir_start_x = self.space + cir_width / 2
@@ -46,20 +45,21 @@ class Window(tk.Tk):
         super().__init__()           
         red = ColorCanvas(self,"red",width=100,height=100)
         red.bind('<ButtonRelease-1>',self.mouse_click)
-        red.grid(row=0, column=0)
-        red.state = ColorCanvas.ON       
-        green = ColorCanvas(self,"green",width=100,height=100)        
-        green.grid(row=0, column=1)
-        green.state = ColorCanvas.ON
-        blue = ColorCanvas(self,"blue",width=100,height=100)        
+        red.grid(row=0, column=0)               
+        green = ColorCanvas(self,"green",width=100,height=100)
+        green.bind('<ButtonRelease-1>',self.mouse_click)        
+        green.grid(row=0, column=1)        
+        blue = ColorCanvas(self,"blue",width=100,height=100)
+        blue.bind('<ButtonRelease-1>',self.mouse_click)        
         blue.grid(row=0, column=2)
-        blue.state = ColorCanvas.ON
+        
 
     def mouse_click(self,event):
         print(event.__dict__)
+        print(event.widget.rec_color)
         #event.widget.delete()
-        event.widget.create_rectangle(10,10,60,60,fill='white')
-        event.widget.create_rectangle(20,20,50,50,fill='red')
+        #event.widget.create_rectangle(10,10,60,60,fill='white')
+        #event.widget.create_rectangle(20,20,50,50,fill='red')
         #event.widget.update()
 
 def main():
