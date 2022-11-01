@@ -65,7 +65,7 @@ class Window(tk.Tk):
         #---- start color_frame -----
         color_frame = tk.Frame(self,borderwidth=2,relief=tk.GROOVE)
         color_frame.pack(padx=50,pady=50) 
-        tk.Label(color_frame,text="請選擇顏色:",font=("Arial",16)).grid(row=0,column=0,columnspan=3,sticky=tk.W)        
+        tk.Label(color_frame,text="請選擇顏色:",font=("Arial",16)).grid(row=0,column=0,columnspan=3,sticky=tk.W,padx=10,pady=10)        
         red = ColorCanvas(color_frame,"red",width=100,height=100)
         red.bind('<ButtonRelease-1>',self.mouse_click)
         red.grid(row=1, column=0)               
@@ -78,7 +78,13 @@ class Window(tk.Tk):
         Window.set_select_convas(red)
         select_canvas = Window.get_select_convas()
         #---- end color_frame -----
-        
+
+        #---- start light_state_frame -----
+        light_state_frame = tk.Frame(self,borderwidth=2,relief=tk.GROOVE)
+        state_label =  tk.Label(light_state_frame,text="目前燈光:關",font=('Arail',16),anchor=tk.W)
+        state_label.pack(fill=tk.X,padx=10,pady=10)
+        light_state_frame.pack(fill=tk.X,padx=50,pady=(0,30))
+        #---- end light_state_frame -----
         
 
     def mouse_click(self,event):
