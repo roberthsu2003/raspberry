@@ -41,7 +41,7 @@ class ColorCanvas(tk.Canvas):
 
 
 class Window(tk.Tk):
-    selected_convas = None
+    selected_convas = None    
     @classmethod
     def get_select_convas(cls):
         return cls.selected_convas
@@ -52,6 +52,15 @@ class Window(tk.Tk):
             cls.selected_convas.state = ColorCanvas.OFF   
         cls.selected_convas = convas
         cls.selected_convas.state = ColorCanvas.ON
+
+    light_state = False
+    @classmethod
+    def get_current_state(cls):
+        return cls.light_state
+
+    @classmethod
+    def set_current_state(cls,state):
+        cls.light_state = state
 
 
     def __init__(self):
