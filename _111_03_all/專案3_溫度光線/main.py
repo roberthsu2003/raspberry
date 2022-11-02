@@ -16,13 +16,20 @@ class Window(tk.Tk):
         now = datetime.now()
         now_str = now.strftime("%Y-%m-%d %H:%M:%S")
         self.label.config(text=now_str)
-        self.label.after(1000,self.change_time)
+        self.after_id = self.label.after(1000,self.change_time)
+
+    def delete_delay(self):
+        self.label.after_cancel(self.after_id)
+        self.destroy()
+        
+        
         
 
 
 def main():
     window =  Window()
     window.title("數位時鐘")
+    window.protocol("WM_DELETE_WINDOW",window.delete_delay)
     window.mainloop()
 
 if __name__ == "__main__":
