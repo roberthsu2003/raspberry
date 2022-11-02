@@ -10,6 +10,7 @@ class Window(tk.Tk):
         self.label = tk.Label(self,text="",font=("arial",30))
         self.label.pack(padx=50,pady=30)
         self.change_time()
+        self.window_time()
 
         
     def change_time(self):
@@ -18,8 +19,13 @@ class Window(tk.Tk):
         self.label.config(text=now_str)
         self.after_id = self.label.after(1000,self.change_time)
 
+    def window_time(self):
+        print("計錄一次資料")
+        self.window_id = self.after(1000 * 60,self.window_time)
+
     def delete_delay(self):
         self.label.after_cancel(self.after_id)
+        self.after_cancel(self.window_id)
         self.destroy()
         
         
