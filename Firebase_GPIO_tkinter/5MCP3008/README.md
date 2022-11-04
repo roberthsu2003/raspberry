@@ -21,6 +21,8 @@ if __name__ == "__main__":
         sleep(1);
 ```
 
+## tkinter
+
 ![](./images/pic1.png)
 
 ```python
@@ -84,6 +86,8 @@ if __name__ == "__main__":
     window.mainloop();
     
 ```
+
+## tkinter and firebase db
 
 ```python
 from tkinter import *
