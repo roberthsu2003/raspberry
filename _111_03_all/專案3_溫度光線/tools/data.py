@@ -9,9 +9,9 @@ lightValue = MCP3008(7)
 
 def getDistance():
     if sensor.distance < 1.0: 
-        print(f"距離:{sensor.distance*100}公分")
+        print(f"距離:{sensor.distance*100:.2f}公分")
     else:
         print(f"距離:大於100公分")
-        
+
 def getLightValue():    
-    print("光線:",lightValue.value * 1000)
+    print(f"光線:{lightValue.value * 1000:.1f}")
