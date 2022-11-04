@@ -1,5 +1,6 @@
 import tkinter as tk
 from datetime import datetime
+from tools import data
 
 
 class Window(tk.Tk):
@@ -11,6 +12,7 @@ class Window(tk.Tk):
         self.label.pack(padx=50,pady=30)
         self.change_time()
         self.window_time()
+        
 
         
     def change_time(self):

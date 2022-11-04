@@ -1,0 +1,1 @@
+print("data.py被執行")
