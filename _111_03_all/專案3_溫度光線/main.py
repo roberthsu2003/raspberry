@@ -23,7 +23,8 @@ class Window(tk.Tk):
 
     def window_time(self):
         data.getTemperature()
-        self.window_id = self.after(1000 * 60,self.window_time)
+        data.getLightValue()
+        self.window_id = self.after(1000 * 10,self.window_time)
 
     def delete_delay(self):
         self.label.after_cancel(self.after_id)
