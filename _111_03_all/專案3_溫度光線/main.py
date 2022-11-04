@@ -22,7 +22,7 @@ class Window(tk.Tk):
         self.after_id = self.label.after(1000,self.change_time)
 
     def window_time(self):
-        print("計錄一次資料")
+        data.getTemperature()
         self.window_id = self.after(1000 * 60,self.window_time)
 
     def delete_delay(self):
