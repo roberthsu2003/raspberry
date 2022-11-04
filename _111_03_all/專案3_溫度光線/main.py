@@ -22,9 +22,9 @@ class Window(tk.Tk):
         self.after_id = self.label.after(1000,self.change_time)
 
     def window_time(self):
-        data.getTemperature()
+        data.getDistance()
         data.getLightValue()
-        self.window_id = self.after(1000 * 10,self.window_time)
+        self.window_id = self.after(1000 * 3,self.window_time)
 
     def delete_delay(self):
         self.label.after_cancel(self.after_id)
