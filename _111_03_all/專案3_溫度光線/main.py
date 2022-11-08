@@ -1,6 +1,7 @@
 import tkinter as tk
 from datetime import datetime
-from tools import data
+from tools import data,record
+
 
 
 class Window(tk.Tk):
@@ -27,11 +28,13 @@ class Window(tk.Tk):
         else:
             print(f"距離:大於100公分")
             distance = 100   
-                
+               
         lightValue = data.getLightValue()
         print(f"光線:{lightValue:.1f}")
+        #記錄資料
+        record.recordData(distance=100,lightValue=200)
         
-        self.window_id = self.after(1000 * 3,self.window_time)
+        self.window_id = self.after(1000 * 30,self.window_time)
 
     def delete_delay(self):
         self.label.after_cancel(self.after_id)
