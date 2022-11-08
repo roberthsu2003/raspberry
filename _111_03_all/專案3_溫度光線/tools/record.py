@@ -7,7 +7,10 @@ if not os.path.isdir(directory):
     #建立目錄
     os.makedirs(directory)
 
+filename_abs = None
+
 def recordData(distance,lightValue):
+    global filename_abs
     current = datetime.now()
     current_date = current.date()
     filename = current_date.strftime("%Y-%m-%d.csv")    
@@ -23,6 +26,12 @@ def recordData(distance,lightValue):
     with open(filename_abs,"a",newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow([current.strftime("%Y-%m-%d %H:%M:%S"),distance,lightValue])
+
+def getData():
+    with open(filename_abs,"r",newline='') as file:
+        csv_reader = csv.reader(file)
+        data = list(csv_reader)
+    return data
 
     
     

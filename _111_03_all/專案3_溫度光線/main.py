@@ -34,6 +34,9 @@ class Window(tk.Tk):
         #記錄資料
         record.recordData(distance=distance,lightValue=lightValue)
 
+        #取得資料
+        all_data = record.getData()
+        print(all_data)
         self.window_id = self.after(1000 * 30,self.window_time)
 
     def delete_delay(self):
@@ -42,9 +45,6 @@ class Window(tk.Tk):
         self.destroy()
         
         
-        
-
-
 def main():
     window =  Window()
     window.title("數位時鐘")
