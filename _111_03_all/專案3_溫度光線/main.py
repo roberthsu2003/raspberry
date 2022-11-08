@@ -26,11 +26,11 @@ class Window(tk.Tk):
             print(f"距離:{distance:.2f}公分")
         else:
             print(f"距離:大於100公分")
-            distance = 100
+            distance = 100   
+                
+        lightValue = data.getLightValue()
+        print(f"光線:{lightValue:.1f}")
         
-
-        
-        data.getLightValue()
         self.window_id = self.after(1000 * 3,self.window_time)
 
     def delete_delay(self):
