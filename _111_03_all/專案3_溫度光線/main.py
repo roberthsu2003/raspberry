@@ -10,6 +10,18 @@ class CustomView(ttk.Treeview):
         self.heading('#1',text="日期")
         self.heading('#2',text="距離")
         self.heading('#3',text="光線")
+
+    def addData(self,data):
+        #清除第一筆資料
+        data.pop(0)
+        #反向
+        data.reverse()
+        #清除所有資料
+        for i in self.get_children():
+            self.delete(i)
+        #新增所有資料
+        for item in  data:
+            self.insert('',tk.END,values=item)
         
         
 class Window(tk.Tk):
@@ -18,11 +30,9 @@ class Window(tk.Tk):
         self.label = tk.Label(self,text="",font=("arial",30))
         self.label.pack(padx=50,pady=30)
         self.customView = CustomView(self,columns=('#1','#2','#3'),show='headings')
-        self.customView.pack()
-
+        self.customView.pack(padx=20,pady=(0,20))
         self.change_time()
-        self.window_time()      
-
+        self.window_time()
         
     def change_time(self):
         now = datetime.now()
@@ -46,7 +56,7 @@ class Window(tk.Tk):
 
         #取得資料
         all_data = record.getData()
-        print(all_data)
+        self.customView.addData(all_data)        
         self.window_id = self.after(1000 * 30,self.window_time)
 
     def delete_delay(self):
@@ -57,7 +67,7 @@ class Window(tk.Tk):
         
 def main():
     window =  Window()
-    window.title("數位時鐘")
+    window.title("光線和距離監測器")
     window.protocol("WM_DELETE_WINDOW",window.delete_delay)
     window.mainloop()
 
