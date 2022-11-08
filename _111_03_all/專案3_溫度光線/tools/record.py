@@ -3,6 +3,7 @@ from datetime import datetime
 
 directory = os.path.abspath("./record")
 if not os.path.isdir(directory):
+    #建立目錄
     os.makedirs(directory)
 
 def recordData(distance,lightValue):
@@ -11,5 +12,10 @@ def recordData(distance,lightValue):
     filename = current_date.strftime("%Y-%m-%d.csv")    
     currentFiles = os.listdir(directory)
     if filename not in currentFiles:
-        print(f"沒有{filename}此檔")
+        #建立檔案
+        file = open(f"{directory}/{filename}",'w',encoding='utf-8')
+        file.close()
+    
+    
+
     
