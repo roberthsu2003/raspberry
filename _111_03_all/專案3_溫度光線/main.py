@@ -32,8 +32,8 @@ class Window(tk.Tk):
         lightValue = data.getLightValue()
         print(f"光線:{lightValue:.1f}")
         #記錄資料
-        record.recordData(distance=100,lightValue=200)
-        
+        record.recordData(distance=distance,lightValue=lightValue)
+
         self.window_id = self.after(1000 * 30,self.window_time)
 
     def delete_delay(self):
