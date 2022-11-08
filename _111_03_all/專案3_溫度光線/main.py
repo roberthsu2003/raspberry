@@ -20,7 +20,16 @@ class Window(tk.Tk):
         self.after_id = self.label.after(1000,self.change_time)
 
     def window_time(self):
-        data.getDistance()
+        distance = data.getDistance()
+        print(distance)
+        if distance < 100.0: 
+            print(f"距離:{distance:.2f}公分")
+        else:
+            print(f"距離:大於100公分")
+            distance = 100
+        
+
+        
         data.getLightValue()
         self.window_id = self.after(1000 * 3,self.window_time)
 
