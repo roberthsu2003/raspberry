@@ -62,7 +62,7 @@ class Window(tk.Tk):
         #取得資料
         all_data = record.getData()
         self.customView.addData(all_data)        
-        self.window_id = self.after(1000 * 30,self.window_time)
+        self.window_id = self.after(1000 * 5,self.window_time)
 
     def delete_delay(self):
         self.label.after_cancel(self.after_id)

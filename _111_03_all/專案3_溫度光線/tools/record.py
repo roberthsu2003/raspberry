@@ -27,6 +27,12 @@ def recordData(distance,lightValue):
         csv_writer = csv.writer(file)
         csv_writer.writerow([current.strftime("%Y-%m-%d %H:%M:%S"),distance,lightValue])
 
+    #將資料加入至firestore
+    print("要加入的資料")
+    print('日期',current.strftime("%Y-%m-%d %H:%M:%S"))
+    print('距離',distance)
+    print("亮度",lightValue)
+
 def getData():
     with open(filename_abs,"r",newline='') as file:
         csv_reader = csv.reader(file)
