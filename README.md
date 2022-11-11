@@ -25,6 +25,7 @@
 - 使用VSCode連線至Raspberry
 
 
+
 ## [命令列](./目錄/命令列)
 - 建立github SSH keys
 - 使用SSH學習命令列 
@@ -76,10 +77,20 @@
 ### 啟動時自動執行應用程式
 
 ```
-sudo nano /etc/rc.local
 
-在最後一行加入
-$ /usr/bin/python /home/pi/my_program.py &
+1 建立 .desktop File
+
+mkdir /home/pi/.config/autostart
+nano /home/pi/.config/autostart/clock.desktop
+
+2 clock.desktop的內容為
+
+[Desktop Entry]
+Type=Application
+Name=Clock
+Exec=/usr/bin/python3 /home/pi/clock.py
 ```
+
+
 
 	
