@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 from tkinter import ttk
 from datetime import datetime
 from tools import data,record
@@ -56,8 +57,12 @@ class Window(tk.Tk):
                
         lightValue = data.getLightValue()
         print(f"光線:{lightValue:.1f}")
+        #取得檔案絕對位置
+        absolute_path = os.path.dirname(__file__)
         #記錄資料
-        record.recordData(distance=distance,lightValue=lightValue)
+        record.recordData(distance=distance,lightValue=lightValue,absolute_path=absolute_path)
+        
+        
 
         #取得資料
         all_data = record.getData()
@@ -76,5 +81,5 @@ def main():
     window.protocol("WM_DELETE_WINDOW",window.delete_delay)
     window.mainloop()
 
-if __name__ == "__main__":
+if __name__ == "__main__":    
     main()
