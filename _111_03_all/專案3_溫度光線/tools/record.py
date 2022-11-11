@@ -34,12 +34,15 @@ def recordData(distance,lightValue,absolute_path):
     with open(full_path_csvFile,"a",newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow([current.strftime("%Y-%m-%d %H:%M:%S"),distance,lightValue])
-    
+
     #將資料加入至firestore
     #print("要加入的資料")
     #print('日期',current.strftime("%Y-%m-%d %H:%M:%S"))
     #print('距離',distance)
     #print("亮度",lightValue)
+    relative_path_key = "private/raspberry1-58efc-firebase-adminsdk-tzk5o-6836a56c1e.json"
+    full_path_key = os.path.join(absolute_path,relative_path_key)
+    print("key:",full_path_key)
 
 def getData():
     with open(full_path_csvFile,"r",newline='') as file:
