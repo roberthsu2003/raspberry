@@ -34,7 +34,7 @@ def recordData(distance,lightValue,absolute_path):
     with open(full_path_csvFile,"a",newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow([current.strftime("%Y-%m-%d %H:%M:%S"),distance,lightValue])
-
+    
     #將資料加入至firestore
     #print("要加入的資料")
     #print('日期',current.strftime("%Y-%m-%d %H:%M:%S"))
