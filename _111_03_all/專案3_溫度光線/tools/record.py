@@ -1,16 +1,17 @@
 import os
 import csv
 from datetime import datetime
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
-#directory = os.path.abspath("./record")
-#if not os.path.isdir(directory):
-    #建立目錄
-    #os.makedirs(directory)
 
 full_path_csvFile =  None
+db = None
 
 def recordData(distance,lightValue,absolute_path): 
-    global full_path_csvFile   
+    global full_path_csvFile
+    global db  
     current = datetime.now()
     current_date = current.date()
     filename = current_date.strftime("%Y-%m-%d.csv")
@@ -43,6 +44,10 @@ def recordData(distance,lightValue,absolute_path):
     relative_path_key = "private/raspberry1-58efc-firebase-adminsdk-tzk5o-6836a56c1e.json"
     full_path_key = os.path.join(absolute_path,relative_path_key)
     print("key:",full_path_key)
+    if db is None:
+        cred = credentials.Certificate(full_path_key)
+        app = firebase_admin.initialize_app(cred)
+        db = firestore.client()
 
 def getData():
     with open(full_path_csvFile,"r",newline='') as file:
