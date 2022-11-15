@@ -1,9 +1,7 @@
 import tkinter as tk
 from PIL import Image,ImageTk
-import firebase_admin
 import RPi.GPIO as GPIO
-from firebase_admin import credentials
-from firebase_admin import db
+
 
 
 
@@ -31,14 +29,7 @@ class LightButton(tk.Button):
 
 class Window(tk.Tk):
     def __init__(self):
-        super().__init__()
-        #建立firebase 連線
-        cred = credentials.Certificate("private/raspberry1-58efc-firebase-adminsdk-tzk5o-6836a56c1e.json")
-        firebase_admin.initialize_app(cred,{
-            'databaseURL': 'https://raspberry1-58efc-default-rtdb.firebaseio.com/'
-        })
-
-        led = db.reference('ledControl')       
+        super().__init__()        
 
         #建立title
         self.title("LED Controller")
@@ -47,6 +38,8 @@ class Window(tk.Tk):
 
         self.btn = LightButton(self,padx=50,pady=30)
         self.btn.pack(padx=50,pady=30)
+        self.btn.open()
+        '''
         currentState = led.get()['led']
         if currentState:
            self.btn.open()
@@ -54,25 +47,8 @@ class Window(tk.Tk):
         else:
            self.btn.close()
            GPIO.output(25,GPIO.LOW)
+        '''
 
-        #註冊監聽
-        #監聽必需在最後面
-        led.listen(self.firebaseDataChange)
-    
-    def firebaseDataChange(self,event):
-        print(f"資料內容:{event.data}")
-        print(f"資料路徑:{event.path}")
-        if event.path == "/":
-            state = event.data['led']
-        elif event.path ==  "/led":
-            state = event.data
-        
-        if state:
-            self.btn.open()
-            GPIO.output(25,GPIO.HIGH)
-        else:
-            self.btn.close()
-            GPIO.output(25,GPIO.LOW)
 
 
 def main():
