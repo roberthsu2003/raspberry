@@ -2,6 +2,8 @@ import tkinter as tk
 from PIL import Image,ImageTk
 import RPi.GPIO as GPIO
 
+BLYNK_AUTH_TOKEN = "_W4TI-9ca37qXQyAhFiX4jMhvO989lvj"
+
 class LightButton(tk.Button):
     def __init__(self,parent,**kwargs):
         super().__init__(parent,**kwargs)
@@ -35,7 +37,8 @@ class Window(tk.Tk):
 
         self.btn = LightButton(self,padx=50,pady=30)
         self.btn.pack(padx=50,pady=30)
-        self.btn.open()
+        self.repeat_run()
+        
         
         '''
         currentState = led.get()['led']
@@ -46,10 +49,17 @@ class Window(tk.Tk):
            self.btn.close()
            GPIO.output(25,GPIO.LOW)
         '''
-        
+
     def delete_delay(self):
         GPIO.cleanup()
+        self.after_cancel(self.window_id)
         self.destroy()
+
+   
+
+    def repeat_run(self):
+        print("run")
+        self.window_id = self.after(1000,self.repeat_run)
 
 
 def main():
