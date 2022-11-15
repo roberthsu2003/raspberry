@@ -40,16 +40,6 @@ class Window(tk.Tk):
         self.btn.pack(padx=50,pady=30)
         self.repeat_run()
         
-        
-        '''
-        currentState = led.get()['led']
-        if currentState:
-           self.btn.open()
-           GPIO.output(25,GPIO.HIGH)
-        else:
-           self.btn.close()
-           GPIO.output(25,GPIO.LOW)
-        '''
 
     def delete_delay(self):
         GPIO.cleanup()
