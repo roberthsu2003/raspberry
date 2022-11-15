@@ -33,7 +33,7 @@ class Window(tk.Tk):
     def __init__(self):
         super().__init__()
         #建立firebase 連線
-        cred = credentials.Certificate("private/raspberry1-58efc-firebase-adminsdk-tzk5o-2743aa1e4a.json")
+        cred = credentials.Certificate("private/raspberry1-58efc-firebase-adminsdk-tzk5o-6836a56c1e.json")
         firebase_admin.initialize_app(cred,{
             'databaseURL': 'https://raspberry1-58efc-default-rtdb.firebaseio.com/'
         })
