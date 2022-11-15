@@ -61,8 +61,14 @@ class Window(tk.Tk):
     def repeat_run(self):
         geturl = f'https://blynk.cloud/external/api/get?token={BLYNK_AUTH_TOKEN}&v25'
         response = requests.get(geturl)
+        print(response.status_code)
         if response.ok:
-            print(response.text)
+            if response.text == "0":
+                self.btn.close()
+                GPIO.output(25,GPIO.LOW)
+            elif response.text == "1":
+                self.btn.open()
+                GPIO.output(25,GPIO.HIGH)
         else:
             print("連線失敗")
         self.window_id = self.after(1000,self.repeat_run)
