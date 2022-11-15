@@ -1,6 +1,7 @@
 import tkinter as tk
 from PIL import Image,ImageTk
 import RPi.GPIO as GPIO
+import requests
 
 BLYNK_AUTH_TOKEN = "_W4TI-9ca37qXQyAhFiX4jMhvO989lvj"
 
@@ -58,7 +59,12 @@ class Window(tk.Tk):
    
 
     def repeat_run(self):
-        print("run")
+        geturl = f'https://blynk.cloud/external/api/get?token={BLYNK_AUTH_TOKEN}&v25'
+        response = requests.get(geturl)
+        if response.ok:
+            print(response.text)
+        else:
+            print("連線失敗")
         self.window_id = self.after(1000,self.repeat_run)
 
 
