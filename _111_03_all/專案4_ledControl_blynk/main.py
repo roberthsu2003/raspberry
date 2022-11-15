@@ -2,9 +2,6 @@ import tkinter as tk
 from PIL import Image,ImageTk
 import RPi.GPIO as GPIO
 
-
-
-
 class LightButton(tk.Button):
     def __init__(self,parent,**kwargs):
         super().__init__(parent,**kwargs)
@@ -39,6 +36,7 @@ class Window(tk.Tk):
         self.btn = LightButton(self,padx=50,pady=30)
         self.btn.pack(padx=50,pady=30)
         self.btn.open()
+        
         '''
         currentState = led.get()['led']
         if currentState:
@@ -48,7 +46,10 @@ class Window(tk.Tk):
            self.btn.close()
            GPIO.output(25,GPIO.LOW)
         '''
-
+        
+    def delete_delay(self):
+        GPIO.cleanup()
+        self.destroy()
 
 
 def main():
@@ -56,6 +57,7 @@ def main():
     GPIO.setwarnings(False)
     GPIO.setup(25,GPIO.OUT)
     window = Window()
+    window.protocol("WM_DELETE_WINDOW",window.delete_delay)
     window.mainloop()
 
 if __name__ == "__main__":
