@@ -109,180 +109,94 @@ if __name__ == '__main__':
     window.mainloop()
 ```
 
+## 使用Rpi.GPIO,tkinter,自訂Button Class,使用LED圖片檔
+
 ```python
-from tkinter import *
-from gpiozero import LED
+import tkinter as tk
+from PIL import Image,ImageTk
 import firebase_admin
+import RPi.GPIO as GPIO
 from firebase_admin import credentials
 from firebase_admin import db
 
-class App:
-    def __init__(self,window):
-        self.led = LED(25);
-        #firebase initial
-        cred = credentials.Certificate('raspberryfirebase-firebase-adminsdk-q4ht6-7d3f9d2d5e.json');
-        firebase_admin.initialize_app(cred, {'databaseURL': 'https://raspberryfirebase.firebaseio.com/'});
-        self.ledControlRef = db.reference('raspberrypi/LED_Control');
-        self.ledControlRef.listen(self.firebaseDatachanges);
-        
-        
-        #interface        #button_text
-        self.buttonText = StringVar();
-        
-        mainFrame = Frame(window,borderwidth=2,relief=GROOVE);
-        Label(window,text="LED Control").place(relx=0.05,rely=0.025,anchor=NW);
-        Button(mainFrame,textvariable=self.buttonText,command=self.userClick).pack(expand=YES,fill=BOTH,padx=40,pady=25);
-        self.buttonText.set("OPEN");
-        mainFrame.pack(expand=YES,fill=BOTH,padx=5,pady=20);
-        
-        #ledControl
-        #self.led = LED(25);
-        self.led.off();
-    
-    def userClick(self):
-        if self.buttonText.get() == "CLOSE":
-            self.buttonText.set("OPEN");
-            self.ledControlRef.update({"LED25":"CLOSE"});
-        else:
-            self.buttonText.set("CLOSE");
-            self.ledControlRef.update({"LED25":"OPEN"});
-    
-    def firebaseDatachanges(self,event):
-        print("Event type:{},Event path:{}".format(event.data,event.path));
-        if event.path == "/" :
-            if event.data['LED25'] == "OPEN":
-                self.led.on();
-            elif event.data['LED25'] == "CLOSE":
-                self.led.off();
-        elif event.path == "/LED25":
-            if event.data == "OPEN":
-                self.led.on();
-            elif event.data == "CLOSE":
-                self.led.off();
 
+
+class LightButton(tk.Button):
+    def __init__(self,parent,**kwargs):
+        super().__init__(parent,**kwargs)
+        #建立圖片
+        ##建立close的圖片
+        close_image = Image.open('light_close.png')
+        self.close_photo = ImageTk.PhotoImage(close_image)
+        ##建立open的圖片
+        open_image = Image.open('light_open.png')
+        self.open_photo = ImageTk.PhotoImage(open_image)
+        self.config(borderwidth=0)
+        self.config(state="disabled")
         
+
+    def open(self):
+        self.config(image=self.open_photo)
+        
+
+    def close(self):
+        self.config(image=self.close_photo);
+        
+
+class Window(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        #建立firebase 連線
+        cred = credentials.Certificate("private1/raspberry1-58efc-firebase-adminsdk-tzk5o-2743aa1e4a.json")
+        firebase_admin.initialize_app(cred,{
+            'databaseURL': 'https://raspberry1-58efc-default-rtdb.firebaseio.com/'
+        })
+
+        led = db.reference('ledControl')       
+
+        #建立title
+        self.title("LED Controller")
+
+        #建立按鈕
+
+        self.btn = LightButton(self,padx=50,pady=30)
+        self.btn.pack(padx=50,pady=30)
+        currentState = led.get()['led']
+        if currentState:
+           self.btn.open()
+           GPIO.output(25,GPIO.HIGH)
+        else:
+           self.btn.close()
+           GPIO.output(25,GPIO.LOW)
+
+        #註冊監聽
+        #監聽必需在最後面
+        led.listen(self.firebaseDataChange)
+    
+    def firebaseDataChange(self,event):
+        print(f"資料內容:{event.data}")
+        print(f"資料路徑:{event.path}")
+        if event.path == "/":
+            state = event.data['led']
+        elif event.path ==  "/led":
+            state = event.data
+        
+        if state:
+            self.btn.open()
+            GPIO.output(25,GPIO.HIGH)
+        else:
+            self.btn.close()
+            GPIO.output(25,GPIO.LOW)
+
+
+def main():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    GPIO.setup(25,GPIO.OUT)
+    window = Window()
+    window.mainloop()
 
 if __name__ == "__main__":
-    window = Tk();
-    window.title("LED Control");
-    window.geometry("300x200");
-    window.option_add("*Font",("verdana",18,"bold"));
-    window.option_add("*Label.Font",("verdana",18));
-    window.option_add("*Button.Background","dark gray");
-    app = App(window);
-    window.mainloop();
-
+    main()
 ```
 
-```python
-from tkinter import *
-
-def ledClose():
-    print("ledClose");
-    
-def ledOpen():
-    print("ledOpen");
-
-def appInterface(window):
-    frame = Frame(window,borderwidth=1,relief=GROOVE);
-    Label(frame,
-          text="LED Controler",
-          font=("Helvetica", 20)
-          ,anchor=W).pack(fill=X);
-    
-    Button(frame,text="open",
-           pady=50,
-           font=("Helvetica", 20),
-           command=ledOpen).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    
-    Button(frame,text="close"
-           ,pady=50,           
-           font=("Helvetica", 20),command=ledClose).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    frame.pack(padx=10,pady=10,fill=X);
-    
-    rgbFrame = Frame(window,borderwidth=1,relief=GROOVE);
-    Button(rgbFrame,text="RED"
-           ,pady=50,           
-           font=("Helvetica", 20)).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    
-    Button(rgbFrame,text="GREEN"
-           ,pady=50,           
-           font=("Helvetica", 20)).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    
-    Button(rgbFrame,text="BLUE"
-           ,pady=50,           
-           font=("Helvetica", 20)).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    
-    rgbFrame.pack(padx=10,pady=10,fill=X);
-    
-    numberFrame = Frame(window,borderwidth=1,relief=GROOVE);
-    Button(numberFrame,text="1"
-           ,pady=25,           
-           font=("Helvetica", 20)).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    
-    Button(numberFrame,text="2"
-           ,pady=25,           
-           font=("Helvetica", 20)).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    
-    Button(numberFrame,text="3"
-           ,pady=25,           
-           font=("Helvetica", 20)).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    Button(numberFrame,text="4"
-           ,pady=25,           
-           font=("Helvetica", 20)).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    Button(numberFrame,text="5"
-           ,pady=25,           
-           font=("Helvetica", 20)).pack(side=LEFT,
-                                        fill=X,
-                                        expand=True,
-                                        padx=10,
-                                        pady=20);
-    numberFrame.pack(padx=10,pady=10,fill=X);
-
-
-if __name__ == '__main__':
-    app = Tk();
-    
-    app.title("LEDControl");
-    app.geometry("500x600");
-    app.option_add("*Button.Background","#007A9B");
-    app.option_add("*Button.Foreground","white");
-    appInterface(window=app);
-    app.mainloop();
-```
