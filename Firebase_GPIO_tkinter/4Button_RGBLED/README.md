@@ -27,7 +27,7 @@ pause();
 
 ```
 
-## tkinter
+## tkinter, 繼承Canvas(畫圖) , 建立@property, gpiozero
 
 ```python
 import tkinter as tk
@@ -133,7 +133,7 @@ if __name__ == "__main__":
 
 ![](./images/pic1.png)
 
-## tkinter,gpiozero
+## tkinter, 繼承Canvas(畫圖) , 建立@property, gpiozero,增加一個Button
 
 ```python
 import tkinter as tk
