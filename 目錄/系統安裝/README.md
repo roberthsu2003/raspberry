@@ -5,6 +5,8 @@
 <a name="noRaspberry"></a>
 ## 沒有RaspberryPi硬體的解決方案
 - PC電腦下載[VMWare workstation player](https://www.vmware.com/tw/products/workstation-player.html)
+- [raspberryOS_install](https://youtube.com/live/skJ3XT_R-1A?feature=share)
+
 - Mac電腦下載[VMWare Fution個人免費版](https://www.vmware.com/tw/products/fusion/fusion-evaluation.html)
 - [VMWare workstation player 安裝方式](https://thesecmaster.com/install-raspberry-pi-os-on-vmware-workstation/)
 
