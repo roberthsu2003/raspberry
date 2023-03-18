@@ -1,4 +1,5 @@
 import tkinter as tk
+import RPi.GPIO as GPIO
 
 class Window(tk.Tk):
     def __init__(self):
@@ -12,12 +13,17 @@ class Window(tk.Tk):
 
     def open(self):
         print("開燈")
+        GPIO.output(25, GPIO.HIGH)
 
     def close(self):
         print("關燈")
+        GPIO.output(25, GPIO.LOW)
 
 
 def main():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    GPIO.setup(25,GPIO.OUT)
     window = Window()
     window.mainloop()
     
