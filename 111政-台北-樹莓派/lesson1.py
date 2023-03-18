@@ -1,6 +1,16 @@
-def main():
-    print("Hello! Main Function")
-    print("這是第2次編輯")
+import tkinter as tk
 
+class Window(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Hello Tkinter")
+
+        label = tk.Label(self, text="Hello World!")
+        label.pack(fill=tk.BOTH, expand=1, padx=100, pady=50)
+
+def main():
+    window = Window()
+    window.mainloop()
+    
 if __name__ == "__main__":
     main()
