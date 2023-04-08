@@ -10,11 +10,18 @@ import requests
 from gpiozero import Button
 from signal import pause
 
-def say_hello():
-    print("Hello!")
+state = False
+
+def user_press():
+    global state
+    state = not state
+    if state == True:
+        print("開燈")
+    else:
+        print("關燈")
 
 button = Button(18)
 
-button.when_pressed = say_hello
+button.when_pressed = user_press
 
 pause()
