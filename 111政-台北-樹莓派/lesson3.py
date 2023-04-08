@@ -5,7 +5,8 @@ import requests
 
 from gpiozero import Button
 from signal import pause
-from gpiozero import RGBLED
+from gpiozero import RGBLED,Buzzer
+
 
 state = False
 counter = 0
@@ -13,6 +14,7 @@ counter = 0
 def user_press():
     global state,counter
     state = not state
+    buzzer.on()
     
     if state == True:
         print("開燈")
@@ -33,9 +35,14 @@ def user_press():
         print("關燈")
         led.color=(0,0,0)
 
+def user_release():
+    buzzer.off()
+
 button = Button(18)
 led = RGBLED(red=17, green=27, blue=22)
+buzzer = Buzzer(25)
 
 button.when_pressed = user_press
+button.when_released = user_release
 
 pause()
