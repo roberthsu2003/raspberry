@@ -7,9 +7,9 @@ buzzer = gpiozero.Buzzer(25)
 
 while(True):    
     lightValue = round(mcp3008_light.value*1000)
-    temperature = (mcp3008_temperature.value*1000)
+    temperature = round(mcp3008_temperature.value*3.3*100,ndigits=2)
     print(temperature)
-    
+
     if lightValue < 40:
         buzzer.on()
     else:
