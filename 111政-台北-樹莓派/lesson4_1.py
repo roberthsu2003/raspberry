@@ -9,9 +9,10 @@ buzzer = gpiozero.Buzzer(25)
 
 while(True):    
     lightValue = round(mcp3008_light.value*1000)
-    #temperature = round(mcp3008_temperature.value*3.3*100,ndigits=2)
+    temperature = round(mcp3008_temperature.value*3.3*100,ndigits=2)
     print(lightValue)
-    url = f'https://blynk.cloud/external/api/update?token=CyIs--o2qa7N1CV_6YeWv2WrvMqie9Qd&A0={lightValue}'
+    print(temperature)
+    url = f'https://blynk.cloud/external/api/batch/update?token=CyIs--o2qa7N1CV_6YeWv2WrvMqie9Qd&A0={lightValue}&V1={temperature}'
     response = requests.get(url)
     if response.ok :
         print('連線成功')
