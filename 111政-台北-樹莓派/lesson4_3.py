@@ -1,0 +1,3 @@
+#define BLYNK_TEMPLATE_ID "TMPL6nTxHTBDw"
+#define BLYNK_TEMPLATE_NAME "raspberry光線"
+#define BLYNK_AUTH_TOKEN "CyIs--o2qa7N1CV_6YeWv2WrvMqie9Qd"
