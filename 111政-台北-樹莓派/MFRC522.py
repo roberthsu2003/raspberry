@@ -27,7 +27,7 @@ import signal
 import time
   
 class MFRC522:
-  NRSTPD = 22
+  NRSTPD = 25
   
   MAX_LEN = 16
   
