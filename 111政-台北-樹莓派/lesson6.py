@@ -7,7 +7,7 @@ cred = credentials.Certificate("raspberrytest-51322-firebase-adminsdk-qdsvd-6ec8
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://raspberrytest-51322-default-rtdb.asia-southeast1.firebasedatabase.app/'
 })
-ref = db.reference('/')
+ref = db.reference('/mfrc')
 print(ref.get())
 
 
