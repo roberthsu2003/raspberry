@@ -13,3 +13,7 @@ https://meet.google.com/ugr-gzyk-mnq
 
 ## 2023_06_08_下午
 [錄影](https://youtube.com/live/sOmBIqrxwyU)
+
+## 2023_06_12_早上
+[錄影](https://youtube.com/live/7WBy92i2DN0)
+
