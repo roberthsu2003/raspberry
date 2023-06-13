@@ -9,12 +9,12 @@ class Window(tk.Tk):
         s = ttk.Style()
         s.theme_use('clam')
         s.configure('Title.TLabel',foreground='red',background='yellow',font=('Arial',20))
-        s.configure('Led.TButton',foreground='red',background='yellow',font=('Arial',20))
+        s.configure('Led.TButton',foreground='red',background='yellow',font=('Arial',20),borderwidth=5,padding=(10,20))
         print(s.layout('TButton'))
         title_label = ttk.Label(self,text="LED控制器",style='Title.TLabel')        
         title_label.pack(pady=25,padx=100)
 
-        led_btn = ttk.Button(self,text="LED 開",style='Led.TButton',command=self.user_click,padding=(10,20),borderWidth=0)   
+        led_btn = ttk.Button(self,text="LED 開",style='Led.TButton',command=self.user_click)
              
         led_btn.pack(pady=(10,50))
 
