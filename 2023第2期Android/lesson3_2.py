@@ -3,12 +3,18 @@ from tkinter import ttk
 from gpiozero import LED
 #import pprint
 
+class LEDButton(ttk.Button):
+    def __init__(self,master,led,**kwargs):
+        super().__init__(master,**kwargs)
+        self.led = led
+    
+
 class Window(tk.Tk):    
-    def __init__(self,redLed):
+    def __init__(self,redLed,**kwargs):
         '''
         @parmater redLed,是gpiozeor.LED的實體
         '''
-        super().__init__()
+        super().__init__(**kwargs)
         self.redLed = redLed
         self.state = False
         self.title('這是我的第一個視窗')
@@ -45,6 +51,8 @@ class Window(tk.Tk):
             self.led_btn.configure(text='LED 開')
             self.led_btn.configure(style='LEDClose.TButton')
             self.redLed.off()
+
+
 
 if __name__ == "__main__":
     led = LED(23)
