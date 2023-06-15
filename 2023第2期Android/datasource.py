@@ -28,7 +28,7 @@ def create_table(conn):
 
 def insert_data(conn, state):
     sql_insert = """
-    INSERT INTO led(date, state) VALUES(datetime('now'), ?);
+    INSERT INTO led(date, state) VALUES(datetime('now','localtime'), ?);
     """
     cursor = conn.cursor()
     cursor.execute(sql_insert, (state,))
