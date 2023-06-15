@@ -26,7 +26,10 @@ def create_table(conn):
     except Error as e:
         print(e)
 
-def insert_data(conn, state):
+def insert_data(state):
+    conn = create_connection('iot.db')
+    create_table(conn)
+
     sql_insert = """
     INSERT INTO led(date, state) VALUES(datetime('now','localtime'), ?);
     """
