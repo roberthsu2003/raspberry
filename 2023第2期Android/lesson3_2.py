@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from gpiozero import LED
-#import pprint
+import datasource
 
 class LEDButton(ttk.Button):
     def __init__(self,master,led,**kwargs):
@@ -55,11 +55,9 @@ class Window(tk.Tk):
         self.led_btn = LEDButton(self,led=redLed,text="LED 開",style='LEDClose.TButton')             
         self.led_btn.pack(pady=(10,50))
 
-    
-
-
 
 if __name__ == "__main__":
+    datasource.sayHello()
     led = LED(23)
     led.off()
     window = Window(led)   
