@@ -17,15 +17,13 @@ class RGBLed():
                 while(True):
                     self.red.start(75)
             except:
-                self.close()
+                self.red.stop()
+                #GPIO.cleanup()
         else:                  
             self.red.start(75)
             sleep(second)
-            self.close()      
+            self.red.stop()     
 
-    def close(self):
-        self.red.stop()
-        self.blue.stop()
-        self.green.stop()
+      
+    def clean(self):
         GPIO.cleanup()
-        
