@@ -10,6 +10,13 @@ class RGBLed():
         self.green = GPIO.PWM(green_pin, 75)
         self.blue = GPIO.PWM(blue_pin, 75)
 
+    def redLight(self):
+        try:
+            while(True):
+                self.red.start(75)
+        except KeyboardInterrupt:
+            self.red.stop()
+
     def close(self):
         self.red.stop()
         self.blue.stop()

@@ -1,37 +1,8 @@
 #!/usr/bin/python3
-
+import rgbLed
 import RPi.GPIO as GPIO
-from time import sleep  
-GPIO.setmode(GPIO.BCM) 
 
-GPIO.setup(17, GPIO.OUT)# set GPIO 17 as output for white led  
-GPIO.setup(27, GPIO.OUT)# set GPIO 27 as output for red led  
-GPIO.setup(22, GPIO.OUT)# set GPIO 22 as output for red led
-blue = GPIO.PWM(17, 75)
-green = GPIO.PWM(27, 75)
-red = GPIO.PWM(22, 75)   
-
-i = 75
-try:
-    while(True):
-    
-        red.start(i)
-        sleep(0.5)
-        red.stop()
-        sleep(0.5)
-
-        blue.start(i)
-        sleep(0.5)
-        blue.stop()
-        sleep(0.5)
-        
-        green.start(i)
-        sleep(0.5)
-        green.stop()
-        sleep(0.5)
-except KeyboardInterrupt:
-        blue.stop()
-        red.stop()
-        green.stop()
-        GPIO.cleanup() 
-        print("應用程式結束")
+if __name__ == '__main__':
+    rgb = rgbLed.RGBLed(22,27,17)
+    rgb.redLight()
+    GPIO.cleanup()
