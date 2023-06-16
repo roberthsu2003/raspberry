@@ -24,6 +24,31 @@ class RGBLed():
             sleep(second)
             self.red.stop()     
 
+    def greenLight(self,second=3,forever=False):
+            if forever:
+                try:
+                    while(True):
+                        self.green.start(75)
+                except:
+                    self.green.stop()
+                    #GPIO.cleanup()
+            else:                  
+                self.green.start(75)
+                sleep(second)
+                self.green.stop()
+
+    def blueLight(self,second=3,forever=False):
+            if forever:
+                try:
+                    while(True):
+                        self.blue.start(75)
+                except:
+                    self.blue.stop()
+                    #GPIO.cleanup()
+            else:                  
+                self.blue.start(75)
+                sleep(second)
+                self.blue.stop()
       
     def clean(self):
         GPIO.cleanup()
