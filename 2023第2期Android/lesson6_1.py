@@ -1,6 +1,7 @@
 import gpiozero as zero
 import RPi.GPIO as GPIO
 from time import sleep
+import requests
 
 
 
@@ -16,9 +17,15 @@ if __name__ == "__main__":
             else:
                 print("光線暗") 
 
-            print("LM35",mcp3008_ch6.value*100*3.3)    
+            response = requests.get(f'https://roberthsu2003-cautious-journey-5gw7r7vwjw37jrr-8000.preview.app.github.dev/raspberry?light={value}&temperature={mcp3008_ch6.value}')
+            
+            if response.ok:
+                print("上傳資料成功")
+                print(response.text)
+            else:
+                print(response.status_code)
 
-            sleep(1)
+            sleep(5)
     except KeyboardInterrupt:
         GPIO.cleanup()
         print("程序退函数")
