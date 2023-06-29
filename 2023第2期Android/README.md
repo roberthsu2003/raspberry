@@ -50,5 +50,11 @@ https://meet.google.com/ugr-gzyk-mnq
 ## 2023_06_27_下午
 [錄影](https://youtube.com/live/6gbLYISQGkM)
 
+## 2023_06_29_早上
+[錄影](https://youtube.com/live/2EWEpwQ-rLA)
+
+## 2023_06_29_下午
+[錄影](https://youtube.com/live/9877xsN8220)
+
 
 
