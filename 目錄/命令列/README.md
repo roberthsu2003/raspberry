@@ -1,31 +1,9 @@
 ## 命令列
-- [建立github SSH keys](#create_SSH_KEYS)
 - [使用SSH學習命令列](#command_line_interface)  
 - [使用apt-get安裝和移除軟體](#apt_get)
 - [安裝vim文字編輯器](#install_vim)
+- [建立github SSH keys](#create_SSH_KEYS)
 
-<a name="create_SSH_KEYS"></a>
-### 建立github SSH keys
-1. 在/home/pi建立目錄 .ssh
-
-	`cd ~`
-	
-2. 建立.shh目錄
-
-	`mkdir .ssh`
-	
-3. 進入目錄
-
-	`cd .ssh`
-	
-4. 建立金鑰
-
-	`ssh-keygen`
-	
-5. 使用vim copy金鑰內容，並貼上至gitHub內
-
-	`vim id_rsa.pub`
-	
 
 <a name="command_line_interface"></a>
 ## 使用SSH學習命令列
@@ -231,4 +209,71 @@ Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複�
 3. 在 Insert 模式下，按下 ESC 鍵或是 Ctrl + [ 組合鍵，可退回至 Normal 模式。
 4. 在 Normal 模式下，按下 :w 會進行存檔，按下 :q 會關閉這個檔案(但若未存檔會提
 示先存檔再離開)，而 :wq 則是存檔完成後直接關閉這個檔案。
+
+
+<a name="create_SSH_KEYS"></a>
+
+### 建立連線至 github SSH keys
+
+### 1. 建立SSH金鑰
+
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+輸入後會出現下面幾行:
+- 會自動將金鑰建立於/Users/you/.ssh/id_rsa
+- 取用這個鈕鑰有需要使用驗証碼(passphrase)嗎?(一般我直接按enter)
+- 完成後,將產生私有金鑰id_rsa和公有金鑰id_rsa.pub
+- 公有金鑰必需要放至github的repo內
+
+```
+Generating public/private rsa key pair.
+Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+```
+
+### 2. 限定可以轉送的domain
+#### 2.1 建立一個config檔
+
+```bash
+touch ~/.ssh/config
+sudo vim ~/.ssh/config 
+```
+
+#### 2.2 加入以下內容
+
+```bash
+Host github.com
+   ForwardAgent yes
+```
+
+### 3. 啟動ssh-agent
+- 主要功能為可以自動存取我們的私鑰的軟體
+
+```
+eval "$(ssh-agent -s)"
+```
+
+ 
+
+
+### 4. 將我們的將鑰加入至ssh-agent
+
+```
+ssh-add  ~/.ssh/id_rsa
+```
+
+
+### 5. 顯示公鑰的內容,並複製所有內容至github repo 的設定內
+- 顯示公鑰內容
+
+```
+cat ~/.ssh/id_rsa.pub
+```
+
+- 複製所有內容至github repo 的設定內
+
+![](./images/image1.png)
 
