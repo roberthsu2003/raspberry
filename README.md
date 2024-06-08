@@ -25,13 +25,11 @@
 - **使用遠端桌面(Microsoft Remote Desktop)**
 - **使用VSCode連線至Raspberry**
 
-
-
 ## [命令列](./目錄/命令列)
-- 使用SSH學習命令列 
+- **學習命令列** 
 - 使用apt-get安裝和移除軟體
-- 安裝vim文字編輯器
-- 建立連線github SSH keys
+- **安裝vim文字編輯器**
+- **建立連線github SSH keys**
 
 ## [安裝python軟體工具和建立虛擬環境](./目錄/安裝軟體工具)
 - 安裝python3.x
