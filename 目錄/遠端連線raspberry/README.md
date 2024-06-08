@@ -1,14 +1,24 @@
 ## 遠端連線raspberry
 
-- [從序列埠連線至Raspberry(必需要有TTL線)](https://www.raspberrypi.com.tw/tag/usb-to-ttl/)  
+- [從序列埠連線至Raspberry(必需要有TTL線)](https://www.raspberrypi.com.tw/tag/usb-to-ttl/) 
+- [建立Raspberry網路上的主機名稱](#host_name)
 - [查詢Raspberry的 ip Address](#find_ip_address) 
 - [透過電腦查詢Raspberry的 ip Address](#pc-ipAddress)
 - [透過手機 Net Analyzer 查詢Raspberry IP Address](#mobileApp)
 - [PC 透過SSH連線至Raspberry](#sshToRaspberryOnPC)  
 - [Mac 透過SSH連線至Raspberry](#sshToRaspberryOnMac) 
 - [設定raspberry環境](#set_up_raspberry)
-- [使用遠端桌面(Microsoft Remote Desktop)](#Microsoft_Remote_Desktop)
+- [使用遠端桌面(VNC viewer)](#VNC_Viewer)
 - [使用VSCode連線至Raspberry](#vscode)
+- [bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)錯誤的解決方法](#en_US.UTF-8)
+
+<a name="host_name"></a>
+## 建立Raspberry網路上的名稱,並設定開啟ssh
+使用官方燒錄軟體上設定網路名稱,並開啟ssh,如下圖所示:
+
+![](./images/pic22.png)
+![](./images/pic23.png)
+![](./images/pic24.png)
 
 <a name="find_ip_address"></a>
 ## 查詢Raspberry的 ip Address
@@ -23,6 +33,8 @@
 	
 	![](./images/pic12.png)
 	
+
+
 <a name="mobileApp"></a>
 ## 透過電腦查詢Raspberry的 ip Address
 
@@ -34,6 +46,8 @@ $ ping raspberryRobert.local
 $ ping raspberryRobert.local -4
 ```
 
+---
+
 <a name="pc-ipAddress"></a>
 
 ## 透過手機App Net Analyzer查詢Raspberry IP Address
@@ -42,6 +56,8 @@ $ ping raspberryRobert.local -4
 
 [android](https://play.google.com/store/apps/details?id=net.techet.netanalyzerlite.an&hl=zh_TW&gl=US)
 
+---
+
 <a name="sshToRaspberryOnPC"></a>
 ## PC 透過SSH連線到Raspberry
 1. 下載並開啟[putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
@@ -49,15 +65,19 @@ $ ping raspberryRobert.local -4
 
 ![](./images/putty-linux.png)
 
+---
+
 <a name="mobileApp"></a>
 
 ## Mac 透過SSH連線至Raspberry
 
 ```
 #開啟terminal
-% ssh 帳號@raspberry_ip_address
+ssh 帳號@raspberry_ip_address
+ssh 帳號@主機名稱
 ```
 
+--- 
 
 <a name="set_up_raspberry"></a>
 ## 設定raspberry環境
@@ -68,7 +88,7 @@ $ ping raspberryRobert.local -4
 ![](./images/pic4.png)
 
 2.選擇 Interfacing Options
-	- VNC關閉，其餘開啟
+	- VNC開啟，其餘開啟
 
 ![](./images/pic5.png)
 
@@ -89,7 +109,7 @@ $ ping raspberryRobert.local -4
 	- Layout:English(UK)
 	- Variant:English(UK) 
 
-<a name="Microsoft_Remote_Desktop"></a>
+
 ### 建立新的使用者帳號
 
 ```
@@ -97,12 +117,15 @@ sudo adduser pi1
 sudo adduser pi1 sudo
 ```
 
+<a name="VNC_Viewer"></a>
 ### 使用遠端桌面(VNC Viewer)
-1. 開啟 vnc Server
+1. 開啟 raspberry pi 內建的vnc server
 2. 下載 vnc viewer
-3.使用vnc viewer連線raspberry
+3. 使用vnc viewer連線raspberry
 
 ![](./images/pic9.png)
+
+---
 
 <a name="vscode"></a>
 
@@ -146,6 +169,19 @@ sudo adduser pi1 sudo
  ![](./images/pic21.png)
  
  ## 使用VSCode extention remote-ssh 連線至Raspberry(建議使用)
+ 
+ ---
+ 
+ <a name="en_US.UTF-8"></a>
+ ## bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)錯誤的解決方法
+ 
+ ```bash
+ sudo vim /etc/locale.gen
+ 
+ 將#en_US.UTF-8改為en_US.UTF-8(沒有#)
+ 
+ sudo locale-gen
+ ```
 
 
 

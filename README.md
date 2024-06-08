@@ -12,17 +12,18 @@
 
 ## [遠端連線raspberry](./目錄/遠端連線raspberry)
 - 從序列埠連線至Raspberry(必需要有TTL線)
+- **建立Raspberry網路上的小名**
 - 查詢Raspberry的 ip Address
 - 透過電腦查詢Raspberry的 ip Address
 - 使用手機app查詢 Raspberry IP Address
 - 查詢Raspberry的 IP Address 
 - 透過手機AppNet Analyzer`查詢Raspberry IP Address
-- PC 透過SSH連線至Raspberry  
-- Mac 透過SSH連線至Raspberry
-- 設定raspberry環境 
-- 建立新的使用者帳號
-- 使用遠端桌面(Microsoft Remote Desktop) 
-- 使用VSCode連線至Raspberry
+- **PC 透過SSH連線至Raspberry**  
+- **Mac 透過SSH連線至Raspberry**
+- **設定raspberry環境**
+- **建立新的使用者帳號**
+- **使用遠端桌面(Microsoft Remote Desktop)**
+- **使用VSCode連線至Raspberry**
 
 
 
