@@ -29,7 +29,7 @@ sudo apt install redis-server -y
 sudo nano /etc/redis/redis.conf
 ```
 
-## 增加一行
+## 增加(可設可不設),最大使用記憶體的數量
 
 ```
 maxmemory 100mb maxmemory-policy allkeys-lru
@@ -48,8 +48,47 @@ sudo systemctl start redis-server
 redis-cli ping
 ```
 
-## 重新啟動redis
+## 從外部電腦使用redis insight連至redis server
 
+### 1. 修改設定,讓所有外部電腦可以連入
+
+#### 1-1. 修改redis.conf
+```
+sudo nano /etc/redis/redis.conf
+```
+
+#### 1-2. 修改一行設定
+
+```
+bind 0.0.0.0
+```
+
+#### 1-3. 重新啟動
+
+```
+sudo service redis-server restart
+```
+
+### 2. 修改設定,不需使用帳號密碼
+#### 2-1. 修改redis.conf
+```
+sudo nano /etc/redis/redis.conf
+```
+
+#### 2-2. 修改一行設定
+
+```
+protected-mode no
+```
+
+#### 2-3. 重新啟動
+
+```
+sudo service redis-server restart
+```
+
+
+## 手動啟用redis-server
 ```
 redis-server
 ```
