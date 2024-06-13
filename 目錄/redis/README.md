@@ -45,7 +45,13 @@ sudo systemctl start redis-server
 ## 測試
 
 ```
-redic-cli ping
+redis-cli ping
+```
+
+## 重新啟動redis
+
+```
+redis-server
 ```
 
 
