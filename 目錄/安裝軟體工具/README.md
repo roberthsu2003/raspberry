@@ -46,20 +46,20 @@ export PATH=“/usr/bin:$PATH”
 
 
 <a name="安裝condamini和jupyter"></a>
-## 安裝miniconda和jupyter
+## 安裝miniforge和jupyter
 
-### 步驟 1:下載miniconda
-	$ wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh
+### 步驟 1:下載miniforge
+	$ wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh
 
-### 步驟2:安裝miniconda
+### 步驟2:安裝miniforge
 一開始會出現License ，一直按enter會出現問你是否同意Licence，輸入yes。
 
 會問你要安裝在預設路徑 /root/minconda3，或其他地方。我是安裝到此處:
-/home/pi/miniconda3
+/home/pi/miniforge3
 
 會問你要不要加入PATH，先輸入no，下步驟再加入PATH
 
-	$ sudo /bin/bash Miniconda3-latest-Linux-armv7l.sh
+	$ sudo /bin/bash Miniforge3-Linux-aarch64.sh
 	
 ### 步驟3:設定PATH
 
@@ -67,24 +67,22 @@ export PATH=“/usr/bin:$PATH”
 
 在檔案最尾端加入下方文字後存檔
 
-	export PATH=”/home/pi/miniconda3/bin:$PATH”
+	export PATH=”/home/pi/miniforge3/bin:$PATH”
 	
 重新執行.bashrc
 
 	$ source ~/.bashrc
 	
-步驟4:更改miniconda3下的所有檔案及目錄，為pi的擁有者
+步驟4:更改miniforge3下的所有檔案及目錄，為pi的擁有者
 
-	$ sudo chown -R pi miniconda3
+	$ sudo chown -R pi /home/pi/miniforge3
 	
-步驟 5:安裝python，會問是否同意安裝，按y
+步驟 5:
 
-	#修改conda的預設檔,告知要使用的硬體是rpi
-	conda config —add channels rpi
-	
-	#查詢conda提供的python版本 conda search "^python$"
-	conda install python=3.6
-	
+```
+conda init --all bash
+```	
+
 步驟 6:安裝Jupyter notebook
 
 	$ conda install jupyter

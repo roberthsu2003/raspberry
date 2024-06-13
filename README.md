@@ -41,6 +41,8 @@
 - 安裝pycharm comunity editor for respberry4 2GB 以上
 - 安裝vscode
 
+## [radis server](./目錄/redis)
+
 ## [雲端服務](./目錄/雲端服務)
 - Firebase
 - Blynk
