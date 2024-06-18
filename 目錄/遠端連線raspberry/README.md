@@ -2,6 +2,7 @@
 
 - [從序列埠連線至Raspberry(必需要有TTL線)](https://www.raspberrypi.com.tw/tag/usb-to-ttl/) 
 - [建立Raspberry網路上的主機名稱](#host_name)
+- [查詢windows的ip address和建立raspberry的固定ip位址](#fixed_ipaddress)
 - [查詢Raspberry的 ip Address](#find_ip_address) 
 - [透過電腦查詢Raspberry的 ip Address](#pc-ipAddress)
 - [透過手機 Net Analyzer 查詢Raspberry IP Address](#mobileApp)
@@ -19,6 +20,66 @@
 ![](./images/pic22.png)
 ![](./images/pic23.png)
 ![](./images/pic24.png)
+
+<a name="fixed_ipaddress"></a>
+## 查詢windows的ip address和建立raspberry的固定ip位址
+### 1. 查詢windows的ip address 和 DNS
+- #### 打開cmd
+- #### 執行以下指令
+```cmd
+ipconfig /all
+```
+
+### 2. 建立raspberry的固定ip位址
+
+要為樹莓派的乙太網路（RJ-45）連接設置固定IP地址，可以按照以下步驟進行操作。這涉及編輯網路配置文件以分配靜態IP地址。
+
+### 設置靜態IP地址的步驟
+
+1. **打開樹莓派上的終端機**。
+2. **編輯DHCP客戶端配置文件**：
+	- 使用文本編輯器如`nano`打開DHCP客戶端配置文件。
+
+    ```other
+    sudo nano /etc/dhcpcd.conf
+    ```
+
+3. **修改配置文件**：
+	- 滾動到文件底部，添加以下幾行。將`eth0`替換為您的網路介面（通常是`eth0`用於乙太網），並設置您所需的靜態IP地址、路由器和域名伺服器（DNS）：
+
+    ```other
+    interface eth0
+    static ip_address=192.168.1.100/24
+    static routers=192.168.1.1
+    static domain_name_servers=8.8.8.8 8.8.4.4
+    ```
+
+
+	其中：
+
+
+		- `192.168.1.100/24` 是您所需的靜態IP地址和子網掩碼。
+		- `192.168.1.1` 是您路由器的IP地址。
+		- `8.8.8.8` 和 `8.8.4.4` 是Google的公共DNS伺服器。您可以使用您偏好的DNS伺服器。
+4. **保存文件並退出**：
+	- 按 `Ctrl+X` 退出 `nano`。
+	- 按 `Y` 確認更改。
+	- 按 `Enter` 保存文件。
+5. **重新啟動DHCP客戶端守護進程**：
+	- 為了應用更改，使用以下命令重新啟動DHCP客戶端守護進程：
+
+    ```other
+    sudo systemctl restart dhcpcd
+    ```
+
+6. **確認IP地址**：
+	- 檢查IP地址以確保已正確設置：
+
+    ```other
+    ip addr show eth0
+    ```
+
+	
 
 <a name="find_ip_address"></a>
 ## 查詢Raspberry的 ip Address

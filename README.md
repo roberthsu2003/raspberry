@@ -13,6 +13,7 @@
 ## [遠端連線raspberry](./目錄/遠端連線raspberry)
 - 從序列埠連線至Raspberry(必需要有TTL線)
 - **建立Raspberry網路上的小名**
+- **查詢windows的ip address和建立raspberry的固定ip位址**
 - 查詢Raspberry的 ip Address
 - 透過電腦查詢Raspberry的 ip Address
 - 使用手機app查詢 Raspberry IP Address

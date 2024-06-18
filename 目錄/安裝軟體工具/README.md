@@ -1,6 +1,6 @@
 ## 安裝python軟體工具和建立虛擬環境
 - [安裝python3.x](#install_python)
-- [安裝condamini和jupyter(要用jupyter一定必需使用condamini)](#安裝condamini和jupyter)
+- [安裝miniforge和jupyter(要用jupyter一定必需使用miniforge)](#安裝miniforge和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
 - [使用virtualEnv建立python虛擬環境](#使用virtualEnv建立python虛擬環境)
 
@@ -45,7 +45,7 @@ export PATH=“/usr/bin:$PATH”
 ```
 
 
-<a name="安裝condamini和jupyter"></a>
+<a name="安裝miniforge和jupyter"></a>
 ## 安裝miniforge和jupyter
 
 ### 步驟 1:下載miniforge
