@@ -11,7 +11,7 @@ RPI-Monitor 是一個方便的工具，可以用來監控你的 Raspberry Pi 的
    sudo apt-get upgrade
    ```
 
-2. **安裝 RPI-Monitor 軟件庫**：
+2. **添加 RPI-Monitor 軟件庫**：
    將 RPI-Monitor 軟件庫添加到系統的軟件源：
    
    ```bash
@@ -77,3 +77,6 @@ sudo apt-get install rpimonitor
 ```
 
 按照這些步驟，你可以有效地安裝、配置和使用 RPI-Monitor 來監控你的 Raspberry Pi 的性能和健康狀況。
+
+![](./images/pic1.png)
+
