@@ -31,6 +31,7 @@
 - 使用apt-get安裝和移除軟體
 - **安裝vim文字編輯器**
 - **建立連線github SSH keys**
+- **了解目前raspberry pi的效能**
 
 ## [安裝python軟體工具和建立虛擬環境](./目錄/安裝軟體工具)
 - 安裝python3.x
@@ -42,11 +43,15 @@
 - 安裝pycharm comunity editor for respberry4 2GB 以上
 - 安裝vscode
 
+## [安裝RPI-Monitor了解效能](./目錄/安裝RPI-Monitor)
+
 ## [radis server](./目錄/redis)
 
 ## [postgreSQL server](./目錄/postgreSQL)
 
 ## [Docker官網安裝方法](https://docs.docker.com/engine/install/debian/)
+- 注意完成後要將user pi 加入至 docker group
+
 
 ## [雲端服務](./目錄/雲端服務)
 - Firebase
