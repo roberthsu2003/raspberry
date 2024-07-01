@@ -30,8 +30,6 @@
 - **學習命令列** 
 - 使用apt-get安裝和移除軟體
 - **安裝vim文字編輯器**
-- **建立連線github SSH keys**
-- **了解目前raspberry pi的效能**
 
 ## [安裝python軟體工具和建立虛擬環境](./目錄/安裝軟體工具)
 - 安裝python3.x
@@ -41,7 +39,9 @@
 
 ## [樹莓派內安裝程式編輯器](./目錄/樹莓派內安裝程式編輯器)
 - 安裝pycharm comunity editor for respberry4 2GB 以上
-- 安裝vscode
+- 安裝vscode(piOS已經內建,在xwindows->add/Remove Software/Programming/)
+
+## [建立連線github SSH keys](./目錄/ssh_keys)
 
 ## [安裝RPI-Monitor了解效能](./目錄/安裝RPI-Monitor)
 
