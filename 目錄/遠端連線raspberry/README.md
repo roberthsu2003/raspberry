@@ -9,6 +9,7 @@
 - [PC 透過SSH連線至Raspberry](#sshToRaspberryOnPC)  
 - [Mac 透過SSH連線至Raspberry](#sshToRaspberryOnMac) 
 - [設定raspberry環境](#set_up_raspberry)
+- [建立新的使用者帳號](#add_user)
 - [使用遠端桌面(VNC viewer)](#VNC_Viewer)
 - [使用VSCode連線至Raspberry](#vscode)
 - [bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)錯誤的解決方法](#en_US.UTF-8)
@@ -170,13 +171,25 @@ ssh 帳號@主機名稱
 	- Layout:English(UK)
 	- Variant:English(UK) 
 
-
+<a name="add_user"></a>
 ### 建立新的使用者帳號
 
 ```
-sudo adduser pi1
-sudo adduser pi1 sudo
+# add a new user:
+$ sudo adduser newusername
+
+# 加入sudo的group
+$ sudo usermod -aG newusername
+
+# 切換使用者
+su - newusername
 ```
+
+> 注意使用此方法,資料夾只會有home/newusername的資料夾,newusername的資料夾內沒有Documents,Desktop,Downloads的資料夾
+
+#### 使用Xwindow,內的logout登出,再登入newusername,將會自動建立Documents,Desktop,Downloads的資料夾
+
+
 
 <a name="VNC_Viewer"></a>
 ### 使用遠端桌面(VNC Viewer)
