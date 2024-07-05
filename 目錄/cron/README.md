@@ -80,3 +80,60 @@ crontab -r
 - `@weekly` -> 每星期
 - `@daily` -> 每天
 - `@hourly` -> 每小時
+
+#### 2.5 cron和python程式整合
+##### 範例1
+- 不包含python
+
+```
+pi@piRobert:~ $ date
+Fri Jul  5 08:20:30 PM CST 2024
+pi@piRobert:~ $ date > /tmp/test.txt
+pi@piRobert:~ $ cat /tmp/test.txt
+Fri Jul  5 08:20:41 PM CST 2024
+pi@piRobert:~ $ crontab -e
+
+ m h  dom mon dow   command
+* * * * * date > /tmp/test.txt #每分鐘輸出日期至test.txt
+pi@piRobert:~ $ watch cat  /tmp/test.txt #觀查每2秒watch一次內容,每分鐘一過,時間會改變
+
+Every 2.0s: cat /tmp/test.txt                                                       piRobert: Fri Jul  5 20:33:48 2024
+
+Fri  5 Jul 20:33:01 CST 2024
+
+
+```
+
+##### 範例2
+##### 建立rand.py
+```python
+import random
+from datetime import datetime
+now = datetime.now()
+num = random.randint(1, 101)
+with open('/tmp/rand.txt', 'a') as f:
+	f.write('{} - Your random number is {}\n'.format(now,num))
+```
+
+##### 加入一個crontab的命令
+
+```bash
+$ crontab -e
+# m h  dom mon dow   command
+*/1 * * * * date > /tmp/test.txt 
+* * * * * /home/pi/miniforge3/bin/python ~/rand.py 
+
+$ watch cat /tmp/rand.txt
+
+Every 2.0s: cat /tmp/rand.txt                                                       piRobert: Fri Jul  5 21:09:20 2024
+
+2024-07-05 20:56:43.035089 - Your random number is 51
+2024-07-05 21:05:01.496011 - Your random number is 54
+2024-07-05 21:06:01.619290 - Your random number is 58
+2024-07-05 21:07:01.736719 - Your random number is 83
+2024-07-05 21:08:01.852594 - Your random number is 89
+2024-07-05 21:09:01.975771 - Your random number is 3
+```
+
+
+
