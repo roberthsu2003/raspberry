@@ -1,3 +1,7 @@
+## 使用指令htop
+```
+$ htop
+```
 ## RPI-Monitor
 RPI-Monitor 是一個方便的工具，可以用來監控你的 Raspberry Pi 的健康狀況和性能。以下是在 Raspberry Pi 上安裝和使用 RPI-Monitor 的逐步指南：
 
