@@ -45,6 +45,8 @@
 
 ## [安裝RPI-Monitor了解效能](./目錄/安裝RPI-Monitor)
 
+## [安排週期性執行功能](./目錄/cron)
+
 ## [radis server](./目錄/redis)
 
 ## [postgreSQL server](./目錄/postgreSQL)
