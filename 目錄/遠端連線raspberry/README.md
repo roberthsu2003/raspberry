@@ -179,7 +179,7 @@ ssh 帳號@主機名稱
 $ sudo adduser newusername
 
 # 加入sudo的group
-$ sudo usermod -aG newusername
+$ sudo usermod -aG sudo newusername
 
 # 切換使用者
 su - newusername

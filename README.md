@@ -47,6 +47,8 @@
 
 ## [安排週期性執行功能](./目錄/cron)
 
+## [python程式週期性執行](./目錄/schedule)
+
 ## [radis server](./目錄/redis)
 
 ## [postgreSQL server](./目錄/postgreSQL)
