@@ -32,10 +32,7 @@
 - **安裝vim文字編輯器**
 
 ## [安裝python軟體工具和建立虛擬環境](./目錄/安裝軟體工具)
-- 安裝python3.x
-- 安裝condamini和jupyter(要用jupyter一定必需使用condamini)
-- 使用Conda建立python的虛擬環境
-- 使用virtualEnv建立python虛擬環境]
+- 使用miniforge建立python的虛擬環境
 
 ## [樹莓派內安裝程式編輯器](./目錄/樹莓派內安裝程式編輯器)
 - 安裝pycharm comunity editor for respberry4 2GB 以上
