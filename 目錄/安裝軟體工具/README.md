@@ -1,49 +1,6 @@
 ## 安裝python軟體工具和建立虛擬環境
-- [安裝python3.x](#install_python)
 - [安裝miniforge和jupyter(要用jupyter一定必需使用miniforge)](#安裝miniforge和jupyter)
 - [使用Conda建立python的虛擬環境](#使用Conda建立python的虛擬環境)
-- [使用virtualEnv建立python虛擬環境](#使用virtualEnv建立python虛擬環境)
-
-<a name="install_python"></a>
-## 安裝python 3.x
-
-### 檢查目前預設python,python3版本
-`$ python --version`
-
-`$ python3 --version`
-
-### 檢查執行那一個python
-`$ which python`
-
-`$ which python3`
-
-### 安裝python3
-
-```
-$ sudo apt update
-$ sudo apt install python3
-```
-
-
-<a name=“install_python”></a>
-## 安裝python
-
-```
-#檢查python版本
-$ python —version
-
-#目前python的路徑
-$ which python
-
-#安裝python3
-$ sudo apt-get inatll python3
-
-#更改環境設定
-$ sudo vim ~/.bashrc
-# 在最後一行加上
-export PATH=“/usr/bin:$PATH”
-```
-
 
 <a name="安裝miniforge和jupyter"></a>
 ## 安裝miniforge和jupyter
@@ -76,7 +33,8 @@ export PATH=“/usr/bin:$PATH”
 步驟4:更改miniforge3下的所有檔案及目錄，為pi的擁有者
 
 	$ sudo chown -R pi /home/pi/miniforge3
-	
+
+	> -R 是recursive,所有的子目錄	
 步驟 5:
 
 ```
