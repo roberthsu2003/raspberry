@@ -6,7 +6,7 @@
 ## 安裝miniforge和jupyter
 
 ### 步驟 1:下載miniforge
-	$ wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh
+`wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh`
 
 ### 步驟2:安裝miniforge
 一開始會出現License ，一直按enter會出現問你是否同意Licence，輸入yes。
@@ -16,19 +16,19 @@
 
 會問你要不要加入PATH，先輸入no，下步驟再加入PATH
 
-	$ sudo /bin/bash Miniforge3-Linux-aarch64.sh
+`sudo /bin/bash Miniforge3-Linux-aarch64.sh`
 	
 ### 步驟3:設定PATH
 
-	$ sudo nano /home/pi/.bashrc
+`sudo nano /home/pi/.bashrc`
 
 在檔案最尾端加入下方文字後存檔
 
-	export PATH=”/home/pi/miniforge3/bin:$PATH”
+`export PATH=”/home/pi/miniforge3/bin:$PATH”`
 	
 重新執行.bashrc
 
-	$ source ~/.bashrc
+`$ source ~/.bashrc`
 	
 步驟4:更改miniforge3下的所有檔案及目錄，為pi的擁有者
 
