@@ -48,7 +48,7 @@
 
 ## [python程式週期性執行](./目錄/schedule)
 
-## [MQTT通訊協定￼](./目錄/mqtt)
+## [MQTT Server￼](./目錄/mqtt)
 
 ## [radis server](./目錄/redis)
 
