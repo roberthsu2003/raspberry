@@ -21,11 +21,11 @@
 	
 ### 步驟3:設定PATH
 
-`sudo nano /home/pi/.bashrc`
+`nano /home/pi/.bashrc`
 
 在檔案最尾端加入下方文字後存檔
 
-`export PATH=”/home/pi/miniforge3/bin:$PATH”`
+`export PATH="/home/pi/miniforge3/bin:$PATH"`
 	
 重新執行.bashrc
 
