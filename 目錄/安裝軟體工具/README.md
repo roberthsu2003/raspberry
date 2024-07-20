@@ -36,19 +36,6 @@
 ```
 conda init --all bash
 ```	
-
-步驟 5:安裝Jupyter notebook
-
-	$ conda install jupyter
-	
-步驟 6:測試
-
-	$ python -V
-	$ which python
-	
-步驟 7:開啟jupyter
-
-	$jupyter notebook
 	
 <a name="使用Conda建立python的虛擬環境"></a>
 ## 使用Conda建立python的虛擬環境
