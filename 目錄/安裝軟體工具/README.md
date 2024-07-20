@@ -10,7 +10,7 @@
 
 ### 步驟2:安裝miniforge
 
-`sudo /bin/bash Miniforge3-Linux-aarch64.sh`
+`/bin/bash Miniforge3-Linux-aarch64.sh`
 
 一開始會出現License ，一直按enter會出現問你是否同意Licence，輸入yes。
 
