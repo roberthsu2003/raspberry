@@ -38,40 +38,85 @@ conda init --all bash
 ```	
 	
 <a name="使用Conda建立python的虛擬環境"></a>
-## 使用Conda建立python的虛擬環境
-- 安裝numpy, pandas, matplotlib
-- 安裝gpio套件
+## 取消termail一開始就進入base虛擬環境
 
-### 1.檢查conda版本
-	$ conda -V
-	conda 4.5.11
-	
-### 2.更新conda
-	$ conda update conda
-	
-### 3.建立python虛擬環境
-	#檢查conda提供的python版本
-	$ conda search "^python$" 
-	
-	#建立一個虛擬環境env01, x.x為要安裝的版本
-	$ conda create -n env01 python=x.x
-	
-### 4.啟動conda虛擬環境
+```
+conda config --set auto_activate_base false
+```
 
-	$ source activate env01
+## conda init
 
-	#查看目前所有conda的虛擬環境
-	conda info -e
-	
-### 5.使用conda安裝python package
-	$ conda install -n env01 numpy
-	$ conda install -n env01 pandas
-	$ conda install -n env01 matplotlib
-	
+```
+conda init --all bash
+```
 
-### 6.離開conda的虛擬環境
-	$source deactivate
-	
-### 7. 刪除虛擬環境
-	$ conda remove -n env01 -all
+## conda版本檢查
+
+```
+conda -V
+```
+
+## conda更新
+
+```
+conda update conda
+```
+
+## 檢查目前已建立的虛擬環境
+
+```
+conda env list
+```
+
+## 建立虛擬環境
+
+```
+conda create --name myenv python=3.10
+```
+
+## 啟動虛擬環境
+
+```
+conda activate myenv
+```
+
+## 離開虛擬環境
+
+```
+conda deactivate
+```
+
+## 安裝套件
+
+```
+conda activate myenv
+conda install matplotlib
+```
+
+```
+conda install --name myenv matplotlib
+```
+
+## 安裝requirement.txt
+
+```
+conda install --yes --file requirements.txt
+```
+
+## 檢查目前安裝的套件
+
+```
+conda list
+```
+## 刪除虛擬環境
+
+```
+conda env remove --name myenv
+```
+
+## 刪除虛擬環境的套件
+
+```
+conda remove --name myenv matplotlib
+```
 
