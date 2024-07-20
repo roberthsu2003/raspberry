@@ -14,8 +14,6 @@
 
 一開始會出現License ，一直按enter會出現問你是否同意Licence，輸入yes。
 
-會問你要安裝在預設路徑 /root/minconda3，或其他地方。我是安裝到此處:
-/home/pi/miniforge3
 
 會問你要不要加入PATH，先輸入no，下步驟再加入PATH
 
@@ -33,27 +31,22 @@
 
 `$ source ~/.bashrc`
 	
-步驟4:更改miniforge3下的所有檔案及目錄，為pi的擁有者
-
-	$ sudo chown -R pi /home/pi/miniforge3
-
-	> -R 是recursive,所有的子目錄	
-步驟 5:
+步驟 4:
 
 ```
 conda init --all bash
 ```	
 
-步驟 6:安裝Jupyter notebook
+步驟 5:安裝Jupyter notebook
 
 	$ conda install jupyter
 	
-步驟 7:測試
+步驟 6:測試
 
 	$ python -V
 	$ which python
 	
-步驟 8:開啟jupyter
+步驟 7:開啟jupyter
 
 	$jupyter notebook
 	
