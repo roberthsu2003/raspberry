@@ -9,6 +9,9 @@
 `wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh`
 
 ### 步驟2:安裝miniforge
+
+`sudo /bin/bash Miniforge3-Linux-aarch64.sh`
+
 一開始會出現License ，一直按enter會出現問你是否同意Licence，輸入yes。
 
 會問你要安裝在預設路徑 /root/minconda3，或其他地方。我是安裝到此處:
@@ -16,7 +19,7 @@
 
 會問你要不要加入PATH，先輸入no，下步驟再加入PATH
 
-`sudo /bin/bash Miniforge3-Linux-aarch64.sh`
+
 	
 ### 步驟3:設定PATH
 
