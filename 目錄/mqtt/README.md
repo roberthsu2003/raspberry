@@ -1,7 +1,7 @@
 ## MQTT 通訊協定
 MQTT (Message Queuing Telemetry Transport) 是輕量和同時有發佈和訂閱功能的網路通訊協定,適合機器和機器傳送訊息的協定.它被設計來連線遠端裝置(arduin,pico....)有傳送少量資料的需求. 或是頻寬有限制(iot)的環境.
 
-### Key Features of MQTT:
+### MQTT主要特性￼:
 
 1. **輕量和高效率**:
 	- MQTT 最大限度地減少網路頻寬和設備資源需求，同時確保可靠性和一定程度的交付保證。
@@ -71,9 +71,12 @@ sudo systemctl status mosquitto
 ```
 
 6. **修改Mosquitto配置設定:**
-    使用編輯器修改`/etc/mosquitto/mosquitto.conf`的設定.
-    [修改說明]￼(/usr/share/doc/mosquitto/examples/mosquitto.conf.example)
-    ￼
+
+#### 使用編輯器修改`/etc/mosquitto/mosquitto.conf`的設定.
+    
+- #### [修改說明]￼(/usr/share/doc/mosquitto/examples/mosquitto.conf.example)
+
+
 ```bash
 #原本的設定
 pid_file /run/mosquitto/mosquitto.pid
@@ -95,23 +98,93 @@ allow_anonymous true
 ￼
 ### 使用command line操作測試
 ￼建立兩個終端機，一個終端機當作訂閱另一個終端機當作發佈。
-￼
-- 訂閱主題終端機如下：
+
+#### 1. 訂閱主題終端機如下：
 
 ```bash
 mosquitto_sub -d -h localhost -t test/topic
 ```
 
-- 發佈訂閱主題如下：
+#### 2. 發佈訂閱主題如下：
 
 ```bash
 mosquitto_pub -d -h localhost -t test/topic -m "Hello, Mosquitto!"
 ```
 
-￼將在訂閱主題的終端機看到以下幾個字：
+#### 3. 將在訂閱主題的終端機看到以下幾個字：
+
 ```
 Hello,Mosquitto!
 ```
 
 ### 在Windows￼上，可以安裝mqtt explore
+- 當作伺服器使用
+
 ### 使用python操作￼￼￼￼
+
+#### 1. 安裝套件
+
+```
+pip install paho-mqtt
+```
+￼
+#### 2. ￼￼程式碼
+
+- [mqtt範例網站](https://github.com/roppert/mosquitto-python-example)
+
+#### 2.1 ￼發佈的程式碼￼
+
+```
+
+""" 
+Publish some messages to queue
+"""
+import paho.mqtt.publish as publish
+
+
+msgs = [{'topic': "kids/yolo", 'payload': "jump"},
+        {'topic': "adult/pics", 'payload': "some photo"},
+        {'topic': "adult/news", 'payload': "extra extra"},
+        {'topic': "adult/news", 'payload': "super extra"}]
+
+host = "localhost"
+
+
+if __name__ == '__main__':
+    # publish a single message
+    publish.single(topic="kids/yolo", payload="just do it", hostname=host)
+
+    # publish multiple messages
+    publish.multiple(msgs, hostname=host)
+```
+
+#### 2.1 ￼訂閱的程式碼
+
+```
+"""
+A small example subscriber
+"""
+import paho.mqtt.client as paho
+
+def on_message(mosq, obj, msg):
+    print "{0}-20s {1:d} {2:s}".format(msg.topic, msg.qos, msg.payload)
+    mosq.publish('pong', 'ack', 0)
+
+def on_publish(mosq, obj, mid):
+    pass
+
+if __name__ == '__main__':
+    client = paho.Client()
+    client.on_message = on_message
+    client.on_publish = on_publish
+
+    #client.tls_set('root.ca', certfile='c1.crt', keyfile='c1.key')
+    client.connect("127.0.0.1", 1883, 60)
+
+    client.subscribe("kids/yolo", 0)
+    client.subscribe("adult/#", 0)
+
+    while client.loop() == 0:
+        pass
+```
+￼￼
