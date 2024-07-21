@@ -22,19 +22,18 @@ MQTT (Message Queuing Telemetry Transport) 是輕量和同時有發佈和訂閱�
 	- 需要即時更新的應用程式，例如股票即時系統或環境監控系統，使用MQTT會有最低的延遲。￼
 
 ### MQTT 如何工作￼:
+1. **使用者端**
+￼￼- 任何裝置￼(sensor, 手機，應用程式)￼傳送訂閱主題資料給MQTT ￼broker￼和從MQTT ￼broker￼接收訂閱資料
 
-1. **Client**:
-	- Any device (sensor, smartphone, application) that connects to the MQTT broker to publish or subscribe to topics.
-2. **Broker**:
-	- The server that receives messages from clients and routes them to appropriate subscribed clients.
+2. **Broker(中介者)**:
+	- 伺服器從裝置端接收訂閱主題￼資料和傳送他們至適當的訂閱者端裝置￼
 
-### Example Workflow:
+### 工作流程範例:
+1. 一個溫度感測器發佈訂閱此`home/livingroom/temperature`主題資料￼.
+2. 中介伺服器接收這些訊息並且傳遞至所有有訂閱此`home/livingroom/temperature`主題的裝置端￼
+3. 一個應用程式訂閱`home/livingroom/temperature`主題並接收訂閱的溫度資料資料，即時顯示溫度資料給使用者￼
 
-1. A temperature sensor publishes data to the topic `home/livingroom/temperature`.
-2. The broker receives the message and forwards it to all clients subscribed to `home/livingroom/temperature`.
-3. A smartphone app subscribed to this topic receives the temperature updates and displays them to the user.
-
-MQTT is supported by many platforms and libraries, making it easy to integrate into various applications. The protocol's simplicity and efficiency have made it a de facto standard in the IoT industry.
+MQTT支援多種平台和資源庫，使他容易整合到各種應用程式。這個通訊協定非常小巧和有效率，讓他運用在IoT的工作情境￼。
 
 
 ### MQTT￼安裝(Mosquitto)
