@@ -52,41 +52,66 @@ sudo apt upgrade
 sudo apt install mosquitto mosquitto-clients
 ```
 
-3. **Enable Mosquitto to Start on Boot:**
-   To make sure that Mosquitto starts automatically when your Raspberry Pi boots up, enable the Mosquitto service:
-   ```bash
-   sudo systemctl enable mosquitto
-   ```
+3. **開機時自動啟動Mosquitto￼:**
+   
+```bash
+sudo systemctl enable mosquitto
+```
 
-4. **Start the Mosquitto Service:**
-   Start the Mosquitto service using the following command:
-   ```bash
-   sudo systemctl start mosquitto
-   ```
+4. **立即啟動 Mosquitto Service:**
 
-5. **Check the Status of the Mosquitto Service:**
-   Verify that the Mosquitto service is running correctly:
-   ```bash
-   sudo systemctl status mosquitto
-   ```
+```bash
+sudo systemctl start mosquitto
+```
 
-6. **Configure Mosquitto (Optional):**
-   If you need to configure Mosquitto, you can edit the configuration file located at `/etc/mosquitto/mosquitto.conf`. For example, to set up authentication or change the default port.
+5. **檢查Mosquitto Service狀態:**
+   驗證現在Mosquitto service是否在執行￼:
+```bash
+sudo systemctl status mosquitto
+```
 
-To test if Mosquitto is working, you can use the Mosquitto clients. Open two terminal windows:
+6. **修改Mosquitto配置設定:**
+    使用編輯器修改`/etc/mosquitto/mosquitto.conf`的設定.
+    [修改說明]￼(/usr/share/doc/mosquitto/examples/mosquitto.conf.example)
+    ￼
+```bash
+#原本的設定
+pid_file /run/mosquitto/mosquitto.pid
 
-- In the first window, subscribe to a topic:
-  ```bash
-  mosquitto_sub -h localhost -t test/topic
-  ```
+persistence true
+persistence_location /var/lib/mosquitto/
 
-- In the second window, publish a message to the same topic:
-  ```bash
-  mosquitto_pub -h localhost -t test/topic -m "Hello, Mosquitto!"
-  ```
+log_dest file /var/log/mosquitto/mosquitto.log
 
-You should see the message "Hello, Mosquitto!" appear in the first terminal window.
+include_dir /etc/mosquitto/conf.d
 
-That's it! Mosquitto should now be installed and running on your Raspberry Pi.
-### 使用command line操作
+#新增的設定
+#監聽1883port
+#允許匿名發佈
+￼listener 1883 
+allow_anonymous true
+```
+
+￼
+### 使用command line操作測試
+￼建立兩個終端機，一個終端機當作訂閱另一個終端機當作發佈。
+￼
+- 訂閱主題終端機如下：
+
+```bash
+mosquitto_sub -d -h localhost -t test/topic
+```
+
+- 發佈訂閱主題如下：
+
+```bash
+mosquitto_pub -d -h localhost -t test/topic -m "Hello, Mosquitto!"
+```
+
+￼將在訂閱主題的終端機看到以下幾個字：
+```
+Hello,Mosquitto!
+```
+
+### 在Windows￼上，可以安裝mqtt explore
 ### 使用python操作￼￼￼￼
