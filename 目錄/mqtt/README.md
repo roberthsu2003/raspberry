@@ -5,30 +5,23 @@ MQTT (Message Queuing Telemetry Transport) 是輕量和同時有發佈和訂閱�
 
 1. **輕量和高效率**:
 	- MQTT 最大限度地減少網路頻寬和設備資源需求，同時確保可靠性和一定程度的交付保證。
-2. **Publish/Subscribe Model**:
-	- Devices (clients) can publish messages to topics or subscribe to topics to receive messages. A central broker mediates all message exchanges.
-3. **Quality of Service Levels**:
-	- MQTT supports three QoS levels to ensure message delivery:
-		- QoS 0: At most once – The message is delivered according to the best efforts of the operating environment.
-		- QoS 1: At least once – The message is assured to arrive but may be delivered more than once.
-		- QoS 2: Exactly once – The message is assured to arrive exactly once.
-4. **Small Transport Overhead**:
-	- The protocol header is only 2 bytes (in the simplest case), making it suitable for low-bandwidth networks.
-5. **Retained Messages**:
-	- The broker can retain the last message sent on a topic, which can be delivered to clients when they subscribe to that topic.
-6. **Last Will and Testament (LWT)**:
-	- Allows clients to specify a message that the broker will send if it detects that the client has disconnected unexpectedly.
+2. **發佈/訂閱模式**:
+	- 裝置(使用者端)可以發送帶有主題的訊息或訂閱主題以便接收訊息.使用中央代理可以協調訊息的交換.
+3. **接收和發送的品質**:
+	- MQTT支援三種￼QoS等級以確保訊息的傳送:
+		- QoS 0: 最多ㄧ次 - 最有效率的傳送,不保證一定可以接收.
+		- QoS 1: 最少一次 - 有可能會傳送多次.
+		- QoS 2: 保證一次 - 確保一定會傳達訊息一次.(接收到一次)
 
-### Typical Use Cases:
+### 應用方式:
 
 - **IoT (Internet of Things)**:
-	- MQTT is widely used in IoT applications due to its efficiency and low overhead, enabling communication between a vast number of devices and sensors.
-- **Mobile Applications**:
-	- Mobile apps that need to push updates or receive notifications use MQTT due to its ability to maintain connection and minimize data usage.
-- **Real-Time Data Monitoring**:
-	- Applications requiring real-time updates, such as stock tickers or environmental monitoring systems, use MQTT for its low latency.
+- MQTT廣泛應用於IoT的應用程式，主要原因是它傳送的標頭非常小和有效率，適合多種裝置和sensor之間互相傳遞訊息￼.
+	
+- **即時資料的監控￼**:
+	- 需要即時更新的應用程式，例如股票即時系統或環境監控系統，使用MQTT會有最低的延遲。￼
 
-### How MQTT Works:
+### MQTT 如何工作￼:
 
 1. **Client**:
 	- Any device (sensor, smartphone, application) that connects to the MQTT broker to publish or subscribe to topics.
