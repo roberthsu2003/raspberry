@@ -37,5 +37,56 @@ MQTT支援多種平台和資源庫，使他容易整合到各種應用程式。�
 
 
 ### MQTT￼安裝(Mosquitto)
+
+1. **更新系統:**
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+2. **Install Mosquitto:**
+使用下列命令，￼安裝Mosquitto和Mosquitto clients
+   
+```bash
+sudo apt install mosquitto mosquitto-clients
+```
+
+3. **Enable Mosquitto to Start on Boot:**
+   To make sure that Mosquitto starts automatically when your Raspberry Pi boots up, enable the Mosquitto service:
+   ```bash
+   sudo systemctl enable mosquitto
+   ```
+
+4. **Start the Mosquitto Service:**
+   Start the Mosquitto service using the following command:
+   ```bash
+   sudo systemctl start mosquitto
+   ```
+
+5. **Check the Status of the Mosquitto Service:**
+   Verify that the Mosquitto service is running correctly:
+   ```bash
+   sudo systemctl status mosquitto
+   ```
+
+6. **Configure Mosquitto (Optional):**
+   If you need to configure Mosquitto, you can edit the configuration file located at `/etc/mosquitto/mosquitto.conf`. For example, to set up authentication or change the default port.
+
+To test if Mosquitto is working, you can use the Mosquitto clients. Open two terminal windows:
+
+- In the first window, subscribe to a topic:
+  ```bash
+  mosquitto_sub -h localhost -t test/topic
+  ```
+
+- In the second window, publish a message to the same topic:
+  ```bash
+  mosquitto_pub -h localhost -t test/topic -m "Hello, Mosquitto!"
+  ```
+
+You should see the message "Hello, Mosquitto!" appear in the first terminal window.
+
+That's it! Mosquitto should now be installed and running on your Raspberry Pi.
 ### 使用command line操作
 ### 使用python操作￼￼￼￼
