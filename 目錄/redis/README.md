@@ -32,7 +32,8 @@ sudo nano /etc/redis/redis.conf
 ## 增加(可設可不設),最大使用記憶體的數量
 
 ```
-maxmemory 100mb maxmemory-policy allkeys-lru
+maxmemory 100mb
+maxmemory-policy allkeys-lru
 ```
 
 ## 啟動redis service 和 自動開啟
