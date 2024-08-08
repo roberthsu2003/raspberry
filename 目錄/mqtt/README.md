@@ -76,6 +76,7 @@ sudo systemctl status mosquitto
     
 - #### [修改說明]￼(/usr/share/doc/mosquitto/examples/mosquitto.conf.example)
 
+##### 1. 以下為不需要密碼的操作方式
 
 ```bash
 #原本的設定
@@ -93,10 +94,39 @@ include_dir /etc/mosquitto/conf.d
 #允許匿名發佈
 ￼listener 1883 
 allow_anonymous true
+
+```
+
+##### 2. 以下為不需要密碼的操作方式
+
+```bash
+#原本的設定
+pid_file /run/mosquitto/mosquitto.pid
+
+persistence true
+persistence_location /var/lib/mosquitto/
+
+log_dest file /var/log/mosquitto/mosquitto.log
+
+include_dir /etc/mosquitto/conf.d
+
+#新增的設定
+#監聽1883port
+#允許匿名發佈
+￼listener 1883 
+allow_anonymous false
+
+password_file /etc/mosquitto/pwfile
+```
+
+### 使用command 加入密碼
+
+```
+sudo mosquitto_passwd -c /etc/mosquitto/pwfile TYPE_YOUR_USERNAME
 ```
 
 ￼
-### 使用command line操作測試
+### 使用command line操作測試(無密碼)
 ￼建立兩個終端機，一個終端機當作訂閱另一個終端機當作發佈。
 
 #### 1. 訂閱主題終端機如下：
@@ -116,6 +146,28 @@ mosquitto_pub -d -h localhost -t test/topic -m "Hello, Mosquitto!"
 ```
 Hello,Mosquitto!
 ```
+
+### 使用command line操作測試(有密碼)尚未完成
+￼建立兩個終端機，一個終端機當作訂閱另一個終端機當作發佈。
+
+#### 1. 訂閱主題終端機如下：
+
+```bash
+mosquitto_sub -d -h localhost -t test/topic
+```
+
+#### 2. 發佈訂閱主題如下：
+
+```bash
+mosquitto_pub -d -h localhost -t test/topic -m "Hello, Mosquitto!"
+```
+
+#### 3. 將在訂閱主題的終端機看到以下幾個字：
+
+```
+Hello,Mosquitto!
+```
+
 
 ### 在Windows￼上，可以安裝mqtt explore
 - 當作伺服器使用
