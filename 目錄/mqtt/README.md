@@ -98,9 +98,11 @@ allow_anonymous true
 
 ```
 
-##### 2. 以下為不需要密碼的操作方式
+##### 2. 以下為需要密碼的操作方式
 
 ```bash
+
+
 #原本的設定
 pid_file /run/mosquitto/mosquitto.pid
 
@@ -159,8 +161,13 @@ mosquitto_sub -d -h localhost -t test/topic
 
 #### 2. 發佈訂閱主題如下：
 
+```base
+# -u username
+# -P password
+```
+
 ```bash
-mosquitto_pub -d -h localhost -t test/topic -m "Hello, Mosquitto!"
+mosquitto_pub -d -h localhost -t test/topic -u USERNAME -P PASSWORD -m "Hello, Mosquitto!"
 ```
 
 #### 3. 將在訂閱主題的終端機看到以下幾個字：
