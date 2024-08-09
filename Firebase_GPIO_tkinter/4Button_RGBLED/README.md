@@ -4,6 +4,13 @@
 ![](0_1Button_RGBLED.png)
 
 ## signal
+- 如果安裝虛擬環境,必需安裝以下套件
+
+```
+RPi.GPIO
+lgpio
+gpiozero
+```
 
 ```python
 #http://stupidpythonideas.blogspot.com/2013/10/why-your-gui-app-freezes.html
