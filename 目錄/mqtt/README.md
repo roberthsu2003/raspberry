@@ -23,7 +23,8 @@ MQTT (Message Queuing Telemetry Transport) 是輕量和同時有發佈和訂閱�
 
 ### MQTT 如何工作￼:
 1. **使用者端**
-￼￼- 任何裝置￼(sensor, 手機，應用程式)￼傳送訂閱主題資料給MQTT ￼broker￼和從MQTT ￼broker￼接收訂閱資料
+
+- 任何裝置￼(sensor, 手機，應用程式)￼傳送訂閱主題資料給MQTT ￼broker￼和從MQTT ￼broker￼接收訂閱資料
 
 2. **Broker(中介者)**:
 	- 伺服器從裝置端接收訂閱主題￼資料和傳送他們至適當的訂閱者端裝置￼
