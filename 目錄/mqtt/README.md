@@ -27,12 +27,12 @@ MQTT (Message Queuing Telemetry Transport) 是輕量和同時有發佈和訂閱�
 - 任何裝置￼(sensor, 手機，應用程式)￼傳送訂閱主題資料給MQTT ￼broker￼和從MQTT ￼broker￼接收訂閱資料
 
 2. **Broker(中介者)**:
-	- 伺服器從裝置端接收訂閱主題￼資料和傳送他們至適當的訂閱者端裝置￼
+	- 伺服器從裝置端接收訂閱主題￼資料和傳送他們至適當的訂閱者端裝置
 
 ### 工作流程範例:
 1. 一個溫度感測器發佈訂閱此`home/livingroom/temperature`主題資料￼.
-2. 中介伺服器接收這些訊息並且傳遞至所有有訂閱此`home/livingroom/temperature`主題的裝置端￼
-3. 一個應用程式訂閱`home/livingroom/temperature`主題並接收訂閱的溫度資料資料，即時顯示溫度資料給使用者￼
+2. 中介伺服器接收這些訊息並且傳遞至所有有訂閱此`home/livingroom/temperature`主題的裝置端
+3. 一個應用程式訂閱`home/livingroom/temperature`主題並接收訂閱的溫度資料資料，即時顯示溫度資料給使用者
 
 MQTT支援多種平台和資源庫，使他容易整合到各種應用程式。這個通訊協定非常小巧和有效率，讓他運用在IoT的工作情境￼。
 
