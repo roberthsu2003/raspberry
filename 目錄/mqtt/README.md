@@ -150,7 +150,8 @@ mosquitto_pub -d -h localhost -t test/topic -m "Hello, Mosquitto!"
 Hello,Mosquitto!
 ```
 
-### 使用command line操作測試(有密碼)尚未完成
+### 使用command line操作測試(有密碼)
+
 ￼建立兩個終端機，一個終端機當作訂閱另一個終端機當作發佈。
 
 #### 1. 訂閱主題終端機如下：
@@ -187,12 +188,12 @@ Hello,Mosquitto!
 ```
 pip install paho-mqtt
 ```
-￼
+
 #### 2. ￼￼程式碼
 
 - [mqtt範例網站](https://github.com/roppert/mosquitto-python-example)
 
-#### 2.1 ￼發佈的程式碼￼
+#### 2.1 發佈的程式碼￼
 
 ```
 
@@ -247,4 +248,3 @@ if __name__ == '__main__':
     while client.loop() == 0:
         pass
 ```
-￼￼
