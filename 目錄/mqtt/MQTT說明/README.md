@@ -228,7 +228,7 @@ A small example subscriber
 import paho.mqtt.client as mqtt
 
 def on_message(mosq, obj, msg):
-    print("{0}-20s {1:d} {2:s}".format(msg.topic, msg.qos, msg.payload.decode('utf-8')) #msg.payload是binary string
+    print("topic:{0},payload:{1},qos:{2}".format(msg.topic,msg.payload.decode('utf-8'),msg.qos)) #msg.payload是binary string
     
 
 
