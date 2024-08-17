@@ -2,7 +2,7 @@
 
 本文將指導您如何在 Raspberry Pi 上安裝 Redis Stack。
 
-## 前置準備
+## 1. 前置準備
 
 在開始之前，請確保您的系統已更新並且安裝了必要的工具。
 
@@ -17,70 +17,84 @@ sudo apt-get upgrade -y
 sudo apt-get install -y build-essential tcl
 ```
 
-## 安裝 Redis
+## 2. 安裝 Redis
 
 ```bash
 sudo apt install redis-server -y
 ```
 
-## 設定Redis
+## 3. 設定Redis
 
 ```
 sudo nano /etc/redis/redis.conf
 ```
 
-## 增加(可設可不設),最大使用記憶體的數量
+## 4. 增加(可設可不設),最大使用記憶體的數量
 
 ```
 maxmemory 100mb
 maxmemory-policy allkeys-lru
 ```
 
-## 啟動redis service 和 自動開啟
+## 5. 啟動redis service 和 自動開啟
 
 ```bash
 sudo systemctl  enable  redis-server
 sudo systemctl start redis-server
 ```
 
-## 測試
+## 6. 測試
 
 ```
 redis-cli ping
 ```
 
-## 從外部電腦使用redis insight連至redis server
+## 7. 從外部電腦使用redis insight連至redis server
 
-### 1. 修改設定,讓所有外部電腦可以連入
+### 7-1. 修改設定,讓所有外部電腦可以連入
 
-#### 1-1. 修改redis.conf
+#### 7-1-1. 修改redis.conf
 ```
 sudo nano /etc/redis/redis.conf
 ```
 
-#### 1-2. 修改一行設定
+#### 7-1-2. 修改一行設定
 
 ```
 bind 0.0.0.0
 ```
 
-#### 1-3. 重新啟動
+#### 7-1-3. 重新啟動
 
 ```
 sudo service redis-server restart
 ```
 
-### 2. 修改設定,不需使用帳號密碼
-#### 2-1. 修改redis.conf
+### 7-2. 修改設定,不需使用帳號密碼
+#### 7-2-1. 修改redis.conf
 ```
 sudo nano /etc/redis/redis.conf
 ```
 
-#### 2-2. 修改一行設定
+#### 7-2-2. 修改一行設定
 
 ```
 protected-mode no
 ```
+
+### 7-3. 修改設定,需使用帳號密碼
+#### 7-3-1. 修改redis.conf
+```
+sudo nano /etc/redis/redis.conf
+```
+
+#### 7-3-2. 修改一行設定
+
+```
+protected-mode yes
+requirepass "您的密碼"
+```
+
 
 #### 2-3. 重新啟動
 
