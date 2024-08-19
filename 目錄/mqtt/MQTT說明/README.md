@@ -99,6 +99,18 @@ allow_anonymous true
 ```
 
 ##### 2. 以下為需要密碼的操作方式
+- 先使用command加入密碼,再改變mosquitto.conf的內容,順序不要錯
+
+##### 使用command 加入密碼
+- username:pi
+- password:raspberry
+- 程式加入密碼要在publish內
+
+```
+sudo mosquitto_passwd -c /etc/mosquitto/pwfile TYPE_YOUR_USERNAME
+```
+
+
 
 ```bash
 
@@ -122,11 +134,8 @@ allow_anonymous false
 password_file /etc/mosquitto/pwfile
 ```
 
-### 使用command 加入密碼
 
-```
-sudo mosquitto_passwd -c /etc/mosquitto/pwfile TYPE_YOUR_USERNAME
-```
+
 
 ￼
 ### 使用command line操作測試(無密碼)
