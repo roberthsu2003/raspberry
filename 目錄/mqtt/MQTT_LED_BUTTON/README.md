@@ -7,6 +7,7 @@
 - **收到的資料儲存至雲端Render Redis**
 - **本地端Web頁面顯示**
 - **雲端Web頁面顯示**
+- **建立啟動3個python專案的shell**
 ## 線路
 ![](./images/Button_LED_bb.png)
 
@@ -194,4 +195,22 @@ st.dataframe(df1,
 ```
 
 ![](./images/pic1.png)
+
+### 建立啟動3個專案的shell
+- start.sh必需建立在專案資料夾內
+
+```bash
+#!/bin/bash
+#進入腳本所有目錄
+cd "$(dirname "$0")"
+
+#進入venv1
+source ~/miniforge3/etc/profile.d/conda.sh
+conda activate venv1
+
+#執行python程式,一次啟動3個,必需要有&連結
+python button1.py &
+python receive.py &
+streamlit run webUI.py &
+```
 
