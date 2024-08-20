@@ -1,15 +1,17 @@
 ## LED_BUTTON
 - **MQTT的發佈和訂閱**
+- **MQTT的訂閱必需有密碼**
 - **MQTT的publish必需要有密碼**
 - **MQTT的publish的資料必需是json格式**
 - **收到的資料儲存為csv**
 - **收到的資料儲存至雲端Render Redis**
-- 
+- **本地端Web頁面顯示**
+- **雲端Web頁面顯示**
 ## 線路
 ![](./images/Button_LED_bb.png)
 
 ## 以下程式參考此資料夾專案檔案
-- 使用虛擬環境
+- 使用miniforge建立虛擬環境
 
 ## requirements.txt
 
@@ -20,6 +22,9 @@ lgpio
 gpiozero
 paho-mqtt
 python-dotenv
+streamlit
+pandas
+streamlit-autorefresh
 ```
 
 ## .env
@@ -34,6 +39,7 @@ RENDER_REDIS=rediss://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:6379
 ```
 
 ## tools套件內的file模組
+- 目地建立csv檔
 - file.py
 
 ```
@@ -156,3 +162,36 @@ if __name__ == '__main__':
     client.subscribe('501教室/老師桌燈',qos=2)
     client.loop_forever()
 ```
+
+### 本地端網頁顯示
+- 使用streamlit
+- 資料來源為本地端redis server
+
+```python
+import streamlit as st
+import redis
+import os
+import json
+from dotenv import load_dotenv
+import pandas as pd
+from streamlit_autorefresh import st_autorefresh
+
+load_dotenv()
+st_autorefresh()
+conn = redis.Redis(host=os.environ['REDIS_HOST'],port=6379,password=os.environ['REDIS_PASSWORD'])
+bytes_list = conn.lrange('501教室/老師桌燈',-5,-1) #取得的資料為list內有bytes string
+str_list = [bytes_str.decode('utf-8') for bytes_str in reversed(bytes_list)] #將bytes string轉換為str
+dict_list = [json.loads(string) for string in str_list] #將字串轉為python的資料結構
+df1 = pd.DataFrame(dict_list) #建立DataFrame
+st.title("訓練通教室")
+st.header("感測器:blue[cool] :sunglasses:")
+st.dataframe(df1,
+             hide_index=True,
+             column_config={
+                 "status":st.column_config.CheckboxColumn(label='按鈕狀態',width='small'),
+                 "date":st.column_config.DatetimeColumn(label='時間',width='medium')
+                 })
+```
+
+![](./images/pic1.png)
+
