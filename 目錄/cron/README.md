@@ -44,26 +44,44 @@ crontab -e
 crontab -r
 ```
 
+##### 2.2.3 檢查Cron Daemon是否在運行
+
+```
+sudo service cron status
+```
+
+##### 2.2.3 如果沒有運行,可以用以下命令啟動它:
+
+```
+sudo service cron start
+```
+
 #### 2.3 crontab 範例程式
+
+##### 2.3.0 電腦重新啟動時執行
+
+```bash
+@reboot /path/to/script.sh >> /temp/cron_test.log 2>&1
+```
 
 ##### 2.3.1 每天早上3:00執行
 
 ```bash
-0 3 * * * /path/to/script.sh
+0 3 * * * /path/to/script.sh >> /temp/cron_test.log 2>&1
 ```
 
 
 ##### 2.3.2 每15分鐘執行
 
 ```bash
-*/15 * * * * /path/to/script.sh
+*/15 * * * * /path/to/script.sh >> /temp/cron_test.log 2>&1
 ```
 
 
 ##### 2.3.1 每月1日早上10:30分執行 
 
 ```bash
-30 10 1 * * /path/to/script.sh
+30 10 1 * * /path/to/script.sh >> /temp/cron_test.log 2>&1
 ```
 
 ##### 每天星期一下午5:00執行
@@ -80,6 +98,7 @@ crontab -r
 - `@weekly` -> 每星期
 - `@daily` -> 每天
 - `@hourly` -> 每小時
+
 
 #### 2.5 cron和python程式整合
 ##### 範例1
