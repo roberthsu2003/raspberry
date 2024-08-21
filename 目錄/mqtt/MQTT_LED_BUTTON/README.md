@@ -77,7 +77,7 @@ def record_info(log_path:str,topic:str,date:str,status:str):
 ```
 
 ### 發佈(publish)
-- button.py
+- button1.py
 
 ```python
 import signal
@@ -122,6 +122,7 @@ if __name__ == '__main__':
 
 ### 訂閱(subscript)
 - receive.py
+- 
 ```
 import paho.mqtt.client as mqtt
 import redis
@@ -167,6 +168,7 @@ if __name__ == '__main__':
 ### 本地端網頁顯示
 - 使用streamlit
 - 資料來源為本地端redis server
+- webUI.py
 
 ```python
 import streamlit as st
@@ -214,3 +216,4 @@ python receive.py &
 streamlit run webUI.py &
 ```
 
+### 建立啟動時,自動執行start.sh
