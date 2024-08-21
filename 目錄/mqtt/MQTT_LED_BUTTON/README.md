@@ -217,3 +217,17 @@ streamlit run webUI.py &
 ```
 
 ### 建立啟動時,自動執行start.sh
+
+```bash
+$crontab -e #編輯cron
+```
+
+- 增加以下一行
+
+```
+#開機時自動執行,並把執行輸出的文字儲存至/tmp/cron_test.log
+#2>&1
+#這部分將標準錯誤輸出（錯誤訊息）也重定向到標準輸出（1），然後一起寫入到日誌檔案中。2 代表標準錯誤，1 代表標準輸出，>& 表示將 2 重定向到 1。
+
+@reboot /home/pi/Documents/GitHub/xxxxxxx/start.sh >> /tmp/cron_test.log 2>&1
+```
