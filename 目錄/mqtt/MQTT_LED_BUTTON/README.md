@@ -1,4 +1,4 @@
-## LED_BUTTON
+## 1. LED_BUTTON
 - **MQTT的發佈和訂閱**
 - **MQTT的訂閱必需有密碼**
 - **MQTT的publish必需要有密碼**
@@ -8,13 +8,14 @@
 - **本地端Web頁面顯示**
 - **雲端Web頁面顯示**
 - **建立啟動3個python專案的shell**
-## 線路
+## 2. 線路
 ![](./images/Button_LED_bb.png)
 
-## 以下程式參考此資料夾專案檔案
-- 使用miniforge建立虛擬環境
+## 3. 以下程式參考此資料夾專案檔案
+### 3.1 使用miniforge建立虛擬環境
 
-## requirements.txt
+
+### 3.2 requirements.txt
 
 ```
 redis
@@ -28,7 +29,7 @@ pandas
 streamlit-autorefresh
 ```
 
-## .env
+### 3.3 .env
 
 ```
 REDIS_HOST=127.0.0.1
@@ -39,7 +40,7 @@ MQTT_PASSWORD=raspberry
 RENDER_REDIS=rediss://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:6379
 ```
 
-## tools套件內的file模組
+### 3.4 tools套件內的file模組
 - 目地建立csv檔
 - file.py
 
@@ -76,7 +77,7 @@ def record_info(log_path:str,topic:str,date:str,status:str):
         file.write(topic + ',' + date + ',' + status + "\n")
 ```
 
-### 發佈(publish)
+### 3.5 發佈(publish)
 - button1.py
 
 ```python
@@ -120,7 +121,7 @@ if __name__ == '__main__':
 
 ```
 
-### 訂閱(subscript)
+### 3.6 訂閱(subscript)
 - receive.py
 - 
 ```
@@ -165,7 +166,7 @@ if __name__ == '__main__':
     client.loop_forever()
 ```
 
-### 本地端網頁顯示
+### 3.7 本地端網頁顯示
 - 使用streamlit
 - 資料來源為本地端redis server
 - webUI.py
@@ -198,7 +199,7 @@ st.dataframe(df1,
 
 ![](./images/pic1.png)
 
-### 建立啟動3個專案的shell
+### 3.8 建立啟動3個專案的shell
 - start.sh必需建立在專案資料夾內
 
 ```bash
@@ -216,7 +217,7 @@ python receive.py &
 streamlit run webUI.py &
 ```
 
-### 建立啟動時,自動執行start.sh
+### 3.9 建立啟動時,自動執行start.sh
 
 ```bash
 $crontab -e #編輯cron
@@ -231,3 +232,54 @@ $crontab -e #編輯cron
 
 @reboot /home/pi/Documents/GitHub/xxxxxxx/start.sh >> /tmp/cron_test.log 2>&1
 ```
+
+### 3.10 建立雲端web service
+- 新增web資料夾
+- 新增requirements.txt
+- 修改webUI.py
+
+#### 3.10.1 **requirements.txt**
+
+```
+redis
+paho-mqtt
+python-dotenv
+streamlit
+pandas
+streamlit-autorefresh
+```
+
+#### 3.10.2 webUI.py
+
+```
+import streamlit as st
+import redis
+import os
+import json
+from dotenv import load_dotenv
+import pandas as pd
+from streamlit_autorefresh import st_autorefresh
+
+load_dotenv()
+st_autorefresh()
+#conn = redis.Redis(host=os.environ['REDIS_HOST'],port=6379,password=os.environ['REDIS_PASSWORD'])
+conn = redis.Redis.from_url(url=os.environ['RENDER_REDIS'])
+bytes_list = conn.lrange('501教室/老師桌燈',-5,-1) #取得的資料為list內有bytes string
+str_list = [bytes_str.decode('utf-8') for bytes_str in reversed(bytes_list)] #將bytes string轉換為str
+dict_list = [json.loads(string) for string in str_list] #將字串轉為python的資料結構
+df1 = pd.DataFrame(dict_list) #建立DataFrame
+st.title("訓練通教室")
+st.header("感測器:blue[cool] :sunglasses:")
+st.dataframe(df1,
+             hide_index=True,
+             column_config={
+                 "status":st.column_config.CheckboxColumn(label='按鈕狀態',width='small'),
+                 "date":st.column_config.DatetimeColumn(label='時間',width='medium')
+                 })
+
+
+```
+
+#### 3.10.3 上傳至Render
+
+
