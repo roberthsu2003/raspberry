@@ -281,5 +281,5 @@ st.dataframe(df1,
 ```
 
 #### 3.10.3 上傳至Render
-
+- 注意redis的server要使用internal的位置
 
