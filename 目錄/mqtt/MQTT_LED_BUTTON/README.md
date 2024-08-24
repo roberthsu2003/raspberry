@@ -233,6 +233,11 @@ $crontab -e #編輯cron
 @reboot /home/pi/Documents/GitHub/xxxxxxx/start.sh >> /tmp/cron_test.log 2>&1
 ```
 
+```
+#改變start.sh,可以執行
+$ chmod +x start.sh
+```
+
 ### 3.10 建立雲端web service
 - 新增web資料夾
 - 新增requirements.txt
