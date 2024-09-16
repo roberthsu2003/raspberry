@@ -10,6 +10,9 @@
 - 沒有RaspberryPi硬體的解決方案
 - 下載Raspberry Pi OS
 
+## [手動設定local](./目錄/locale)
+- 解決piOs Perl Locale Warning
+
 ## [遠端連線raspberry](./目錄/遠端連線raspberry)
 - 從序列埠連線至Raspberry(必需要有TTL線)
 - **建立Raspberry網路上的小名**
