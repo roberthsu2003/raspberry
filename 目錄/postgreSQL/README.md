@@ -53,7 +53,7 @@ exit
 #### 2.1 更改postgresql.conf
 
 ```bash
-sudo vim /ect/postgresql/版本號碼/main/postgresql.conf
+sudo vim /etc/postgresql/版本號碼/main/postgresql.conf
 ```
 
 #### 2.2 將listen_addresses由'localhost'更改為'*'
@@ -61,7 +61,7 @@ sudo vim /ect/postgresql/版本號碼/main/postgresql.conf
 #### 2.3 更改pg_hba.conf
 
 ```bash
-sudo vim /ect/postgresql/版本號碼/main/pg_hba.conf
+sudo vim /etc/postgresql/版本號碼/main/pg_hba.conf
 ```
 
 #### 2.4 將IPv4由127.0.0.1/32 更改為 0.0.0.0/0
@@ -86,4 +86,21 @@ sudo service postgresql restart
 - ##### Save Password
 
 ![](./images/pic2.png)
+
+### 4. 使用命令列(psql)增加使用者
+#### 4.1 登入
+- pi 是username
+- postgres是進入的database
+- localhost是本機
+```
+psql -U pi -d postgres -h localhost
+```
+
+#### 4.2 新增使用者
+
+```
+CREATE USER new_user WITH PASSWORD 'password';
+```
+
+#### 4.3 使用者可以透過pgAdmin4連線至postgres server
 
