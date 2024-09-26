@@ -21,6 +21,9 @@ sudo locale-gen
 
 ### 3.在~/.bashrc內設定Locale的環境變數
 
+
+- **可以只設定最高等級的LC_ALL**
+
 ```
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
