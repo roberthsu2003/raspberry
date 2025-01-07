@@ -10,6 +10,7 @@ local -a
 ```
 en_US.UTF-8 UTF-8
 en_GB.UTF-8 UTF-8
+zh_TW.UTF-8 UTF-8
 ```
 
 然後執行以下指令安裝
@@ -20,15 +21,18 @@ sudo locale-gen
 
 ### 3. 在~/.bashrc內設定Locale的環境變數
 
+
+- **可以只設定最高等級的LC_ALL**
+
 ```
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 ```
 
-### 4. 重新開機
 
-### 5. 執行更新
+
+### 4. 執行更新
 
 ```bash
 sudo apt-get update && \
@@ -36,3 +40,4 @@ sudo apt-get install -y locales && \
 sudo locale-gen en_US.UTF-8 && \
 sudo update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 ```
+### 5.重新開機

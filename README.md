@@ -59,6 +59,8 @@
 
 ## [Docker官網安裝方法](https://docs.docker.com/engine/install/debian/)
 - 注意完成後要將user pi 加入至 docker group
+  
+  `sudo usermod -aG docker pi`
 
 
 ## [雲端服務](./目錄/雲端服務)
