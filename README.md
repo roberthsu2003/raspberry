@@ -57,10 +57,15 @@
 
 ## [postgreSQL server](./目錄/postgreSQL)
 
+
 ## [Docker官網安裝方法](https://docs.docker.com/engine/install/debian/)
 - 注意完成後要將user pi 加入至 docker group
   
   `sudo usermod -aG docker pi`
+  
+## [Docker安裝python_conda_git開發環境](./目錄/Docker安裝python_conda_git開發環境)
+
+## [Docker安裝mongo_db](./目錄/mongoDb)
 
 
 ## [雲端服務](./目錄/雲端服務)
