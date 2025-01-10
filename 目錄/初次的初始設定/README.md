@@ -5,7 +5,8 @@
 ```
 #開啟terminal
 ssh 帳號@raspberry_ip_address
-ssh 帳號@主機名稱
+#或都
+ssh 帳號@主機名稱.local
 ```
 
 ## 2. 透過raspi-config進行基本初始化設定
@@ -36,7 +37,7 @@ sudo raspi-config
 	- en_US.UTF-8 UTF-8
 
 - **按下後選擇目前預設的語言是**
-	- 預設請使用英文版
+	- 預設請使用英文版 en_US.UTF-8
 
 ![](./images/pic4.png)
 
