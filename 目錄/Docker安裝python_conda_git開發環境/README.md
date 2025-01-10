@@ -1,7 +1,7 @@
 # Docker安裝python_conda_git開發環境
 - 電腦必需有安裝Docker
 
-## 使用Docker Hub Repository
+## 方法1:使用Docker Hub Repository
 - 使用以下的repository
 
 `continuumio/miniconda3`
@@ -31,7 +31,7 @@ docker run -it --name python-miniconda continuumio/miniconda3
 - jupyter
 ### 步驟6 **安裝python外部套件**
 
-## 自訂Dockerfile方式(不方便)
+## 方法2:自訂Dockerfile方式(不方便)
 - 自已下載的方式
 
 - **Dockfile**
