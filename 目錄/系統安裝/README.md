@@ -63,3 +63,9 @@
 	-  使用windows軟體[SDFormatter](https://www.sdcard.org/cht/downloads/formatter/),格式化sd卡  
 	-  使用windows軟體[win32DiskImager](https://sourceforge.net/projects/win32diskimager/),將img檔燒錄到sd卡內 
 
+## 建立Raspberry網路上的名稱,並設定開啟ssh
+使用官方燒錄軟體上設定網路名稱,並開啟ssh,如下圖所示:
+
+![](./images/pic22.png)
+![](./images/pic23.png)
+![](./images/pic24.png)

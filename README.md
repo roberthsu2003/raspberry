@@ -10,6 +10,9 @@
 - 沒有RaspberryPi硬體的解決方案
 - 下載Raspberry Pi OS
 
+
+## raspi
+
 ## [手動設定local](./目錄/locale)
 - 解決piOs Perl Locale Warning
 
