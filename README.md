@@ -11,7 +11,8 @@
 - 下載Raspberry Pi OS
 
 
-## raspi
+## [透過ssh連線,建立初次的初始化設定](./目錄/初次的初始設定)
+
 
 ## [手動設定local](./目錄/locale)
 - 解決piOs Perl Locale Warning
