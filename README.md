@@ -63,7 +63,7 @@
   
   `sudo usermod -aG docker pi`
   
-## [Docker安裝python_conda_git開發環境](./Docker安裝python_conda_git開發環境)
+## [Docker安裝python_conda_git開發環境](./目錄/Docker安裝python_conda_git開發環境)
 
 ## [Docker安裝mongo_db](./目錄/mongoDb)
 
