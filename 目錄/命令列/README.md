@@ -1,5 +1,6 @@
 # 命令列
 - [使用SSH學習命令列](#command_line_interface)  
+- [環境變數](#environment_variables)
 - [使用apt-get安裝和移除軟體](#apt_get)
 - [安裝vim文字編輯器](#install_vim)
 
@@ -418,8 +419,215 @@ $ who
 $ w
 ```
 
+<a name="environment_variables"></a>
+## 2. 環境變數
+
+### 2.1 什麼是環境變數
+
+環境變數是作業系統中用來儲存系統設定和程式配置資訊的變數。它們可以影響程式的行為，並且在整個系統中都可以被存取。
+
+```bash
+# 查看所有環境變數
+$ env
+$ printenv
+
+# 查看特定環境變數
+$ echo $HOME
+$ echo $USER
+$ echo $PATH
+```
+
+### 2.2 重要的系統環境變數
+
+```bash
+# HOME - 使用者家目錄
+$ echo $HOME
+/home/pi
+
+# USER - 當前使用者名稱
+$ echo $USER
+pi
+
+# PWD - 當前工作目錄
+$ echo $PWD
+
+# SHELL - 當前使用的shell
+$ echo $SHELL
+/bin/bash
+```
+
+### 2.3 PATH環境變數
+
+PATH是最重要的環境變數之一，它告訴系統在哪些目錄中尋找可執行檔案。
+
+```bash
+# 查看PATH變數
+$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# PATH中的目錄用冒號(:)分隔
+# 系統會按順序在這些目錄中尋找命令
+
+# 查看命令的完整路徑
+$ which python3
+/usr/bin/python3
+
+$ which ls
+/bin/ls
+```
+
+### 2.4 設定環境變數
+
+#### 2.4.1 臨時設定(當前session有效)
+
+```bash
+# 使用export設定環境變數
+$ export MY_VAR="Hello World"
+$ echo $MY_VAR
+Hello World
+
+# 設定PATH變數(添加新路徑)
+$ export PATH=$PATH:/home/pi/bin
+$ echo $PATH
+
+# 設定常用的開發環境變數
+$ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+$ export PYTHON_PATH=/usr/local/lib/python3.9/site-packages
+```
+
+#### 2.4.2 永久設定環境變數
+
+環境變數可以在不同的設定檔中定義：
+
+```bash
+# 查看bash設定檔
+$ ls -la ~/.*rc
+-rw-r--r-- 1 pi pi 3523 Jan 1 12:00 .bashrc
+-rw-r--r-- 1 pi pi  220 Jan 1 12:00 .bash_logout
+-rw-r--r-- 1 pi pi  807 Jan 1 12:00 .profile
+```
+
+### 2.5 修改.bashrc檔案
+
+.bashrc是bash shell的設定檔，每次開啟新的terminal時都會執行。
+
+```bash
+# 備份原始.bashrc檔案
+$ cp ~/.bashrc ~/.bashrc.backup
+
+# 編輯.bashrc檔案
+$ nano ~/.bashrc
+
+# 或使用vim編輯
+$ vim ~/.bashrc
+```
+
+#### 2.5.1 在.bashrc中添加環境變數
+
+在.bashrc檔案末尾添加以下內容：
+
+```bash
+# 自定義環境變數
+export MY_PROJECT_PATH="/home/pi/projects"
+export EDITOR="vim"
+
+# 添加自定義路徑到PATH
+export PATH=$PATH:/home/pi/bin:/home/pi/scripts
+
+# 設定程式語言相關環境變數
+export JAVA_HOME="/usr/lib/jvm/default-java"
+export PYTHON_PATH="/usr/local/lib/python3.9/site-packages"
+
+# 設定別名(aliases)
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# 自定義函數
+function mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+```
+
+#### 2.5.2 重新載入.bashrc
+
+```bash
+# 重新載入.bashrc設定
+$ source ~/.bashrc
+
+# 或使用點(.)命令
+$ . ~/.bashrc
+
+# 或重新開啟terminal
+```
+
+### 2.6 其他設定檔
+
+```bash
+# .profile - 登入時執行(適用於所有shell)
+$ nano ~/.profile
+
+# .bash_profile - bash登入時執行
+$ nano ~/.bash_profile
+
+# 系統級設定檔
+$ sudo nano /etc/environment  # 系統環境變數
+$ sudo nano /etc/bash.bashrc  # 系統bash設定
+```
+
+### 2.7 實用範例
+
+#### 2.7.1 設定開發環境
+
+```bash
+# 在.bashrc中設定開發環境
+export WORKSPACE="/home/pi/workspace"
+export PROJECTS="$WORKSPACE/projects"
+
+# 快速切換到專案目錄的函數
+function cdp() {
+    cd "$PROJECTS/$1"
+}
+
+# 使用方式
+$ cdp myproject  # 等同於 cd /home/pi/workspace/projects/myproject
+```
+
+#### 2.7.2 設定程式語言環境
+
+```bash
+# Python環境
+export PYTHONPATH="/home/pi/python-libs:$PYTHONPATH"
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# Node.js環境
+export NODE_PATH="/usr/local/lib/node_modules"
+export NPM_CONFIG_PREFIX="/home/pi/.npm-global"
+export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
+```
+
+### 2.8 環境變數的作用域
+
+```bash
+# 查看變數是否為環境變數
+$ set | grep MY_VAR      # 查看所有變數
+$ env | grep MY_VAR      # 只查看環境變數
+
+# 一般變數(只在當前shell有效)
+$ MY_VAR="test"
+$ echo $MY_VAR
+
+# 環境變數(子程序也可以存取)
+$ export MY_VAR="test"
+$ bash  # 開啟子shell
+$ echo $MY_VAR  # 仍然可以存取
+$ exit  # 回到父shell
+```
+
 <a name="apt_get"></a>
-## 2. 使用apt-get安裝和移除軟體
+## 3. 使用apt-get安裝和移除軟體
 
 ```
 # 更新 apt-get套件管理的軟體清單
@@ -447,13 +655,13 @@ $ sudo apt-get autoremove <軟體名稱>
 
 
 <a name="install_vim"></a>
-##  3. 安裝vim文字編輯器
+##  4. 安裝vim文字編輯器
 
 ```
 >>> sudo apt-get install vim
 ```
 
-### 3.1 切換模式
+### 4.1 切換模式
 Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複製及貼上等操作。在 Vim 主要常用的有幾個模式:Normal 模式以及 Insert 模式:
 
 ![](./images/pic1.png)
@@ -464,13 +672,13 @@ Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複�
 4. 在 Normal 模式下，按下 :w 會進行存檔，按下 :q 會關閉這個檔案(但若未存檔會提
 示先存檔再離開)，而 :wq 則是存檔完成後直接關閉這個檔案。
 
-### 3.2 暫時離開
+### 4.2 暫時離開
 
 1. 暫時離開 `ctrl + z`
 
 2. 回至vim `fg`
 
-### 3.3 一般模式下,使用`h`,`j`,`k`,`l`移動游標
+### 4.3 一般模式下,使用`h`,`j`,`k`,`l`移動游標
 
 - `h` -> 向左移動
 - `j` -> 向下移動
@@ -479,7 +687,7 @@ Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複�
 
 [vim adventure練習網站](./https://vim-adventures.com/)
 
-### 3.4 一般模式下,使用`w`,`W`,`b`,`B`,`}`,`{`,`]]`,`[[`,`0`,`$`
+### 4.4 一般模式下,使用`w`,`W`,`b`,`B`,`}`,`{`,`]]`,`[[`,`0`,`$`
 
 - `w` -> 向下一個字移動
 - `W` -> 向下一個字移動,跳過標點符號
@@ -496,7 +704,7 @@ Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複�
 >
 > b -b back
 
-### 3.5 一般模式下搜尋文字,使用`/`
+### 4.5 一般模式下搜尋文字,使用`/`
 
 - `/` -> 搜尋
 
@@ -520,7 +728,7 @@ Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複�
 - `zt` -> 將該行移至畫面上方
 - `zb` -> 將該行移至畫面下方
 
-### 3.6 選取,複制,貼上,undo,Delete(Visual)
+### 4.6 選取,複制,貼上,undo,Delete(Visual)
 - `v` -> Visual 模式
 - `V` -> Visual line模式,並選取一整行
 - 先移動到目標文字(一般標式),再進入Visual模式
@@ -530,7 +738,7 @@ Vim 主要是使用模式的切換來進行輸入、移動游標、選取、複�
 - `u` -> undo
 - `ctrl+r` -> redo
 
-### 3.7 編輯檔案內容
+### 4.7 編輯檔案內容
 - `I` -> 跳至行首並進入insert模式
 - `A` -> 跳側行未並進入insert模式
 - `O` -> 在游標上方插入一行並進入insert模式
