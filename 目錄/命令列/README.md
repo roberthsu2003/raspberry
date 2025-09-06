@@ -121,14 +121,160 @@ $ rm *
 $ rm -r mydir
 ```
 
-### 搜尋
+### 1.8 搜尋檔案和內容
 
+#### 1.8.1 使用find搜尋檔案
+
+```bash
+# 在當前目錄搜尋檔案名稱
+$ find . -name "*.txt"
+
+# 在指定目錄搜尋檔案
+$ find /home/pi -name "myfile.txt"
+
+# 搜尋特定類型的檔案
+$ find . -type f -name "*.py"  # 搜尋Python檔案
+$ find . -type d -name "my*"   # 搜尋目錄
+
+# 按檔案大小搜尋
+$ find . -size +10M            # 大於10MB的檔案
+$ find . -size -1M             # 小於1MB的檔案
+
+# 按修改時間搜尋
+$ find . -mtime -7             # 7天內修改的檔案
+$ find . -mtime +30            # 30天前修改的檔案
 ```
 
+#### 1.8.2 使用grep搜尋檔案內容
+
+```bash
+# 在檔案中搜尋文字
+$ grep "hello" myfile.txt
+
+# 在多個檔案中搜尋
+$ grep "hello" *.txt
+
+# 遞迴搜尋目錄中的所有檔案
+$ grep -r "hello" /home/pi/
+
+# 忽略大小寫搜尋
+$ grep -i "Hello" myfile.txt
+
+# 顯示行號
+$ grep -n "hello" myfile.txt
+
+# 搜尋不包含特定文字的行
+$ grep -v "hello" myfile.txt
+
+# 使用正規表達式
+$ grep "^hello" myfile.txt     # 以hello開頭的行
+$ grep "world$" myfile.txt     # 以world結尾的行
+```
+
+#### 1.8.3 使用locate快速搜尋
+
+```bash
+# 更新locate資料庫
+$ sudo updatedb
+
+# 快速搜尋檔案
+$ locate myfile.txt
+
+# 限制搜尋結果數量
+$ locate -l 5 "*.py"
+```
+
+#### 1.8.4 使用which和whereis
+
+```bash
+# 找出命令的位置
+$ which python3
+$ which vim
+
+# 找出程式的位置、原始碼和說明文件
+$ whereis python3
 ```
 
 
-### 1.8 使用superuser執行任務
+### 1.9 檔案壓縮和解壓縮
+
+```bash
+# 建立tar壓縮檔
+$ tar -czf backup.tar.gz mydirectory/
+
+# 解壓縮tar檔案
+$ tar -xzf backup.tar.gz
+
+# 建立zip壓縮檔
+$ zip -r backup.zip mydirectory/
+
+# 解壓縮zip檔案
+$ unzip backup.zip
+
+# 查看壓縮檔內容
+$ tar -tzf backup.tar.gz
+$ unzip -l backup.zip
+```
+
+### 1.10 檔案連結
+
+```bash
+# 建立硬連結
+$ ln myfile.txt hardlink.txt
+
+# 建立軟連結(符號連結)
+$ ln -s /path/to/original/file symlink.txt
+
+# 查看連結資訊
+$ ls -l
+```
+
+### 1.11 檔案比較
+
+```bash
+# 比較兩個檔案的差異
+$ diff file1.txt file2.txt
+
+# 並排顯示差異
+$ diff -y file1.txt file2.txt
+
+# 比較目錄
+$ diff -r dir1/ dir2/
+```
+
+### 1.12 監控檔案變化
+
+```bash
+# 即時顯示檔案末尾內容
+$ tail -f /var/log/syslog
+
+# 顯示檔案最後10行
+$ tail myfile.txt
+
+# 顯示檔案前10行
+$ head myfile.txt
+
+# 監控檔案變化
+$ watch -n 1 'ls -l'  # 每秒更新一次
+```
+
+### 1.13 檔案統計資訊
+
+```bash
+# 計算檔案行數、字數、字元數
+$ wc myfile.txt
+$ wc -l myfile.txt  # 只顯示行數
+$ wc -w myfile.txt  # 只顯示字數
+
+# 查看檔案大小
+$ du -h myfile.txt
+$ du -sh mydirectory/  # 查看目錄大小
+
+# 查看磁碟使用情況
+$ df -h
+```
+
+### 1.14 使用superuser執行任務
 
 ```
 $ sudo xxxxxxxxxxx
@@ -140,11 +286,11 @@ $ sudo sh
 $ exit
 ```
 
-### 1.9 了解檔案權限
+### 1.15 了解檔案權限
 
 ![](./images/pic3.png)
 
-#### 1.9.1 改變檔案權限
+#### 1.15.1 改變檔案權限
 
 ```
 $ chmod u+x file2.txt
@@ -159,7 +305,22 @@ $ chmod u+x file2.txt
 
 ```
 
-### 1.9.2 改變擁有者
+#### 1.15.2 數字權限表示法
+
+```bash
+# 使用數字設定權限
+$ chmod 755 myfile.txt
+# 7 = 4+2+1 (rwx) owner權限
+# 5 = 4+1 (r-x) group權限  
+# 5 = 4+1 (r-x) other權限
+
+# 常用權限組合
+$ chmod 644 myfile.txt  # rw-r--r--
+$ chmod 755 myscript.sh # rwxr-xr-x
+$ chmod 600 private.txt # rw-------
+```
+
+#### 1.15.3 改變擁有者
 
 ```
 #更改檔案
@@ -169,6 +330,82 @@ $ sudo chown root:root <檔案名稱>
 
 #更改目錄
 $ sudo chown -R root:root <目錄名>
+```
+
+### 1.16 程序管理
+
+```bash
+# 查看正在執行的程序
+$ ps aux
+$ ps -ef
+
+# 查看即時程序狀態
+$ top
+$ htop  # 需要安裝: sudo apt-get install htop
+
+# 根據程序名稱搜尋
+$ ps aux | grep python
+
+# 終止程序
+$ kill <PID>
+$ killall <程序名稱>
+
+# 強制終止程序
+$ kill -9 <PID>
+
+# 背景執行程序
+$ python3 myscript.py &
+
+# 查看背景工作
+$ jobs
+
+# 將背景工作帶到前景
+$ fg %1
+```
+
+### 1.17 網路相關指令
+
+```bash
+# 測試網路連線
+$ ping google.com
+$ ping -c 4 8.8.8.8  # 只ping 4次
+
+# 查看網路介面
+$ ifconfig
+$ ip addr show
+
+# 下載檔案
+$ wget https://example.com/file.txt
+$ curl -O https://example.com/file.txt
+
+# 查看網路連線狀態
+$ netstat -tuln
+$ ss -tuln
+```
+
+### 1.18 系統資訊
+
+```bash
+# 查看系統資訊
+$ uname -a
+$ lsb_release -a
+
+# 查看CPU資訊
+$ lscpu
+$ cat /proc/cpuinfo
+
+# 查看記憶體使用情況
+$ free -h
+
+# 查看磁碟空間
+$ df -h
+
+# 查看系統負載
+$ uptime
+
+# 查看登入使用者
+$ who
+$ w
 ```
 
 <a name="apt_get"></a>
