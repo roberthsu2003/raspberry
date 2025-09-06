@@ -323,13 +323,23 @@ $ chmod 600 private.txt # rw-------
 #### 1.15.3 改變擁有者
 
 ```
-#更改檔案
+# 改變檔案擁有者和群組
 $ sudo chown root:root <檔案名稱>
+# 語法: chown [擁有者]:[群組] [檔案名稱]
+# root:root 表示將擁有者設為root，群組也設為root
 
-# root:root - user:group
-
-#更改目錄
+# 改變目錄及其內容的擁有者和群組
 $ sudo chown -R root:root <目錄名>
+# -R 參數表示遞迴處理，會同時改變目錄內所有檔案和子目錄的擁有者
+
+# 其他常用範例
+$ sudo chown pi:pi myfile.txt        # 將檔案擁有者改為pi用戶，群組改為pi
+$ sudo chown pi myfile.txt           # 只改變擁有者為pi，群組不變
+$ sudo chown :www-data myfile.txt    # 只改變群組為www-data，擁有者不變
+
+# 查看檔案擁有者資訊
+$ ls -l myfile.txt
+# 輸出格式: -rw-r--r-- 1 [擁有者] [群組] 檔案大小 日期 檔案名
 ```
 
 ### 1.16 程序管理
